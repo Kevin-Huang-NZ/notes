@@ -1,3 +1,3 @@
-$("#aaa").forEach(function(item){
+$("#aaa").forEach(function(item) {
     console.log(item.html());
 });
