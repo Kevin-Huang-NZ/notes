@@ -1,2 +1,3 @@
-console.log($("#myDiv"));
-console.log($("#yourDiv"));
+$("#aaa").forEach(function(item){
+    console.log(item.html());
+});
