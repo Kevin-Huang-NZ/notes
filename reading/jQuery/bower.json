@@ -1,0 +1,13 @@
+{
+  "name": "jQueryNote",
+  "version": "1.0.0",
+  "authors": [
+    "KevinHuang <hh@52htn.net>"
+  ],
+  "description": "读《锋利的jQuery》，敲代码。",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {}
+}

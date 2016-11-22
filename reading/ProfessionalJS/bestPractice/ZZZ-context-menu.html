@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Professional JavaScript for Web Developers</title>
+    <script src="EventUtil.js"></script>
+    <script>
+        EventUtil.addHandler(window, "load", function(event) {
+            var myDiv = document.getElementById("myDiv");
+            EventUtil.addHandler(myDiv, "contextmenu", function(event) {
+                event = EventUtil.getEvent(event);
+                EventUtil.preventDefault(event);
+                var menu = document.getElementById("myMenu");
+                menu.style.left = event.clientX + "px";
+                menu.style.top = event.clientY + "px";
+                menu.style.visibility = "visible";
+            });
+            EventUtil.addHandler(document, "click", function(event) {
+                var menu = document.getElementById("myMenu");
+                menu.style.visibility = "hidden";
+            });
+            EventUtil.addHandler(window, "beforeunload", function(event) {
+                event = EventUtil.getEvent(event);
+                var message = "确定关闭？";
+                event.returnValue = message;
+                return message;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="myDiv">
+        Right click or Ctrl+click me to get a custom context menu. Click anywhere else to get the default context menu.
+    </div>
+    <ul id="myMenu" style="position: absolute; visibility: hidden; background-color:silver;">
+        <li><a href="http://wwww.google.co.nz">Google</a></li>
+        <li><a href="http://wwww.baidu.com">Baidu</a></li>
+    </ul>
+</body>
+
+</html>

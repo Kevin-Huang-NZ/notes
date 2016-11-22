@@ -1,0 +1,35 @@
+1、创建一个普通的maven工程
+new -> project -> Maven -> Maven project
+选择create a simple project
+输入Group ID和Artifact ID，Packaging类型使用默认值jar。
+
+2、修改工程属性
+工程右键 -> properties -> project facets
+Convert to faceted form
+勾选Dynamic Web Module，ok
+工程目录下会多一个WebContent目录。
+
+3、修改目录
+在src/main目录下创建webapp目录，拷贝WebContent目录下的内容到webapp，删除WebContent。
+
+4、修改pom文件
+packaging改为war
+更加项目需求，添加dependency和build等内容。
+
+5、在WEB_INF目录下创建web.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+  <display-name>PaymentExpressSample</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  	<context-param>
+		<param-name>PxPayUrl</param-name>
+		<param-value>https://uat.paymentexpress.com/pxaccess/pxpay.aspx</param-value>
+	</context-param>
+..............
+</web-app>

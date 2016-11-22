@@ -1,0 +1,1176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dimu Document</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style type="text/css">
+        /* For scrollspy */
+        
+        body {
+            position: relative;
+        }
+        /* Page headers */
+        
+        .bs-docs-header {
+            position: relative;
+            padding: 30px 0;
+            color: #cdbfe3;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+            background-color: #6f5499;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#563d7c), to(#6f5499));
+            background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
+            background-image: -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
+            background-image: linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+            background-repeat: repeat-x;
+        }
+        
+        .bs-docs-header {
+            margin-bottom: 40px;
+            font-size: 20px;
+        }
+        
+        .bs-docs-header h1 {
+            margin-top: 0;
+            color: #fff;
+        }
+        
+        .bs-docs-header p {
+            margin-bottom: 0;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+        
+        .bs-docs-header .container {
+            position: relative;
+        }
+        
+        @media (min-width: 768px) {
+            .bs-docs-header {
+                padding-top: 60px;
+                padding-bottom: 60px;
+                font-size: 24px;
+                text-align: left;
+            }
+            .bs-docs-header h1 {
+                font-size: 60px;
+                line-height: 1;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .bs-docs-header h1,
+            .bs-docs-header p {
+                margin-right: 380px;
+            }
+        }
+        /* Space things out */
+        
+        .bs-docs-section {
+            margin-bottom: 60px;
+        }
+        
+        .bs-docs-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        h1[id] {
+            padding-top: 20px;
+            margin-top: 0;
+        }
+        /*
+        * ZeroClipboard styles
+        */
+        
+        .zero-clipboard {
+            position: relative;
+            display: none;
+        }
+        
+        .btn-clipboard {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+            display: block;
+            padding: 5px 8px;
+            font-size: 12px;
+            color: #767676;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid #e1e1e8;
+            border-radius: 0 4px 0 4px;
+        }
+        
+        .btn-clipboard-hover {
+            color: #fff;
+            background-color: #563d7c;
+            border-color: #563d7c;
+        }
+        
+        @media (min-width: 768px) {
+            .zero-clipboard {
+                display: block;
+            }
+            .bs-example+.zero-clipboard .btn-clipboard {
+                top: -16px;
+                border-top-right-radius: 0;
+            }
+        }
+        /*
+          * Code snippets
+          *
+          * Generated via Pygments and Jekyll, these are snippets of HTML, CSS, and JS.
+          */
+        
+        .highlight {
+            padding: 9px 14px;
+            margin-bottom: 14px;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+            border-radius: 4px;
+        }
+        
+        .highlight pre {
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            word-break: normal;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+        }
+        
+        .highlight pre code {
+            font-size: inherit;
+            color: #333;
+            /* Effectively the base text color */
+        }
+        
+        .highlight pre code:first-child {
+            display: inline-block;
+            padding-right: 45px;
+        }
+        /*
+        * Side navigation
+        *
+        * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+        * sections of docs content.
+        */
+        /* By default it's not affixed in mobile views, so undo that */
+        
+        .bs-docs-sidebar.affix {
+            position: static;
+        }
+        
+        @media (min-width: 768px) {
+            .bs-docs-sidebar {
+                padding-left: 20px;
+            }
+        }
+        /* First level of nav */
+        
+        .bs-docs-sidenav {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        /* All levels of nav */
+        
+        .bs-docs-sidebar .nav>li>a {
+            display: block;
+            padding: 4px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #767676;
+        }
+        
+        .bs-docs-sidebar .nav>li>a:hover,
+        .bs-docs-sidebar .nav>li>a:focus {
+            padding-left: 19px;
+            color: #563d7c;
+            text-decoration: none;
+            background-color: transparent;
+            border-left: 1px solid #563d7c;
+        }
+        
+        .bs-docs-sidebar .nav>.active>a,
+        .bs-docs-sidebar .nav>.active:hover>a,
+        .bs-docs-sidebar .nav>.active:focus>a {
+            padding-left: 18px;
+            font-weight: bold;
+            color: #563d7c;
+            background-color: transparent;
+            border-left: 2px solid #563d7c;
+        }
+        /* Nav: second level (shown on .active) */
+        
+        .bs-docs-sidebar .nav .nav {
+            display: none;
+            /* Hide by default, but at >768px, show it */
+            padding-bottom: 10px;
+        }
+        
+        .bs-docs-sidebar .nav .nav>li>a {
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 30px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        .bs-docs-sidebar .nav .nav>li>a:hover,
+        .bs-docs-sidebar .nav .nav>li>a:focus {
+            padding-left: 29px;
+        }
+        
+        .bs-docs-sidebar .nav .nav>.active>a,
+        .bs-docs-sidebar .nav .nav>.active:hover>a,
+        .bs-docs-sidebar .nav .nav>.active:focus>a {
+            padding-left: 28px;
+            font-weight: 500;
+        }
+        /* Back to top (hidden on mobile) */
+        
+        .back-to-top,
+        .bs-docs-theme-toggle {
+            display: none;
+            padding: 4px 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #999;
+        }
+        
+        .back-to-top:hover,
+        .bs-docs-theme-toggle:hover {
+            color: #563d7c;
+            text-decoration: none;
+        }
+        
+        .bs-docs-theme-toggle {
+            margin-top: 0;
+        }
+        
+        @media (min-width: 768px) {
+            .back-to-top,
+            .bs-docs-theme-toggle {
+                display: block;
+            }
+        }
+        /* Show and affix the side nav when space allows it */
+        
+        @media (min-width: 992px) {
+            .bs-docs-sidebar .nav>.active>ul {
+                display: block;
+            }
+            /* Widen the fixed sidebar */
+            .bs-docs-sidebar.affix,
+            .bs-docs-sidebar.affix-bottom {
+                width: 213px;
+            }
+            .bs-docs-sidebar.affix {
+                position: fixed;
+                /* Undo the static from mobile first approach */
+                top: 20px;
+            }
+            .bs-docs-sidebar.affix-bottom {
+                position: absolute;
+                /* Undo the static from mobile first approach */
+            }
+            .bs-docs-sidebar.affix-bottom .bs-docs-sidenav,
+            .bs-docs-sidebar.affix .bs-docs-sidenav {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            /* Widen the fixed sidebar again */
+            .bs-docs-sidebar.affix-bottom,
+            .bs-docs-sidebar.affix {
+                width: 263px;
+            }
+        }
+        
+        textarea {
+            border: 0;
+            background-color: transparent;
+            overflow: hidden;
+            color: #666464;
+            width: 95%;
+            resize: none;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script type="text/javascript">
+        $(window).load(function(event) {
+            var rightNav = null,
+                preScrollTop = 0,
+                currentScrollTop = 0;
+            $(window).scroll(function(event) {
+                currentScrollTop = $(window).scrollTop();
+                if (preScrollTop < 223 && currentScrollTop >= 223) {
+                    rightNav = $("#rightNav");
+                    rightNav.addClass("affix");
+                }
+                if (preScrollTop >= 223 && currentScrollTop < 223) {
+                    rightNav = $("#rightNav");
+                    rightNav.removeClass("affix");
+                }
+                preScrollTop = currentScrollTop;
+            });
+
+            var options = {
+                template: '<div class="tooltip" style="width:120px;" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+            };
+            $(".btn-clipboard").click(function(event) {
+                $(this).tooltip(options).attr('data-original-title', 'Copied!').tooltip('show');
+            });
+            $(".btn-clipboard").hover(function(event) {
+                $(this).tooltip(options).attr('data-original-title', 'Copy to clipboard.').tooltip('show');
+            });
+
+            new Clipboard('.btn-clipboard', {
+                target: function(trigger) {
+                    return $(trigger).parent().next().find('textarea')[0];
+                }
+            });
+        });
+    </script>
+</head>
+
+<body data-spy="scroll">
+    <div class="bs-docs-header">
+        <div class="container">
+            <h1>DIMU Document</h1>
+            <p>DIMU开发框架使用说明。</p>
+        </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="overview">说明</h1>
+                    <p class="lead">*部署时，DIMU开发框架自动将html文件转换成jsp文件在服务器端执行。</p>
+                    <p class="lead">*html文件中使用自定义标签编写java代码，不使用原生java代码。</p>
+                </div>
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="annotation">注释</h1>
+                    <h2 id="annotation-serve">动态逻辑代码</h2>
+                    <p>业务逻辑代码只能在服务端运行，写在如下的注释符号内，框架在将静态html转换为jsp时会从注释中提出这部分代码。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="3">
+<!--#
+#--></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="annotation-local">静态代码</h2>
+                    <p>静态代码用于美工设计界面样式，写在如下的注释内，框架在将静态html转换为jsp时会删除这部分代码。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="3">
+<!--#<JREMOVE>#-->
+<!--#</JREMOVE>#--></textarea>
+				</pre>
+                    </figure>
+                </div>
+
+
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="basic-syntax">基本语法</h1>
+                    <h2 id="basic-syntax-set-variate">定义变量并赋值</h2>
+                    <p>定义一个名字为idPageNo的变量，变量值为另一个变量requestEx.pageNo的值，如果requestEx.pageNo为null，则idPageNo被设置默认值'1'。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="eastUtilService" methodName="setValue"  id="idPageNo">
+  <east:para name="_value" value="${requestEx.pageNo}" type="Object" />
+  <east:para name="_defaultValue" value="1" type="Object" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="basic-syntax-get-variate">引用变量</h2>
+                    <p>在页面中任何部分（html、js中）都可以直接引用变量值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="2">
+${idPageNo}</textarea>
+				</pre>
+                    </figure>
+                    <h2 id="basic-syntax-if">分支语句</h2>
+                    <p>如下,判断变量是否为null或者空串。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="7">
+<s:if test="${idPageNo == null || idPageNo == ''}">
+  do something
+</s:if>
+<s:else>
+  do something else
+</s:else></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="basic-syntax-if2">分支语句2</h2>
+                    <p>c标签不能有else。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="4">
+<c:if test="${idPageNo == null || idPageNo == ''}">
+  do something
+</c:if></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="basic-syntax-array">数组</h2>
+                    <p>定义数组： 定义一个数组，数值的变量名为lsCode</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="3">
+<east:service beanName="eastUtilService" methodName="listCreate"  id="lsCode">
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <p>往数组中add数据： 往数组lsCode中增加一个变量idPageNo的值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="eastUtilService" methodName="listAdd" id="idResult">
+	<east:para name="_list"	value="${lsCode}" type="List" />
+	<east:para name="_object" value="${idPageNo}" type="Object" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <p>使用下标序号从数组里取值： 从lsCode中取得第二个元素（下标为1）放到变量idCode中</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="eastUtilService" methodName="listGet" id="idCode">
+	<east:para name="_list"	value="${lsCode}" type="Object" />
+	<east:para name="_index" value="1" type="Integer" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="basic-syntax-foreach">循环语句</h2>
+                    <p>循环处理数组lsCode，在循环里可以通过变量objCode访问数组的当前内容，status.index表示当前数组下标序号。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<c:forEach items="${lsCode}" var="objCode" varStatus="status">
+	${objCode}
+	${status.index}
+	do something
+</c:forEach></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="basic-syntax-map">Map</h2>
+                    <p>创建一个名为mapCode的map</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="3">
+<east:service beanName="eastUtilService" methodName="mapCreate"  id="mapCode">
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <p>向mapCode中put一个对象(lsCode)，key值为"key1"</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<east:service beanName="eastUtilService" methodName="mapPut"  id="idResult">
+	<east:para name="_map" value="${mapCode}" type="Object" />
+	<east:para name="_key" value="key1" type="String" />
+	<east:para name="_value" value="${lsCode}" type="Object" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <p>循环map：</p>
+                    <blockquote>
+                        <p>使用mapKeys方法获取map的所有key值，放在一个数组中，数组的变量名为"listKeys"</p>
+                        <p>然后循环listKeys</p>
+                        <p>在循环内，通过mapGet方法从map中获取key值对应的对象。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="10">
+<east:service beanName="eastUtilService" methodName="mapKeys"  id="listKeys">
+	<east:para name="_map" value="${mapCode}" type="Object" /> 
+</east:service>
+<c:forEach items="${listKeys}" var="_idKey" varStatus="status">
+	<east:service beanName="eastUtilService" methodName="mapGet"  id="mapValue">
+		<east:para name="_map" value="${mapCode}" type="Object" />
+		<east:para name="_key" value="${_idKey}" type="String" /> 
+	</east:service>
+</c:forEach></textarea>
+				</pre>
+                    </figure>
+                </div>
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="db-query">数据库查询</h1>
+                    <h2 id="db-query-by-id">通过id查询</h2>
+                    <p> 通过id获取1条数据（id是数据库存储主键，数据的唯一标识），例如：使用id的值在colMonitor类对应的表中检索一条数据，放在变量idObjMonitor中。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getOneByIdAlwaysWithClass"  id="idObjMonitor">
+	<east:para name="tnewsid" value="${id}" type="String" />
+	<east:para name="className" value="colMonitor" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="db-query-by-column">通过扩展字段查询</h2>
+                    <p> 通过扩展字段查询1条数据。</p>
+                    <p>例如：在colMonitor的表中检索一条数据，放在变量idObjMonitor中，该数据满足条件：字段cmonitorCode = 变量monitorCode的值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getBeanOneByClassNameExtColumn" id="idObjXXX">	  	 
+	<east:para name="className" value="colMonitor" type="String" />
+	<east:para name="fieldName" value="cmonitorCode" type="String" />
+	<east:para name="fieldValue" value="${monitorCode}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="db-query-by-searchTVL-and">searchTVL查询（AND）</h2>
+                    <p>searchTVL是自定义标签可以解析的一种查询条件格式。</p>
+                    <p>参数说明：</p>
+                    <blockquote>
+                        <p>newsClass：类名，可以理解为表名</p>
+                        <p>page：分页控制中的页面，查询第几页。</p>
+                        <p>pageSize：每页的数据条数。</p>
+                        <p>searchTVL： where条件，多个条件使用逗号连接，实际执行时会使用AND连接符连接。</p>
+                        <p>orderName：排序字段，只能有一个</p>
+                        <p>descOrAsc：升降序，true为降序，false为升序
+                        </p>
+                    </blockquote>
+                    <p>例如：在colMonitor的表中检索多条数据，检索条件：字段cmonitorCode = 变量monitorCode的值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="12">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getAllByNativeField"  id="rsMonitor">
+	<east:para name="newsClass"  value="colMonitor" type="String" />
+	<east:para name="page" value="${pageNo}" type="Integer" />
+	<east:para name="pageSize" value="${pageSize}" type="Integer" />
+	<east:para name="searchTVL" value="{\"tag\":\"cmonitorCode\",\"val\":\"${monitorCode}\",\"link\":\"!{EQ}\",\"type\":\"1\"}" type="String" />
+	<east:para name="orderName" value="cdate" type="String" />
+	<east:para name="descOrAsc" value="true" type="Boolean" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <p>searchTVL查询返回值说明：</p>
+                    <blockquote>
+                        <p>list属性：保存数据库返回的数据列表，通过下边格式可以循环访问</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<c:if test="${rsMonitor.list != null && fn:length(rsMonitor.list) > 0}">
+	<c:forEach items="${rsMonitor.list}" var="objMonitor" varStatus="status">
+		do something
+	</c:forEach>
+</c:if></textarea>
+				</pre>
+                    </figure>
+                    <p>searchTVL查询返回值中除了list数据，还有分页相关的数据信息，page属性，如下：</p>
+                    <blockquote>
+                        <p>page.totalRecords： 数据库中的总记录条数，不是list的长度</p>
+                        <p>page.pageCount： 总页数</p>
+                        <p>page.pagePrev： 前一页的页码</p>
+                        <p>page.pageNext： 后一页的页码</p>
+                        <p>page.one： 以下7个属性都是用来生成分页栏的，用法参见后续内容。</p>
+                        <p>page.two</p>
+                        <p>page.three</p>
+                        <p>page.four</p>
+                        <p>page.five</p>
+                        <p>page.six</p>
+                        <p>page.seven</p>
+                    </blockquote>
+                    <h2 id="db-query-by-searchTVL-or">searchTVL查询（OR）</h2>
+                    <p>与上一个类似，区别就是searchTVL中有多个条件的时候，用OR连接。</p>
+                    <p>参数说明：</p>
+                    <blockquote>
+                        <p>searchTVL： where条件，多个条件使用逗号连接，实际执行时会使用OR连接符连接。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="12">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getAllByNativeFieldOr"  id="rsMonitor">
+	<east:para name="newsClass"  value="colMonitor" type="String" />
+	<east:para name="page" value="${pageNo}" type="Integer" />
+	<east:para name="pageSize" value="${pageSize}" type="Integer" />
+	<east:para name="searchTVL" value="{\"tag\":\"cmonitorCode\",\"val\":\"${monitorCode}\",\"link\":\"!{EQ}\",\"type\":\"1\"}" type="String" />
+	<east:para name="orderName" value="cdate" type="String" />
+	<east:para name="descOrAsc" value="true" type="Boolean" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="db-query-by-native-sql">原生SQL查询</h2>
+                    <p>本框架使用类访问数据，类和数据库表有一个映射关系，类属性和表的字段名有一个映射关系。</p>
+                    <p>所以不能在sql中直接使用表名和字段名，除非确定不变的，比如id。</p>
+                    <blockquote>
+                        <p>使用createBeanExByClassName方法获取类信息</p>
+                        <p>使用类的externTable属性，获取表名，表名默认t_news</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="48">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__colOrganization">	  	 
+	<east:para name="className" value="colOrganization" type="String" />
+</east:service>
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__colLine">	  	 
+	<east:para name="className" value="colLine" type="String" />
+</east:service>
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__colPole">	  	 
+	<east:para name="className" value="colPole" type="String" />
+</east:service>
+<east:service beanName="eastUtilService" methodName="setValue"  id="__tnOrganization">
+	<east:para name="_tableName" value="${__colOrganization.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
+</east:service>
+<east:service beanName="eastUtilService" methodName="setValue"  id="__tnLine">
+	<east:para name="_tableName" value="${__colLine.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
+</east:service>
+<east:service beanName="eastUtilService" methodName="setValue"  id="__tnPole">
+	<east:para name="_tableName" value="${__colPole.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
+</east:service>
+<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="__rsPole">
+	<east:para name="nativeSql" value="SELECT t3.${__colPole.extKeepName.cpoleCode} AS poleCode,'1' AS p
+									FROM  ${__tnOrganization} t1,${__tnLine} t2,${__tnPole} t3
+									WHERE t1.${__colOrganization.keepName.newsClass} = 'colOrganization' 
+										AND t2.${__colLine.keepName.newsClass} = 'colLine' 
+										AND t3.${__colPole.keepName.newsClass} = 'colPole' 
+										AND t2.${__colLine.extKeepName.corganizationCode} = t1.${__colOrganization.extKeepName.corganizationCode} 
+										AND t3.${__colPole.extKeepName.clineCode} = t2.${__colLine.extKeepName.clineCode} 
+										AND (t1.${__colOrganization.extKeepName.corganizationCode} = '${userOrgan}' OR t1.${__colOrganization.extKeepName.cparentOrganization} = '${userOrgan}') 
+										LIMIT ${fromIndex},${page_size}
+									 "
+									type="String" />
+	<east:para name="_out_nodes_name" value="poleCode,p" type="String" />
+	<east:para name="token" value="123qweasd" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <p>nativeQuerySqlMap方法参数说明：</p>
+                    <blockquote>
+                        <p>nativeSql： 原生sql，只不过表名、字段名都需要从类中获取，并且where条件中所有表都必须有一个类似t1.${__colOrganization.keepName.newsClass} = 'colOrganization' 的查询条件，用来关联表中的数据和类对象。</p>
+                        <p>_out_nodes_name： 返回值中的map的key值</p>
+                        <p>token：目前没有用</p>
+                    </blockquote>
+                    <p>返回值：</p>
+                    <blockquote>
+                        <p> __rsPole是一个List &lt; Map&lt; String, Object&gt;&gt;类型，没有list和page属性，所以如果分页的话，还需要在执行一个select count的sql。</p>
+                        <p>通过下列语句循环访问返回值：</p>
+                        <p>注意这里没有.list</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<c:if test="${__rsPole != null && fn:length(__rsPole) > 0}">
+	<c:forEach items="${__rsPole}" var="objPole" varStatus="status">
+		do something
+	</c:forEach>
+</c:if></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="db-query-by-native-sql-page">原生SQL查询分页数据</h2>
+                    <p>与上边的原生sql一起使用，获取分页用的数据信息。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="135">
+<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="__rsPoleCount">
+	<east:para name="nativeSql" value="SELECT count('1') AS totalRecords, CEIL(count('1')/${page_size}) AS totalPages
+									FROM  ${__tnOrganization} t1,${__tnLine} t2,${__tnPole} t3
+									WHERE t1.${__colOrganization.keepName.newsClass} = 'colOrganization' 
+										AND t2.${__colLine.keepName.newsClass} = 'colLine' 
+										AND t3.${__colPole.keepName.newsClass} = 'colPole' 
+										AND t2.${__colLine.extKeepName.corganizationCode} = t1.${__colOrganization.extKeepName.corganizationCode} 
+										AND t3.${__colPole.extKeepName.clineCode} = t2.${__colLine.extKeepName.clineCode} 
+										AND (t1.${__colOrganization.extKeepName.corganizationCode} = '${userOrgan}' OR t1.${__colOrganization.extKeepName.cparentOrganization} = '${userOrgan}') 
+									 "
+									type="String" />
+	<east:para name="_out_nodes_name" value="totalRecords,totalPages" type="String" />
+	<east:para name="token" value="123qweasd" type="String" />
+</east:service>
+<c:forEach items="${__rsPoleCount}" var="objPoleCount" varStatus="status">
+	<east:service beanName="eastUtilService" methodName="setValue"  id="totalRecords">
+		<east:para name="_value" value="${objPoleCount.totalRecords}" type="Object" />
+	</east:service> 
+	<east:service beanName="eastUtilService" methodName="setValue"  id="totalPages">
+		<east:para name="_value" value="${objPoleCount.totalPages}" type="Object" />
+	</east:service> 
+	<s:if test="${(page_no - 1) <= 0}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pagePrev">
+			<east:para name="_value" value="1" type="Object" />
+		</east:service> 
+	</s:if>
+	<s:else>
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pagePrev">
+			<east:para name="_value" value="${page_no - 1}" type="Object" />
+		</east:service> 
+	</s:else>
+	<s:if test="${(page_no + 1) > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageNext">
+			<east:para name="_value" value="${totalPages}" type="Object" />
+		</east:service> 
+	</s:if>
+	<s:else>
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageNext">
+			<east:para name="_value" value="${page_no + 1}" type="Object" />
+		</east:service> 
+	</s:else>
+	<s:if test="${page_no > 5}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageOne">
+			<east:para name="_value" value="${page_no-4}" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageTwo">
+			<east:para name="_value" value="${page_no-3}" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageThree">
+			<east:para name="_value" value="${page_no-2}" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFour">
+			<east:para name="_value" value="${page_no-1}" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFive">
+			<east:para name="_value" value="${page_no}" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSix">
+			<east:para name="_value" value="${page_no + 1}" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSeven">
+			<east:para name="_value" value="${page_no + 2}" type="Object" />
+		</east:service> 
+	</s:if>
+	<s:else>
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageOne">
+			<east:para name="_value" value="1" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageTwo">
+			<east:para name="_value" value="2" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageThree">
+			<east:para name="_value" value="3" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFour">
+			<east:para name="_value" value="4" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFive">
+			<east:para name="_value" value="5" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSix">
+			<east:para name="_value" value="6" type="Object" />
+		</east:service> 
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSeven">
+			<east:para name="_value" value="7" type="Object" />
+		</east:service> 
+	</s:else>
+	<c:if test="${pageOne > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageOne">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+	<c:if test="${pageTwo > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageTwo">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+	<c:if test="${pageThree > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageThree">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+	<c:if test="${pageFour > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFour">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+	<c:if test="${pageFive > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFive">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+	<c:if test="${pageSix > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSix">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+	<c:if test="${pageSeven > totalPages}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSeven">
+			<east:para name="_value" value="" type="Object" />
+		</east:service> 
+	</c:if>
+</c:forEach></textarea>
+				</pre>
+                    </figure>
+                </div>
+
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="page">分页栏</h1>
+                    <p>分页栏是固定写法，如果使用原生sql查询的数据，用原生sql数据查询（分页）中的page相关信息替换下边的page相关变量即可.</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="70">
+<c:if test="${rsMonitor.list != null && fn:length(rsMonitor.list) > 0}">			
+	<li> <a  onclick="searchByPage('${rsMonitor.page.pagePrev}'); return false;" >上一页</a> 	</li> 
+	<s:if test="${rsMonitor.page.one ne null}">
+		<li>
+					<a  <s:if test="${rsMonitor.page.one eq page_no}"> class="on" </s:if>
+						onclick="searchByPage('${rsMonitor.page.one}'); return false;">${rsMonitor.page.one}</a>
+		</li>
+	</s:if>
+	<s:if test="${rsMonitor.page.two ne null}">
+		<li>	<a   <s:if test="${rsMonitor.page.two eq page_no}"> class="on" </s:if>
+						onclick="searchByPage('${rsMonitor.page.two}'); return false;">${rsMonitor.page.two}</a>
+		</li>		
+	</s:if>
+	 <s:if test="${rsMonitor.page.three ne null}">
+		<li>		<a  <s:if test="${rsMonitor.page.three eq page_no}"> class="on" </s:if>
+						onclick="searchByPage('${rsMonitor.page.three}'); return false;">${rsMonitor.page.three}</a>
+		</li>	
+	 </s:if>
+
+	 <s:if test="${rsMonitor.page.four ne null}">
+				<li>			<a  <s:if test="${rsMonitor.page.four eq page_no}"> class="on" </s:if>
+						onclick="searchByPage('${rsMonitor.page.four}'); return false;">${rsMonitor.page.four}</a>
+			</li>	
+	 </s:if>
+	 <s:if test="${rsMonitor.page.five ne null}">
+				<li>			<a  <s:if test="${rsMonitor.page.five eq page_no}"> class="on" </s:if>
+						onclick="searchByPage('${rsMonitor.page.five}'); return false;">${rsMonitor.page.five}</a>
+			</li>	
+	 </s:if>  
+	 <s:if test="${rsMonitor.page.six ne null}">
+				<li>			<a  <s:if test="${rsMonitor.page.six eq page_no}"> class="on" </s:if>
+						onclick="searchByPage('${rsMonitor.page.six}'); return false;">${rsMonitor.page.six}</a>
+			</li>	
+	 </s:if>  
+	 <s:if test="${rsMonitor.page.seven ne null}">
+					<li>
+					  ...	
+					</li>
+	 </s:if>  
+	<li> <a onclick="searchByPage('${rsMonitor.page.pageNext}'); return false;">下一页 </a> </li> 
+	<li>
+		<div class="bs_div_table_page_info">共计${rsMonitor.page.pageCount}页</div>
+	</li>
+	 <li>
+		<input id="_idGoSpecialPage" style="margin: 0px; height:24px;width:32px; border: 1px solid;" type="text" size="2" title="输入页面" maxlength="4"/>  
+	 </li> 
+	 <li>
+		<a id="_go_already" href="#" style="color:#000" onclick=" if($('#_idGoSpecialPage').val() == ''){ __Jalert('请输入页面'); return false;} searchByPage($('#_idGoSpecialPage').val());">GO</a>
+ 
+	 </li> 
+	<li>
+		<div class="bs_div_table_page_info">
+		共<span>${rsMonitor.page.totalRecords}</span>条记录，当前显示第<span>${page_no}</span>页
+		</div>
+	</li>
+</c:if></textarea>
+				</pre>
+                    </figure>
+                </div>
+
+
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="db-cud">更新数据库</h1>
+                    <h2 id="db-cud-cu">创建/更新数据</h2>
+                    <p>通过form表单设置action为 &lt;%=basePath%&gt;admin/east_ajax_do_add_news_no_pass.do，调用这个共用方法实现 详细参照gen的代码</p>
+                    <h2 id="db-cud-native">原生sql更新数据库</h2>
+                    <p>同样，使用原生sql需要获取类信息和表名，在sql中所有表名、字段名需要从类信息中获取，不能写死。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="14">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__bean">	  	 
+	<east:para name="className" value="colWeatherAlarm" type="String" />
+</east:service>
+<east:service beanName="eastUtilService" methodName="setValue"  id="__tableName">
+	<east:para name="_tableName" value="${__bean.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
+</east:service>		
+<east:service beanName="pmsService" methodName="nativeSqlExc" id="_result">
+	<east:para name="nativeSql" value="UPDATE ${__tableName} SET ${__bean.extKeepName.cdispose} = '1' WHERE id = ${requestEx.s1}" type="String" />
+	<east:para name="token" value="123qweasd" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                </div>
+
+
+
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="else" 其他</h1>
+                        <h2 id="else-current-date">当前日期</h2>
+                        <p>获取当前日期，格式yyyy-mm-dd</p>
+                        <div class="zero-clipboard">
+                            <span class="btn-clipboard">Copy</span>
+                        </div>
+                        <figure class="highlight">
+                            <pre>
+					<textarea readonly="readonly" rows="3">	  	 
+<east:service beanName="eastUtilService" methodName="getNowDate"  id="idNowDate">
+</east:service></textarea>
+				</pre>
+                        </figure>
+                        <h2 id="else-session">用户登陆信息</h2>
+                        <div class="zero-clipboard">
+                            <span class="btn-clipboard">Copy</span>
+                        </div>
+                        <figure class="highlight">
+                            <pre>
+					<textarea readonly="readonly" rows="17">	  	 
+<east:service beanName="pmsService" methodName="fromSession"  id="idUser">
+	<east:para name="sessionName"  value="idSysUser" type="String" />
+</east:service>
+<s:if test="${idUser ne null}">
+	<east:service beanName="eastUtilService" methodName="setValue" id="userRole">
+		<east:para name="_prevPageNo" value="${idUser.ext.crole}" type="Object" />
+	</east:service> 
+	<east:service beanName="eastUtilService" methodName="setValue" id="userOrgan">
+		<east:para name="_prevPageNo" value="${idUser.ext.corganizationCode}" type="Object" />
+	</east:service> 
+</s:if>
+<s:else>
+	<east:service beanName="eastUtilService" methodName="setValue" id="userRole">
+		<east:para name="_prevPageNo" value="0" type="Object" />
+	</east:service> 
+</s:else></textarea>
+				</pre>
+                        </figure>
+                        <h2 id="else-page-variate">分页常用变量</h2>
+                        <div class="zero-clipboard">
+                            <span class="btn-clipboard">Copy</span>
+                        </div>
+                        <figure class="highlight">
+                            <pre>
+					<textarea readonly="readonly" rows="9">	  	 
+<east:service beanName="eastUtilService" methodName="setValue"  id="page_no">
+	<east:para name="_pageNo" value="${requestEx.pageNo}" type="Object" />
+	<east:para name="_defaultValue" value="1" type="Object" />
+</east:service> 
+<east:service beanName="eastUtilService" methodName="setValue"  id="page_size">
+	<east:para name="_pageNo" value="${requestEx.pageSize}" type="Object" />
+	<east:para name="_defaultValue" value="10" type="Object" />
+</east:service></textarea>
+				</pre>
+                        </figure>
+                        <p>fromIndex用于原生sql的分页检索中的limit语句</p>
+                        <div class="zero-clipboard">
+                            <span class="btn-clipboard">Copy</span>
+                        </div>
+                        <figure class="highlight">
+                            <pre>
+					<textarea readonly="readonly" rows="4">	  	 
+<east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
+	<east:para name="_prevPageNo" value="${page_size * (page_no - 1)}" type="Object" />
+</east:service></textarea>
+				</pre>
+                        </figure>
+                        <h2 id="else-array-to-str">数组转换为字符串</h2>
+                        <p>将数组中的内容循环拼接成一个字符串。</p>
+                        <p>多用于拼接json字符串，或者sql查询条件in的内容。</p>
+                        <p>参数说明：</p>
+                        <blockquote>
+                            <p>_list： 数组</p>
+                            <p>_paddingStr： 连接符</p>
+                            <p>_quot： 包含每一个元素的符号，不需要可以置空</p>
+                        </blockquote>
+                        <div class="zero-clipboard">
+                            <span class="btn-clipboard">Copy</span>
+                        </div>
+                        <figure class="highlight">
+                            <pre>
+					<textarea readonly="readonly" rows="6">	  	 
+<east:service beanName="eastUtilService" methodName="getListString" id="idPoleCodeInStr">
+	<east:para name="_list"  value="${listPoleCode}" type="List" />
+	<east:para name="_paddingStr" value="," type="String" />
+	<east:para name="_quot" value="'" type="String" />
+</east:service></textarea>
+				</pre>
+                        </figure>
+                </div>
+
+
+
+
+            </div>
+            <div class="col-md-3">
+                <nav id="rightNav" class="bs-docs-sidebar hidden-print hidden-sm hidden-xs affix-top">
+                    <ul class="nav bs-docs-sidenav">
+                        <li>
+                            <a href="#overview">说明</a>
+                        </li>
+                        <li>
+                            <a href="#annotation">注释</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#annotation-serve">动态逻辑代码</a>
+                                </li>
+                                <li>
+                                    <a href="#annotation-local">静态代码</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#basic-syntax">基本语法</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#basic-syntax-set-variate">定义变量并赋值</a>
+                                </li>
+                                <li>
+                                    <a href="#basic-syntax-get-variate">引用变量</a>
+                                </li>
+                                <li>
+                                    <a href="#basic-syntax-if">分支语句</a>
+                                </li>
+                                <li>
+                                    <a href="#basic-syntax-if2">分支语句2</a>
+                                </li>
+                                <li>
+                                    <a href="#basic-syntax-array">数组</a>
+                                </li>
+                                <li>
+                                    <a href="#basic-syntax-foreach">循环语句</a>
+                                </li>
+                                <li>
+                                    <a href="#basic-syntax-map">Map</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#db-query">数据库查询</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#db-query-by-id">通过id查询</a>
+                                </li>
+                                <li>
+                                    <a href="#db-query-by-column">通过扩展字段查询</a>
+                                </li>
+                                <li>
+                                    <a href="#db-query-by-searchTVL-and">searchTVL查询(AND)</a>
+                                </li>
+                                <li>
+                                    <a href="#db-query-by-searchTVL-or">searchTVL查询(OR)</a>
+                                </li>
+                                <li>
+                                    <a href="#db-query-by-native-sql">原生SQL查询</a>
+                                </li>
+                                <li>
+                                    <a href="#db-query-by-native-sql-page">原生SQL查询分页数据</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#page">分页栏</a>
+                        </li>
+                        <li>
+                            <a href="#db-cud">更新数据库数据</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#db-cud-cu">创建/更新数据</a>
+                                </li>
+                                <li>
+                                    <a href="#db-cud-native">原生sql更新数据库</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#else">其他</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#else-current-date">当前日期</a>
+                                </li>
+                                <li>
+                                    <a href="#else-session">用户登陆信息</a>
+                                </li>
+                                <li>
+                                    <a href="#else-page-variate">分页常用变量</a>
+                                </li>
+                                <li>
+                                    <a href="#else-array-to-str">数组转换为字符串</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

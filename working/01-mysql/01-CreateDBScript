@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS htn CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+grant all privileges on  htn.* to  'htn'@'%' identified by 'htn123';
+
+flush privileges;
+
+
+CREATE USER 'htn'@'localhost' IDENTIFIED BY 'htn123';
+
+CREATE USER 'htn'@'%' IDENTIFIED BY 'htn123';
+
+
+
+drop user jiradb;
+
+flush privileges;
+
+drop database jiradb

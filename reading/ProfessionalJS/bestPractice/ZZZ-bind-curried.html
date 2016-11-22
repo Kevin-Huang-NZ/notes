@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Professional JavaScript for Web Developers</title>
+    <script src="EventUtil.js"></script>
+    <script>
+        function bind(fn, context) {
+            // console.log("original arguments of bind function:" + arguments);
+            // console.log(arguments);
+            var args = Array.prototype.slice.call(arguments, 2);
+            // console.log("sliced arguments of bind function:" + args);
+            // console.log(args);
+            return function() {
+                // console.log("original arguments of inner function:" + arguments);
+                // console.log(arguments);
+                var innerArgs = Array.prototype.slice.call(arguments);
+                // console.log("sliced arguments of inner function:" + innerArgs);
+                // console.log(innerArgs);
+                var finalArgs = args.concat(innerArgs);
+                // console.log("final arguments:" + finalArgs);
+                // console.log(finalArgs);
+                return fn.apply(context, finalArgs);
+            }
+        }
+        var handler = {
+            message: "Event handler.",
+            handleClick: function(name, event) {
+                console.log(this.message + ":" + name + ":" + event.type);
+            }
+        };
+        // 绑定事件后，自动传递给handler方法第一个参数是event
+        // 但是这个handler的第一个参数是name，第二个是event，所以用curried函数方法传递参数，同时使用bind方法指定handler函数的执行环境
+        EventUtil.addHandler(window, "load", function(event) {
+            var myBtn = document.getElementById("myBtn");
+            EventUtil.addHandler(myBtn, "click", bind(handler.handleClick, handler, "my-btn"));
+        });
+    </script>
+</head>
+
+<body>
+    <input type="button" id="myBtn" value="my-btn" />
+</body>
+
+</html>

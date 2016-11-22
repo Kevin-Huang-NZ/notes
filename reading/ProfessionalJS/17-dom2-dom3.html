@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Professional JavaScript for Web Developers</title>
+    <script>
+        console.log(document.implementation.hasFeature("Core", "2.0"));
+        console.log(document.implementation.hasFeature("Core", "3.0"));
+        console.log(document.implementation.hasFeature("HTML", "2.0"));
+        console.log(document.implementation.hasFeature("Views", "2.0"));
+        console.log(document.implementation.hasFeature("XML", "2.0"));
+        console.log(document.implementation.hasFeature("CSS", "2.0"));
+        console.log(document.implementation.hasFeature("CSS2", "2.0"));
+        window.onload = function() {
+            // isSupported方法
+            // console.log(document.body.isSupported("HTML", "2.0"));
+
+            // Dom3引入比较节点的方法
+            var div1 = document.createElement("div");
+            div1.setAttribute("class", "box");
+            var div2 = document.createElement("div");
+            div2.setAttribute("class", "box");
+
+            console.log(div1.isSameNode(div1));
+            console.log(div1.isSameNode(div2));
+            console.log(div1.isEqualNode(div2));
+
+            // setUserData，
+            // 第3个参数是一个方法，该方法在数据节点被操作时调用。
+            // 该方法有5个参数：operation、key、value、src、dest
+            // 其中：参数operation：1、复制；2：导入； 3： 删除； 4：重命名。
+
+            // var div = document.createElement("div");
+            // div.setUserData("name", "Kevin", function(operation, key, value, src, dest) {
+            //     if (operation == 1) {
+            //         dest.setUserData(key, value, this);
+            //     }
+            // });
+            // var newDiv1 = div.cloneNode(true);
+            // console.log(newDiv1.getUserDate("name"));
+            // var newDiv2 = newDiv1.cloneNode(true);
+            // console.log(newDiv2.getUserDate("name"));
+
+            //框架的变化
+            // chrome增加启动参数--disable-web-security，以支持跨域访问。
+            var frame1 = document.getElementById("frame1");
+            var frame1Doc = frame1.contentDocument || frame1.contentWindow.document;
+            console.log(frame1.contentDocument.getElementById("innerDiv"));
+
+            // 样式
+            var outerDiv = document.getElementById("outerDiv");
+            console.log(outerDiv.style);
+            console.log(outerDiv.style.width);
+            console.log(outerDiv.style.height);
+            console.log(outerDiv.style.border);
+            console.log(outerDiv.style.backgroundColor);
+            console.log(outerDiv.style.cssFloat);
+            outerDiv.style.cssText = "width:200px; height:150px; border: 5px solid black; background-color: blue;";
+            setTimeout(function() {
+                outerDiv.style.removeProperty("background-color");
+                outerDiv.style.setProperty("color", "red", "");
+            }, 1000);
+
+            // 计算样式
+            var computedStyle = document.defaultView.getComputedStyle(outerDiv, null) || outerDiv.currentStyle;
+            console.log(computedStyle.cssFloat);
+
+            // 样式表
+            console.log(document.styleSheets);
+            console.log(outerDiv.sheet || outerDiv.styleSheet);
+
+            // 元素大小
+            console.log(outerDiv.offsetHeight);
+            console.log(outerDiv.offsetWidth);
+            console.log(outerDiv.offsetLeft);
+            console.log(outerDiv.offsetTop);
+            console.log(outerDiv.clientHeight);
+            console.log(outerDiv.clientWidth);
+            console.log(outerDiv.scrollHeight);
+            console.log(outerDiv.scrollWidth);
+            console.log(outerDiv.scrollLeft);
+            console.log(outerDiv.scrollTop);
+        };
+    </script>
+    <style>
+        .myDiv {
+            float: right
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="frame1" src="17-dom2-dom3-frame.html">
+    </iframe>
+    <div id="outerDiv" class="myDiv" style="width:400px; height:300px; border: 1px solid black; background-color: green;">
+        outer div
+    </div>
+</body>
+
+</html>

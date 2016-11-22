@@ -1,0 +1,17 @@
+1、在父窗口中访问子窗口
+1.1、window.frames
+    window.frames["子frame的name值"].document.getElementById("子窗口中元素的ID")
+1.2、contentWindow
+    var obj=document.getElementById("子frame的id").contentWindow;
+    var ifmObj=obj.document.getElementById("子窗口中元素的ID");
+1.3、jquery find
+    $("#子frame的ID").contents().find("#子窗口中的元素ID")
+1.4、jquery 
+    $("#子窗口中的元素ID",document.frames("子frame的name值").document)
+
+
+2、在子窗口中访问父窗口
+2.1、window.parent
+    window.parent.document.getElementById("父窗口的元素ID")
+2.2、jquery
+    $('#父窗口中的元素ID', parent.document)
