@@ -1,2 +1,2 @@
 # JQueryNote
-锋利的jQuery阅读练习。
+阅读《锋利的jQuery》的练习代码。
