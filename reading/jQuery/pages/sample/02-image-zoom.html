@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image zoom</title>
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../../vendor/elevatezoom-master/jquery.elevateZoom-3.0.8.min.js"></script>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        font,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td {
+            border: 0;
+            font-family: inherit;
+            font-size: 100%;
+            font-style: inherit;
+            font-weight: inherit;
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            vertical-align: baseline;
+        }
+        
+        .container {
+            width: 860px;
+            margin: 0 auto;
+        }
+        
+        .zoom-wrapper {
+            border-radius: 10px;
+            border: 1px solid #E0E0E0;
+            padding: 10px;
+            margin: 20px;
+            background-color: #F7F7F7;
+        }
+        
+        .zoom-wrapper:after {
+            display: block;
+            clear: both;
+            height: 0;
+            content: ' ';
+        }
+        
+        .zoom-left {
+            float: left;
+            width: 412px;
+        }
+        
+        .zoomWrapper {
+            padding: 10px;
+            height: 274px;
+            width: 432px;
+        }
+        
+        .zoomWrapper img {
+            border: 1px solid rgb(232, 232, 230);
+            position: absolute;
+            width: 410px;
+        }
+        
+        .gallery {
+            margin: 20px 10px 0 10px;
+            width: 430px;
+            float: left;
+        }
+        
+        .gallery a {
+            display: inline-block;
+        }
+        
+        .gallery img {
+            width: 100px;
+        }
+        
+        .active {
+            border: 2px solid #000;
+        }
+    </style>
+    <script type="text/javascript ">
+        $(document).ready(function() {
+            $("#zoom_03 ").elevateZoom({
+                //http://www.elevateweb.co.uk/image-zoom/configuration
+                // 类型：window、lens、inner
+                zoomType: "window",
+                // 图片组
+                gallery: 'gallery_01',
+                // 鼠标指针类型
+                cursor: 'pointer',
+                // 当前图片对应的gallery的样式
+                galleryActiveClass: "active",
+                // 窗口大小和位置设置
+                zoomWindowWidth: 450,
+                zoomWindowHeight: 450,
+                zoomWindowPosition: 1,
+                zoomWindowOffetx: 5,
+                zoomWindowOffety: 0,
+                imageCrossfade: true,
+                //是否可以缩放
+                scrollZoom: true,
+                //给取景框以外的图片区域附色
+                tint: true,
+                tintColour: '#808080',
+                tintOpacity: 0.4
+            });
+
+            // $("# zoom_03 ").elevateZoom({
+            //     zoomType: "lens",
+            //     lensSize: 150,
+            // lensShape : "round",
+            //     scrollZoom: true,
+            //     containLensZoom: true,
+            //     gallery: 'gallery_01',
+            //     cursor: 'pointer',
+            //     galleryActiveClass: "active"
+            // });
+
+            // $("#zoom_03").elevateZoom({
+            //     zoomType: "inner",
+            //     cursor: "crosshair"
+            // });
+        });
+    </script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="zoom-wrapper">
+            <div class="zoom-left">
+                <div class="zoomWrapper">
+                    <img id="zoom_03" src="../../images/small/image3.png" data-zoom-image="../../images/large/image3.jpg" />
+                </div>
+
+                <div id="gallery_01" class="gallery">
+                    <a href="#" class="elevatezoom-gallery" data-image="../../images/small/image1.png " data-zoom-image="../../images/large/image1.jpg ">
+                        <img src="../../images/thumb/image1.jpg " />
+                    </a>
+
+                    <a href="#" class="elevatezoom-gallery " data-image="../../images/small/image2.png " data-zoom-image="../../images/large/image2.jpg ">
+                        <img src="../../images/thumb/image2.jpg" />
+                    </a>
+
+                    <a href="#" class="elevatezoom-gallery active" data-image="../../images/small/image3.png " data-zoom-image="../../images/large/image3.jpg ">
+                        <img src="../../images/thumb/image3.jpg " />
+                    </a>
+
+                    <a href="#" class="elevatezoom-gallery " data-image="../../images/small/image4.png " data-zoom-image="../../images/large/image4.jpg">
+                        <img src="../../images/thumb/image4.jpg " />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
