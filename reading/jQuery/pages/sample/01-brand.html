@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Brand</title>
+    <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font: 12px/1.5 tahoma, arial, "\5b8b\4f53";
+            -ms-overflow-style: scrollbar;
+        }
+        
+        .container {
+            width: 860px;
+            margin: 0 auto;
+        }
+        
+        .brand .attr {
+            background-color: #F7F5F5;
+            border: 2px solid #D1CCC7;
+            margin-top: 20px;
+        }
+        
+        .brand .attr:after {
+            display: block;
+            clear: both;
+            height: 0;
+            content: ' ';
+        }
+        
+        .brand .attr .attrKey {
+            padding-top: 9px;
+            float: left;
+            padding: 7px 0 0;
+            width: 10%;
+            color: #B0A59F;
+            text-indent: 13px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: block;
+            height: 16px;
+            line-height: 16px;
+            overflow: hidden;
+        }
+        
+        .brand .attr .attrValue {
+            position: relative;
+            float: left;
+            background-color: #FFF;
+            width: 90%;
+            padding: 4px 0 0;
+            overflow: hidden;
+            padding-top: 6px;
+        }
+        
+        .brand .attr .attrValue .av-collapse {
+            max-height: 106px;
+            overflow: hidden;
+        }
+        
+        .brand .attr .attrValue .av-more {
+            max-height: 212px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .brand .attr .attrValue ul {
+            position: relative;
+            list-style: none;
+            margin-right: 80px;
+            margin-left: 25px;
+            padding-top: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .brand .attr .attrValue li {
+            float: left;
+            border: 1px solid #e1e1e1;
+            width: 104px;
+            text-align: center;
+            height: 52px;
+            line-height: 52px;
+            overflow: hidden;
+            margin: -1px -1px 0 0;
+        }
+        
+        .brand .attr .attrValue :not(.av-options) a {
+            padding: 0;
+            line-height: 52px;
+            height: 50px;
+            width: 102px;
+            overflow: hidden;
+            border: 1px solid transparent;
+            text-overflow: ellipsis;
+            position: relative;
+            color: #806F66;
+            display: inline-block;
+            white-space: nowrap;
+            outline: 0;
+            text-decoration: none;
+        }
+        
+        .brand .attr .attrValue :not(.av-options) a:hover {
+            border-color: #A10002;
+            z-index: 1;
+            color: #C10001;
+        }
+        
+        .brand .attr .attrValue .av-options {
+            position: absolute;
+            right: 0;
+            top: 4px;
+            width: 80px;
+            z-index: 1;
+        }
+        
+        .brand .attr .attrValue .av-options a {
+            float: right;
+            vertical-align: middle;
+            position: relative;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 24px 0 0;
+            color: #806f66;
+            text-decoration: none;
+        }
+    </style>
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#toggle").click(function() {
+                var avUl = $(".attrValue>ul");
+                var _this = $(this);
+                if (avUl.hasClass("av-collapse")) {
+                    $(".attrValue>ul").removeClass("av-collapse");
+                    $(".attrValue>ul").addClass("av-more");
+                    _this.html("收起&nbsp;<i class=\"fa fa-angle-double-up\" aria-hidden=\"true\"></i>");
+                } else {
+                    $(".attrValue>ul").addClass("av-collapse");
+                    $(".attrValue>ul").removeClass("av-more");
+                    _this.html("更多&nbsp;<i class=\"fa fa-angle-double-down\" aria-hidden=\"true\"></i>");
+                }
+            });
+            $(".attrValue :not(av-options) a").click(function() {});
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="brand">
+            <div class="attr">
+                <div class="attrKey">品牌</div>
+                <div class="attrValue">
+                    <ul class="av-collapse">
+                        <li>
+                            <a href="#" title="ELF SACK/妖精的口袋">ELF SACK/妖精的口袋</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Bosideng/波司登">Bosideng/波司登</a>
+                        </li>
+                        <li>
+                            <a href="#" title="SLTOWN/小镇姗姗">SLTOWN/小镇姗姗</a>
+                        </li>
+                        <li>
+                            <a href="#" title="a02">a02</a>
+                        </li>
+                        <li>
+                            <a href="#" title="初语">初语</a>
+                        </li>
+                        <li>
+                            <a href="#" title="阿桑亚">阿桑亚</a>
+                        </li>
+                        <li>
+                            <a href="#" title="依伊·芭莎">依伊·芭莎</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Mixxo">Mixxo</a>
+                        </li>
+                        <li>
+                            <a href="#" title="tonlion/唐狮">tonlion/唐狮</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Nanaday/娜娜日记">Nanaday/娜娜日记</a>
+                        </li>
+                    </ul>
+                    <div class="av-options">
+                        <a id="toggle" href="#">更多&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
