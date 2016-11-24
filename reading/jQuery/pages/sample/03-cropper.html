@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image cropper</title>
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../../vendor/cropper/dist/cropper.js"></script>
+    <link rel="stylesheet" href="../../vendor/cropper/dist/cropper.css" />
+    <style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        font,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td {
+            border: 0;
+            font-family: inherit;
+            font-size: 100%;
+            font-style: inherit;
+            font-weight: inherit;
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            vertical-align: baseline;
+        }
+        
+        .container {
+            width: 860px;
+            margin: 0 auto;
+        }
+        
+        .original {
+            float: left;
+            width: 500px;
+            background-color: #f7f7f7;
+            text-align: center;
+            min-height: 200px;
+            max-height: 516px;
+            margin-bottom: 20px;
+        }
+        
+        .original img {
+            max-width: 100%;
+            vertical-align: middle;
+            border: 0;
+        }
+        
+        .preview-wrap {
+            float: right;
+            width: 300px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+        
+        .img-preview {
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .img-preview>img {
+            max-width: 100%;
+        }
+        
+        .preview-lg {
+            width: 263px;
+            height: 148px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $.fn.cropper.setDefaults({
+                movable: false, //图片是否可以移动
+                aspectRatio: 16 / 9, //剪裁框的宽/高比
+                modal: true, //是否要剪裁框外的遮罩
+                background: true, // 是否要背景
+                highlight: true, // 剪裁框高亮
+                resizable: false, //是否可以调整剪裁框大小
+                zoomable: false, // 是否可以缩放图片
+                rotatable: true, // 是否可以旋转图片
+                dragCrop: false,
+                guides: false //是否显示框中的虚线
+            });
+            var $preview1 = $('#preview1');
+            var $image1 = $('#image1');
+            $image1.cropper({
+                build: function(e) {
+                    var $clone = $(this).clone();
+
+                    $clone.css({
+                        display: 'block',
+                        width: '100%',
+                        minWidth: 0,
+                        minHeight: 0,
+                        maxWidth: 'none',
+                        maxHeight: 'none'
+                    });
+
+                    $preview1.css({
+                        width: '100%',
+                        overflow: 'hidden'
+                    }).html($clone);
+                },
+
+                crop: function(e) {
+                    // console.log(e);
+                    // 裁剪框信息：左上角的坐标(x,y)，宽度w，高度h
+                    var x = e.x;
+                    var y = e.y;
+                    var w = e.width;
+                    var h = e.height;
+                    // 原始图像信息
+                    var imageData = $(this).cropper('getImageData');
+                    // 根据裁剪框的宽、高，计算纵横比
+                    var previewAspectRatio = e.width / e.height;
+                    // 预览框的宽度固定，获取宽度后根据纵横比计算预览框的高度。
+                    var previewWidth = $preview1.width();
+                    var previewHeight = previewWidth / previewAspectRatio;
+                    // 根据剪裁框和预览框的宽度，计算缩放比例
+                    var imageScaledRatio = e.width / previewWidth;
+
+                    // 设置预览框内的img元素的宽、高和位移。
+                    $preview1.height(previewHeight).find('img').css({
+                        width: imageData.naturalWidth / imageScaledRatio,
+                        height: imageData.naturalHeight / imageScaledRatio,
+                        marginLeft: -e.x / imageScaledRatio,
+                        marginTop: -e.y / imageScaledRatio
+                    });
+                    // 给form中的隐藏元素设置，form提交后，在后台执行图片剪切
+                    $("#x").val(x);
+                    $("#y").val(y);
+                    $("#w").val(w);
+                    $("#h").val(h);
+                }
+            });
+
+
+            // $('#image2').cropper({
+            //     preview: '#preview2',
+            //     aspectRatio: 10 / 10
+            // });
+            $("#rotate").on({
+                'click': function() {
+                    $("#image1").cropper('rotate', 180);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="original">
+            <img id="image1" src="../../images/picture.jpg" alt="picture" />
+        </div>
+        <div class="preview-wrap">
+            <div id="preview1">
+            </div>
+        </div>
+    </div>
+
+
+    <!--<div class="container">
+        <div class="original">
+            <img id="image2" src="../../images/picture.jpg" alt="picture" />
+        </div>
+        <div class="preview-wrap">
+            <div id="preview2" class="img-preview preview-lg">
+            </div>
+        </div>
+    </div>-->
+
+    <form>
+        <input type="hidden" id="x" name="x" value="" />
+        <input type="hidden" id="y" name="y" value="" />
+        <input type="hidden" id="w" name="w" value="" />
+        <input type="hidden" id="h" name="h" value="" />
+        <button type="button" id="rotate">旋转</button>
+    </form>
+
+</body>
+
+</html>
