@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery notes</title>
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css" />
+    <script src="../vendor/jquery/dist/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: italic 14px/28px arial, sans-serif;
+        }
+        
+        .event-wrap {
+            height: 40px;
+            line-height: 40px;
+            margin-top: 20px;
+            padding: 0 20px;
+            /*cursor: crosshair;*/
+            cursor: pointer;
+            background-color: #808080;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+        }
+        
+        .highlight {
+            background-color: #0000ff;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+        }
+        
+        .event-wrap a {
+            color: #fff;
+            display: inline-block;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            margin: 10px 0;
+            text-decoration: none;
+        }
+        
+        .content {
+            padding: 0 20px;
+        }
+    </style>
+    <script>
+        // 页面完全加载触发，只能绑定一个处理函数, jquery3废除该方法
+        // $(window).load(function() {
+        //     $(".event-wrap").bind('click', function() {
+        //         $nextEle = $(this).next();
+        //         if ($nextEle.is(":visible")) {
+        //             $(this).next().hide();
+        //         } else {
+        //             $(this).next().show();
+        //         }
+        //     });
+        // });
+
+
+        // dom树就绪触发，可以绑定多个处理函数
+        $(document).ready(function() {
+            $(".event-wrap").bind('click', function(event) {
+                console.log(event.target);
+                $nextEle = $(this).next();
+                if ($nextEle.is(":visible")) {
+                    $nextEle.hide();
+                    $(this).removeClass('highlight');
+                } else {
+                    $nextEle.show();
+                    $(this).addClass('highlight');
+                }
+            });
+        });
+
+        // $(document).ready(function() {
+        //     $(".event-wrap").bind('mouseover', function() {
+        //             $(this).next().show();
+        //         })
+        //         .bind('mouseout', function() {
+        //             $(this).next().hide();
+        //         });
+        // });
+
+        $(document).ready(function() {
+            $(".event-wrap").hover(function() {
+                // enter
+                $(this).next().show();
+            }, function() {
+                // leave
+                $(this).next().hide();
+            });
+        });
+
+        // toggle 方法，jquery2中已经弃用
+        // $(document).ready(function() {
+        //     $(".event-wrap").toggle(function() {
+        //         // first/3th/5th.... click
+        //         $(this).next().show();
+        //     }, function() {
+        //         // second/4th/6th.... click
+        //         $(this).next().hide();
+        //     });
+        // });
+
+        // a标签阻止事件冒泡
+        $(document).ready(function() {
+            $(".event-wrap a").click(function(event) {
+                event.preventDefault(); // 阻止默认行为，比如:a标签的跳转行为 
+                console.log("Click on 'a'!");
+                console.log(event.target);
+                event.stopPropagation();
+            });
+            $("#btn1").click(runOne);
+            $("#btn2").one('click', runOneToo);
+
+            //模拟事件
+            $("#btn1").trigger('click', 'true');
+            $("#btn2").click();
+        });
+
+        function runOne(e, isTrigger) {
+            alert("点击一个按钮，只能调用我一次。");
+            console.log("Is it fired by user? " + !isTrigger);
+            // console.log(typeof this);
+            // console.log(typeof runOne);
+            // console.log(this == runOne);
+            // console.log(arguments.callee == runOne);
+            // $(e.target).unbind('click', runOne);
+            $(e.target).unbind('click', arguments.callee);
+        }
+
+        function runOneToo() {
+            alert("点击一个按钮，只能调用我一次。");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="event-wrap highlight">
+                    <a href="#">fire me</a>
+                </div>
+                <div class="content">
+                    <h2>These are from getbootstrap.com</h2>
+                    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula. Cum sociis natoque penatibus et magnis dis parturient</p>
+                    <p>montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="button" id="btn1" name="btn1" value="Click me!" />
+                <input type="button" id="btn2" name="btn2" value="Me too!" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
