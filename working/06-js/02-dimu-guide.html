@@ -972,27 +972,167 @@ ${idPageNo}</textarea>
                 </div>
 
 
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="number">数字处理</h1>
+                    <h2 id="number-int-add">整数相加</h2>
+                    <p>两个字符串形式的整数相加。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="addIntString"  id="idNowDate">
+	<east:para name="_val1" value="10" type="String" />
+	<east:para name="_val2" value="20" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="number-long-add">长整数相加</h2>
+                    <p>两个字符串形式的长整数相加。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="addLongString"  id="idNowDate">
+	<east:para name="_val1" value="10" type="String" />
+	<east:para name="_val2" value="20" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="number-double-add">双精度浮点数相加</h2>
+                    <p>两个字符串形式的双精度浮点数相加。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="addDoubleString"  id="idNowDate">
+	<east:para name="_val1" value="10.21" type="String" />
+	<east:para name="_val2" value="20" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="number-avg">求平均值</h2>
+                    <p>计算数组中所有map的某一数据域的平均值。</p>
+                    <p>参数：</p>
+                    <blockquote>
+                        <p> _list：是一个List &lt; Map&lt; String, Object&gt;&gt;类型。</p>
+                        <p>在_field数据域上求平均值，也就是map中的key。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="avg"  id="avgTem">
+    <east:para name="_list" value="${lsChart}" type="List" />
+    <east:para name="_field" value="t" type="String" /> 
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="number-format">数字格式化</h2>
+                    <p>格式化浮点数。</p>
+                    <p>参数：</p>
+                    <blockquote>
+                        <p>_format：输出格式。比如：[%.0f]-只保留整数；[%.2f]-保留2位小数。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="formatFloat"  id="avgTem">
+    <east:para name="_value" value="${avgTem}" type="String" />
+    <east:para name="_format" value="%.0f" type="String" /> 
+</east:service></textarea>
+				</pre>
+                    </figure>
+                </div>
+
 
                 <div class="bs-docs-section">
-                    <h1 class="page-header" id="else" 其他</h1>
-                        <h2 id="else-current-date">当前日期</h2>
-                        <p>获取当前日期，格式yyyy-mm-dd</p>
-                        <div class="zero-clipboard">
-                            <span class="btn-clipboard">Copy</span>
-                        </div>
-                        <figure class="highlight">
-                            <pre>
+                    <h1 class="page-header" id="date-time">日期/时间</h1>
+                    <h2 id="date-time-now-date">当前日期</h2>
+                    <p>获取当前日期，格式yyyy-mm-dd</p>
+                    <p>类似函数还有：getNowYear、getNowMonth、getNowDay</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
 					<textarea readonly="readonly" rows="3">	  	 
 <east:service beanName="eastUtilService" methodName="getNowDate"  id="idNowDate">
 </east:service></textarea>
 				</pre>
-                        </figure>
-                        <h2 id="else-session">用户登陆信息</h2>
-                        <div class="zero-clipboard">
-                            <span class="btn-clipboard">Copy</span>
-                        </div>
-                        <figure class="highlight">
-                            <pre>
+                    </figure>
+                    <h2 id="date-time-now-time">当前时间</h2>
+                    <p>获取当前时间，格式HH-mi-ss</p>
+                    <p>类似函数还有：getNowHour、getNowMinute、getNowSecond</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="3">	  	 
+<east:service beanName="eastUtilService" methodName="getNowHMS"  id="idNowDate">
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="date-time-add-hour">加减小时</h2>
+                    <p>给传入的时间加/减指定的小时。</p>
+                    <p>参数：</p>
+                    <blockquote>
+                        <p>_ymdhms：目标时间，格式：yyyy-mm-dd HH:mi:ss。</p>
+                        <p>_offsetHour：加/减的小时数，正整数或者负整数。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="getHourOffset"  id="idNewDatetime">
+	<east:para name="_ymdhms" value="${datetime}" type="String" />
+	<east:para name="_offsetHour" value="2" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="date-time-add-day">加减天</h2>
+                    <p>给传入的时间加/减指定的天。</p>
+                    <p>参数：</p>
+                    <blockquote>
+                        <p>_ymd：目标时间，格式：yyyy-mm-dd。</p>
+                        <p>_offsetDay：加/减的天，正整数或者负整数。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="dateOffset"  id="idNewDate">
+	<east:para name="_ymd" value="${date}" type="String" />
+	<east:para name="_offsetDay" value="-2" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                </div>
+
+
+                <div class="bs-docs-section">
+                    <h1 class="page-header" id="else">其他</h1>
+                    <h2 id="else-session">用户登陆信息</h2>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
 					<textarea readonly="readonly" rows="17">	  	 
 <east:service beanName="pmsService" methodName="fromSession"  id="idUser">
 	<east:para name="sessionName"  value="idSysUser" type="String" />
@@ -1011,13 +1151,13 @@ ${idPageNo}</textarea>
 	</east:service> 
 </s:else></textarea>
 				</pre>
-                        </figure>
-                        <h2 id="else-page-variate">分页常用变量</h2>
-                        <div class="zero-clipboard">
-                            <span class="btn-clipboard">Copy</span>
-                        </div>
-                        <figure class="highlight">
-                            <pre>
+                    </figure>
+                    <h2 id="else-page-variate">分页常用变量</h2>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
 					<textarea readonly="readonly" rows="9">	  	 
 <east:service beanName="eastUtilService" methodName="setValue"  id="page_no">
 	<east:para name="_pageNo" value="${requestEx.pageNo}" type="Object" />
@@ -1028,33 +1168,33 @@ ${idPageNo}</textarea>
 	<east:para name="_defaultValue" value="10" type="Object" />
 </east:service></textarea>
 				</pre>
-                        </figure>
-                        <p>fromIndex用于原生sql的分页检索中的limit语句</p>
-                        <div class="zero-clipboard">
-                            <span class="btn-clipboard">Copy</span>
-                        </div>
-                        <figure class="highlight">
-                            <pre>
+                    </figure>
+                    <p>fromIndex用于原生sql的分页检索中的limit语句</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
 					<textarea readonly="readonly" rows="4">	  	 
 <east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
 	<east:para name="_prevPageNo" value="${page_size * (page_no - 1)}" type="Object" />
 </east:service></textarea>
 				</pre>
-                        </figure>
-                        <h2 id="else-array-to-str">数组转换为字符串</h2>
-                        <p>将数组中的内容循环拼接成一个字符串。</p>
-                        <p>多用于拼接json字符串，或者sql查询条件in的内容。</p>
-                        <p>参数说明：</p>
-                        <blockquote>
-                            <p>_list： 数组</p>
-                            <p>_paddingStr： 连接符</p>
-                            <p>_quot： 包含每一个元素的符号，不需要可以置空</p>
-                        </blockquote>
-                        <div class="zero-clipboard">
-                            <span class="btn-clipboard">Copy</span>
-                        </div>
-                        <figure class="highlight">
-                            <pre>
+                    </figure>
+                    <h2 id="else-array-to-str">数组转换为字符串</h2>
+                    <p>将数组中的内容循环拼接成一个字符串。</p>
+                    <p>多用于拼接json字符串，或者sql查询条件in的内容。</p>
+                    <p>参数说明：</p>
+                    <blockquote>
+                        <p>_list： 数组</p>
+                        <p>_paddingStr： 连接符</p>
+                        <p>_quot： 包含每一个元素的符号，不需要可以置空</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
 					<textarea readonly="readonly" rows="6">	  	 
 <east:service beanName="eastUtilService" methodName="getListString" id="idPoleCodeInStr">
 	<east:para name="_list"  value="${listPoleCode}" type="List" />
@@ -1062,7 +1202,7 @@ ${idPageNo}</textarea>
 	<east:para name="_quot" value="'" type="String" />
 </east:service></textarea>
 				</pre>
-                        </figure>
+                    </figure>
                 </div>
 
 
@@ -1150,11 +1290,45 @@ ${idPageNo}</textarea>
                             </ul>
                         </li>
                         <li>
-                            <a href="#else">其他</a>
+                            <a href="#number">数字处理</a>
                             <ul class="nav">
                                 <li>
-                                    <a href="#else-current-date">当前日期</a>
+                                    <a href="#number-int-add">整数相加</a>
                                 </li>
+                                <li>
+                                    <a href="#number-long-add">长整数相加</a>
+                                </li>
+                                <li>
+                                    <a href="#number-double-add">双精度浮点数相加</a>
+                                </li>
+                                <li>
+                                    <a href="#number-avg">求平均值</a>
+                                </li>
+                                <li>
+                                    <a href="#number-format">数字格式化</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#date-time">日期/时间</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#date-time-now-date">当前日期</a>
+                                </li>
+                                <li>
+                                    <a href="#date-time-now-time">当前时间</a>
+                                </li>
+                                <li>
+                                    <a href="#date-time-add-hour">加减小时</a>
+                                </li>
+                                <li>
+                                    <a href="#date-time-add-day">加减天</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#else">其他</a>
+                            <ul class="nav">
                                 <li>
                                     <a href="#else-session">用户登陆信息</a>
                                 </li>
