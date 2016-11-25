@@ -973,6 +973,73 @@ ${idPageNo}</textarea>
 
 
                 <div class="bs-docs-section">
+                    <h1 class="page-header" id="string">字符串</h1>
+                    <h2 id="string-substring">字符串截取</h2>
+                    <p>截取字符串内容。</p>
+                    <p>参数说明：</p>
+                    <blockquote>
+                        <p>_string： 被截取的字符串</p>
+                        <p>_nStartIndex： 开始位置，从0开始</p>
+                        <p>_nEndIndex： 结束位置，不包含</p>
+                    </blockquote>
+                    <p>返回值：</p>
+                    <blockquote>
+                        <p>retuenValue： 截取出的字符串</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">	  	 
+<east:service beanName="eastUtilService" methodName="subString" id="retuenValue">
+    <east:para name="_string"	value="${objWeather.ext.cupdateTime}" type="String" />
+    <east:para name="_nStartIndex" value="0" type="Integer" />
+    <east:para name="_nEndIndex" value="10" type="Integer" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="string-from-array">数组转换为字符串</h2>
+                    <p>将数组中的内容循环拼接成一个字符串。</p>
+                    <p>多用于拼接json字符串，或者sql查询条件in的内容。</p>
+                    <p>参数说明：</p>
+                    <blockquote>
+                        <p>_list： 数组</p>
+                        <p>_paddingStr： 连接符</p>
+                        <p>_quot： 包含每一个元素的符号，不需要可以置空</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">	  	 
+<east:service beanName="eastUtilService" methodName="getListString" id="idPoleCodeInStr">
+	<east:para name="_list"  value="${listPoleCode}" type="List" />
+	<east:para name="_paddingStr" value="," type="String" />
+	<east:para name="_quot" value="'" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="string-to-array">字符串转换为数组</h2>
+                    <p>将逗号分隔的一个字符串转换为数组，等同于split。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="8">	  	 
+<east:service beanName="eastUtilService" methodName="setValue"  id="strTimes">
+    <east:para name="_value" value="00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23" type="Object" />
+</east:service>
+<east:service beanName="eastUtilService" methodName="getListOfString"  id="lsTimes">
+    <east:para name="_value" value="${strTimes}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                </div>
+
+                <div class="bs-docs-section">
                     <h1 class="page-header" id="number">数字处理</h1>
                     <h2 id="number-int-add">整数相加</h2>
                     <p>两个字符串形式的整数相加。</p>
@@ -1152,6 +1219,21 @@ ${idPageNo}</textarea>
 </s:else></textarea>
 				</pre>
                     </figure>
+                    <h2 id="else-session-scope">session scope</h2>
+                    <p>访问登陆界面是，在url中增加参数，然后登陆。url中的参数可以通过sessionScope访问。</p>
+                    <p>多用于隐藏一些系统管理的功能。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<s:if test="${sessionScope.s10 eq 1}">
+    do something
+</s:if>
+</textarea>
+				</pre>
+                    </figure>
                     <h2 id="else-page-variate">分页常用变量</h2>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -1178,28 +1260,6 @@ ${idPageNo}</textarea>
 					<textarea readonly="readonly" rows="4">	  	 
 <east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
 	<east:para name="_prevPageNo" value="${page_size * (page_no - 1)}" type="Object" />
-</east:service></textarea>
-				</pre>
-                    </figure>
-                    <h2 id="else-array-to-str">数组转换为字符串</h2>
-                    <p>将数组中的内容循环拼接成一个字符串。</p>
-                    <p>多用于拼接json字符串，或者sql查询条件in的内容。</p>
-                    <p>参数说明：</p>
-                    <blockquote>
-                        <p>_list： 数组</p>
-                        <p>_paddingStr： 连接符</p>
-                        <p>_quot： 包含每一个元素的符号，不需要可以置空</p>
-                    </blockquote>
-                    <div class="zero-clipboard">
-                        <span class="btn-clipboard">Copy</span>
-                    </div>
-                    <figure class="highlight">
-                        <pre>
-					<textarea readonly="readonly" rows="6">	  	 
-<east:service beanName="eastUtilService" methodName="getListString" id="idPoleCodeInStr">
-	<east:para name="_list"  value="${listPoleCode}" type="List" />
-	<east:para name="_paddingStr" value="," type="String" />
-	<east:para name="_quot" value="'" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1290,6 +1350,20 @@ ${idPageNo}</textarea>
                             </ul>
                         </li>
                         <li>
+                            <a href="#string">字符串</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#string-substring">字符串截取</a>
+                                </li>
+                                <li>
+                                    <a href="#string-from-array">数组转换为字符串</a>
+                                </li>
+                                <li>
+                                    <a href="#string-to-array">字符串转换为数组</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#number">数字处理</a>
                             <ul class="nav">
                                 <li>
@@ -1333,10 +1407,10 @@ ${idPageNo}</textarea>
                                     <a href="#else-session">用户登陆信息</a>
                                 </li>
                                 <li>
-                                    <a href="#else-page-variate">分页常用变量</a>
+                                    <a href="#else-session-scope">session scope</a>
                                 </li>
                                 <li>
-                                    <a href="#else-array-to-str">数组转换为字符串</a>
+                                    <a href="#else-page-variate">分页常用变量</a>
                                 </li>
                             </ul>
                         </li>
