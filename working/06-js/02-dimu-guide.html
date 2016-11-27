@@ -1193,6 +1193,87 @@ ${idPageNo}</textarea>
 
 
                 <div class="bs-docs-section">
+                    <h1 class="page-header" id="dic">字典</h1>
+                    <h2 id="dic-query">获取字典</h2>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="pmsService.pmsDaoImpl.daoBsDataDic" methodName="getNewsDicClassNameChildrenEx"  id="dicChannel">
+    <east:para name="className" value="dicChannel" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    <h2 id="dic-selector">下拉框</h2>
+                    <p>循环字典，生成下拉框。</p>
+                    <p>display: none;是为了在引入searchableSelect.js，将下拉框变为可输入的下拉框后，隐藏原始的下拉框。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="14">	  	 
+<select class="bs_float_left" id="cpreposition" name="cpreposition" style="display: none;"> 
+    <!--#
+    <c:forEach items="${dicPreposition}" var="idPreposition" varStatus="dicStatus">  
+        <s:if test="${dicStatus.index == 0}">
+            <option value="${idPreposition.dicVal}" selected="selected">${idPreposition.dicName}</option>
+        </s:if>
+        <s:else>
+            <option value="${idPreposition.dicVal}">${idPreposition.dicName}</option>
+        </s:else>
+    </c:forEach> 
+    #-->
+</select></textarea>
+				</pre>
+                    </figure>
+                    <p>引入searchableSelect.js，将下拉框变为可输入的下拉框。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="15">	  	 
+<script type="text/javascript">
+    setTimeout(function(){
+            $('#cpreposition').searchableSelect({
+                    itemSelectedFn:function(_val){
+                        if(_val != "2"){
+                            $('#liPreposition').hide();
+                        } else {
+                            $('#liPreposition').show();
+                        }
+                    }
+            });              
+    },300); 
+</script> </textarea>
+				</pre>
+                    </figure>
+                    <h2 id="dic-view">展示字典字段</h2>
+                    <p>循环字典，通过比较字典的value，获取对应的名称。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="10">	  	 
+<c:forEach items="${dicDispose}" var="objDispose" varStatus="status">
+    <c:if test="${idDispose == objDispose.dicVal}">
+        <east:service beanName="eastUtilService" methodName="setValue"  id="idDisposeName">
+            <east:para name="_value" value="${objDispose.dicName}" type="Object" />
+            <east:para name="_defaultValue" value="${idDispose}" type="Object" />
+        </east:service>
+    </c:if>
+</c:forEach> </textarea>
+				</pre>
+                    </figure>
+                </div>
+
+
+
+                <div class="bs-docs-section">
                     <h1 class="page-header" id="else">其他</h1>
                     <h2 id="else-session">用户登陆信息</h2>
                     <div class="zero-clipboard">
@@ -1397,6 +1478,20 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#date-time-add-day">加减天</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#dic">字典</a>
+                            <ul class="nav">
+                                <li>
+                                    <a href="#dic-query">获取字典</a>
+                                </li>
+                                <li>
+                                    <a href="#dic-selector">下拉框</a>
+                                </li>
+                                <li>
+                                    <a href="#dic-view">展示字典字段</a>
                                 </li>
                             </ul>
                         </li>
