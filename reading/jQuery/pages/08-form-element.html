@@ -27,9 +27,18 @@
             margin: 0;
             display: block;
         }
+        
+        .multi-select {
+            width: 35px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     </style>
     <script>
         $(document).ready(function() {
+            // textarea
             var comment = $("#comment");
             $("#pageUp").click(function(e) {
                 if (!comment.is(":animated")) {
@@ -46,6 +55,7 @@
                 }
             });
 
+            // checkbox
             var favorite = $("#form1 input[name=favorate]");
             var checkAction = $("#form1 input[name=chkAction]");
             checkAction.bind("click", function(e) {
@@ -94,6 +104,78 @@
                             break;
                     }
                 }
+            });
+
+            // multiple selector
+            var select1 = $("#select1");
+            var select2 = $("#select2");
+            $("#rightSelected").bind("click", function() {
+                var selectedOptions = $("#select1 option:selected");
+                // var removed = selectedOptions.remove();
+                // removed.appendTo(select2);
+                selectedOptions.appendTo(select2);
+            });
+            $("#rightAll").bind("click", function() {
+                var allOptions = $("#select1 option");
+                // var removed = allOptions.remove();
+                // removed.appendTo(select2);
+                allOptions.appendTo(select2);
+            });
+            $("#leftSelected").bind("click", function() {
+                var selectedOptions = $("#select2 option:selected");
+                selectedOptions.appendTo(select1);
+            });
+            $("#leftAll").bind("click", function() {
+                var allOptions = $("#select2 option");
+                allOptions.appendTo(select1);
+            });
+            select1.bind("dblclick", function() {
+                $("option:selected", this).appendTo(select2);
+            });
+            select2.bind("dblclick", function() {
+                $("option:selected", this).appendTo(select1);
+            });
+
+
+
+            // multiple selector ordered
+            var select3 = $("#select3");
+            var select4 = $("#select4");
+            $("#rightSelected1").bind("click", function() {
+                var selectedOptions = $("#select3 option:selected");
+                selectedOptions.each(function() {
+                    var selector = "option[value=" + $(this).val() + "]";
+                    $(this).hide();
+                    $(selector, select4).show();
+                });
+            });
+            $("#rightAll1").bind("click", function() {
+                $("#select3 option").hide();
+                $("#select4 option").show();
+            });
+            $("#leftSelected1").bind("click", function() {
+                var selectedOptions = $("#select4 option:selected");
+                selectedOptions.each(function() {
+                    var selector = "option[value=" + $(this).val() + "]";
+                    $(this).hide();
+                    $(selector, select3).show();
+                });
+            });
+            $("#leftAll1").bind("click", function() {
+                $("#select4 option").hide();
+                $("#select3 option").show();
+            });
+            select3.bind("dblclick", function() {
+                var clickedOption = $("option:selected", this);
+                var selector = "option[value=" + clickedOption.val() + "]";
+                clickedOption.hide();
+                $(selector, select4).show();
+            });
+            select4.bind("dblclick", function() {
+                var clickedOption = $("option:selected", this);
+                var selector = "option[value=" + clickedOption.val() + "]";
+                clickedOption.hide();
+                $(selector, select3).show();
             });
         });
     </script>
@@ -167,6 +249,77 @@
                             <label class="checkbox-inline">
                                 <input type="checkbox" id="chkReverse" name="chkAction" value="3">Reverse
                             </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="control-label">Multiple selector</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    <select multiple id="select1" class="form-control" style="height:150px;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2" style="padding-top: 20px;">
+                                    <a id="rightSelected" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-right fa-2x"></i></a>
+                                    <a id="rightAll" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-double-right fa-2x"></i></a>
+                                    <a id="leftAll" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-double-left fa-2x"></i></a>
+                                    <a id="leftSelected" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-left fa-2x"></i></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select multiple id="select2" class="form-control" style="height:150px;">
+                                    </select></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="control-label">Multiple selector</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    <select multiple id="select3" class="form-control" style="height:150px;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2" style="padding-top: 20px;">
+                                    <a id="rightSelected1" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-right fa-2x"></i></a>
+                                    <a id="rightAll1" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-double-right fa-2x"></i></a>
+                                    <a id="leftAll1" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-double-left fa-2x"></i></a>
+                                    <a id="leftSelected1" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-left fa-2x"></i></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select multiple id="select4" class="form-control" style="height:150px;">
+                                        <option style="display:none;" value="1">1</option>
+                                        <option style="display:none;" value="2">2</option>
+                                        <option style="display:none;" value="3">3</option>
+                                        <option style="display:none;" value="4">4</option>
+                                        <option style="display:none;" value="5">5</option>
+                                        <option style="display:none;" value="6">6</option>
+                                        <option style="display:none;" value="7">7</option>
+                                        <option style="display:none;" value="8">8</option>
+                                        <option style="display:none;" value="9">9</option>
+                                    </select></div>
+                            </div>
                         </div>
                     </div>
                 </form>
