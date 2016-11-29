@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery notes</title>
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
+    <script src="../vendor/jquery/dist/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: italic 14px/20px arial, sans-serif;
+        }
+        
+        form {
+            margin-top: 20px;
+        }
+        
+        .notresize {
+            resize: none;
+        }
+        
+        .pagination {
+            text-align: center;
+            margin: 0;
+            display: block;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            var comment = $("#comment");
+            $("#pageUp").click(function(e) {
+                if (!comment.is(":animated")) {
+                    comment.animate({
+                        scrollTop: "-=50"
+                    }, 200);
+                }
+            });
+            $("#pageDown").bind("click", function(e) {
+                if (!comment.is(":animated")) {
+                    comment.animate({
+                        scrollTop: "+=50"
+                    }, 200);
+                }
+            });
+
+            var favorite = $("#form1 input[name=favorate]");
+            var checkAction = $("#form1 input[name=chkAction]");
+            checkAction.bind("click", function(e) {
+
+                var _this = this;
+
+                if (_this.checked) {
+                    checkAction.each(function() {
+                        // console.log(typeof _this);
+                        // console.log(typeof this);
+                        // console.log(this == _this);
+                        // console.log(this === _this);
+                        // console.log(this != _this);
+                        // console.log(this !== _this);
+                        if (_this != this) {
+                            // console.log(this);
+                            // $(this).attr("checked", false); //TODO:为什么这个不行？
+                            this.checked = false;
+                        }
+                    });
+                    // switch (_this.attr("id")) {
+                    switch (_this.id) {
+                        case "chkAll":
+                            favorite.each(function() {
+                                // $(this).attr("checked", true);
+                                this.checked = true;
+                            });
+                            break;
+                        case "chkNone":
+                            favorite.each(function() {
+                                // $(this).attr("checked", false);
+                                this.checked = false;
+                            });
+                            break;
+                        case "chkReverse":
+                            favorite.each(function() {
+                                // if ($(this).is(":checked")) {
+                                //     $(this).attr("checked", false);
+                                // } else {
+                                //     $(this).attr("checked", true);
+                                // }
+                                this.checked = !this.checked;
+                            });
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <form id="form1" novalidate>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label for="email" class="control-label">Email</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label for="comment" class="control-label">Comment</label>
+                            <a class="pagination" id="pageUp"><i class="fa fa-arrow-up"></i></a>
+                            <a class="pagination" id="pageDown"><i class="fa fa-arrow-down"></i></a>
+                        </div>
+                        <div class="col-sm-9">
+                            <textarea rows="10" cols="120" class="form-control notresize " name="comment" id="comment" placeholder="Comment">
+                                0
+                                1
+                                2
+                                3
+                                4
+                                5
+                                6
+                                7
+                                8
+                                9
+                                10
+                                11
+                                12
+                                13
+                                14
+                                15
+                                16
+                                17
+                                18
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="control-label">What's your favorate?</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="favorate" id="wine" value="1">wine
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="favorate" id="beer" value="2">beer
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="favorate" id="liquor" value="3">liquor
+                            </label>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="chkAll" name="chkAction" value="1">All
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="chkNone" name="chkAction" value="2">None
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="chkReverse" name="chkAction" value="3">Reverse
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

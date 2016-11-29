@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery notes</title>
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css" />
+    <script src="../vendor/jquery/dist/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: italic 14px/28px arial, sans-serif;
+        }
+        
+        .event-wrap {
+            height: 40px;
+            line-height: 40px;
+            margin-top: 20px;
+            padding: 0 20px;
+            /*cursor: crosshair;*/
+            cursor: pointer;
+            background-color: #808080;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+            color: #fff;
+        }
+        
+        .highlight {
+            background-color: #0000ff;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+        }
+        
+        .content {
+            padding: 0 20px;
+        }
+        
+        .animation {
+            position: relative;
+            padding: 10px;
+            margin: 10px;
+            height: 50px;
+            line-height: 50px;
+            width: 50px;
+            background-color: #33CCFF;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+            -khtml-opacity: 0.5;
+            opacity: 0.5;
+        }
+    </style>
+    <script>
+        // dom树就绪触发，可以绑定多个处理函数
+        $(document).ready(function() {
+            $(".event-wrap").bind('click', function(event) {
+                $nextEle = $(this).next();
+                if ($nextEle.is(":visible")) {
+                    $nextEle.slideUp("slow");
+                    // $nextEle.fadeOut();
+                    // $nextEle.hide(1000);
+                } else {
+                    $nextEle.slideDown("fast");
+                    // $nextEle.fadeIn("normal");
+                    // $nextEle.show(1000);
+                }
+            });
+
+            $(".animation").click(function(e) {
+                $(this).animate({
+                    left: "400px"
+                }, 2000, function() {
+                    console.log("Has arrived.");
+                })
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="event-wrap highlight">fire me
+                </div>
+                <div class="content">
+                    <h2>These are from getbootstrap.com</h2>
+                    <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula. Cum sociis natoque penatibus et magnis dis parturient</p>
+                    <p>montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="animation">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
