@@ -35,6 +35,41 @@
             margin-top: 0;
             margin-bottom: 0;
         }
+        
+        .multiple-select-ul {
+            width: 130px;
+            height: 150px;
+            display: block;
+            padding: 6px 12px;
+            overflow: scroll;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .multiple-select-ul li a.left {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+        }
+        
+        .multiple-select-ul li a.right {
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+        }
+        
+        .multiple-select-ul li a.right input {
+            float: right;
+            display: block;
+            width: 60px;
+        }
+        
+        .multiple-select-ul .li-checked {
+            color: #fff;
+            filter: Alpha(Opacity=50);
+            background-color: rgba(0, 187, 255, 0.5);
+        }
     </style>
     <script>
         $(document).ready(function() {
@@ -177,6 +212,62 @@
                 clickedOption.hide();
                 $(selector, select3).show();
             });
+
+
+            // ul li multiple select
+            var select5 = $("#select5");
+            var select6 = $("#select6");
+            $(".multiple-select-ul li a").click(function() {
+                var parentLi = $(this).parent();
+                if (parentLi.hasClass("li-checked")) {
+                    parentLi.removeClass("li-checked");
+                } else {
+                    parentLi.addClass("li-checked");
+                }
+                var selected = parentLi.attr("selected");
+                if (selected == undefined) {
+                    parentLi.attr("selected", "selected");
+                } else {
+                    parentLi.removeAttr("selected");
+                }
+            });
+
+            $("#rightSelected2").bind("click", function() {
+                var selectedOptions = $("#select5 li[selected='selected']");
+                // console.log(selectedOptions);
+                selectedOptions.each(function() {
+                    var selector = "li[value=" + $(this).val() + "]";
+                    $(this).hide();
+                    $(this).removeAttr("selected");
+                    $(this).removeClass("li-checked");
+                    $(selector, select6).show();
+                });
+            });
+            $("#rightAll2").bind("click", function() {
+                $("#select5 li").hide();
+                $("#select5 li").removeAttr("selected");
+                $("#select5 li").removeClass("li-checked");
+                $("#select6 li").show();
+            });
+            $("#leftSelected2").bind("click", function() {
+                var selectedOptions = $("#select6 li[selected='selected']");
+                selectedOptions.each(function() {
+                    var selector = "li[value=" + $(this).val() + "]";
+                    $(this).hide();
+                    $(this).removeAttr("selected");
+                    $(this).removeClass("li-checked");
+                    $(selector, select5).show();
+                });
+            });
+            $("#leftAll2").bind("click", function() {
+                $("#select6 li").hide();
+                $("#select6 li").removeAttr("selected");
+                $("#select6 li").removeClass("li-checked");
+                $("#select5 li").show();
+            });
+            $(".multiple-select-ul li a.right input").click(function(e) {
+                e.stopPropagation();
+            });
         });
     </script>
 </head>
@@ -278,7 +369,8 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <select multiple id="select2" class="form-control" style="height:150px;">
-                                    </select></div>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -319,6 +411,48 @@
                                         <option style="display:none;" value="8">8</option>
                                         <option style="display:none;" value="9">9</option>
                                     </select></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="control-label">Ul li multiple selector</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    <ul id="select5" class="multiple-select-ul list-unstyled">
+                                        <li value="1"><a class="left">1 (50)</a></li>
+                                        <li value="2"><a class="left">2 (50)</a></li>
+                                        <li value="3"><a class="left">3 (50)</a></li>
+                                        <li value="4"><a class="left">4 (50)</a></li>
+                                        <li value="5"><a class="left">5 (50)</a></li>
+                                        <li value="6"><a class="left">6 (50)</a></li>
+                                        <li value="7"><a class="left">7 (50)</a></li>
+                                        <li value="8"><a class="left">8 (50)</a></li>
+                                        <li value="9"><a class="left">9 (50)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-2" style="padding-top: 20px;">
+                                    <a id="rightSelected2" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-right fa-2x"></i></a>
+                                    <a id="rightAll2" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-double-right fa-2x"></i></a>
+                                    <a id="leftAll2" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-double-left fa-2x"></i></a>
+                                    <a id="leftSelected2" class="btn btn-sm multi-select btn-default"><i class="fa fa-angle-left fa-2x"></i></a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ul id="select6" class="multiple-select-ul list-unstyled">
+                                        <li value="1" style="display:none;"><a class="right">1 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="2" style="display:none;"><a class="right">2 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="3" style="display:none;"><a class="right">3 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="4" style="display:none;"><a class="right">4 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="5" style="display:none;"><a class="right">5 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="6" style="display:none;"><a class="right">6 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="7" style="display:none;"><a class="right">7 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="8" style="display:none;"><a class="right">8 <input type="text" name="price" value="50"> </a></li>
+                                        <li value="9" style="display:none;"><a class="right">9 <input type="text" name="price" value="50"> </a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
