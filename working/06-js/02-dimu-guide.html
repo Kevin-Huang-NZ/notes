@@ -588,7 +588,17 @@ ${idPageNo}</textarea>
                         <p>newsClass：类名，可以理解为表名</p>
                         <p>page：分页控制中的页面，查询第几页。</p>
                         <p>pageSize：每页的数据条数。</p>
-                        <p>searchTVL： where条件，多个条件使用逗号连接，实际执行时会使用AND连接符连接。</p>
+                        <p>searchTVL： where条件，多个条件使用逗号(多个逗号不会出错)连接，实际执行时会使用AND连接符连接。val两端没有单引号的，系统会自动加单引号把val的值引起来。</p>
+                        <blockquote>
+                            <p>LITTLER = "!{LL}";</p>
+                            <p>BIGGER = "!{BG}";</p>
+                            <p>BIGGER_EQU = "!{BE}";</p>
+                            <p>LITTLE_EQU = "!{LE}";</p>
+                            <p>NOT_EQU = "!{NE}";</p>
+                            <p>EQU = "!{EQ}";</p>
+                            <p>IN = "!{IN}";</p>
+                            <p>LIKE = "!{LIKE}"; 使用like连接符时，如果val传值中没有%，系统会自动在两端补充%</p>
+                        </blockquote>
                         <p>orderName：排序字段，只能有一个</p>
                         <p>descOrAsc：升降序，true为降序，false为升序
                         </p>
@@ -969,6 +979,46 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+                    <h2 id="db-cud-macro">使用Macro更新</h2>
+                    <p>使用封装的宏更新或者复制数据。通常更新逻辑封装成controls，使用ajax调用。</p>
+                    <p>ajax_set_field1_fun提供多个版本，如：ajax_set_field2_fun，可以一次设置2个数据域。</p>
+                    <p>Jsp.call参数说明：</p>
+                    <blockquote>
+                        <p>第一个参数： 预定义的jsp文件，在这里可以是ajax_set_field1_fun，ajax_set_field2_fun，ajax_set_field3_fun.....</p>
+                        <p>第二个参数： 更新对象</p>
+                        <p>第三个参数以后，每两个为一组。组内，第一个是要更新的字段名称，第二个是要更新的字段内容。</p>
+                    </blockquote>
+                    <p>valueToHBean：更新非扩展字段（非.ext.的字段），只能使用valueToHBean方法。</p>
+                    <p>比如通过将id设置为0，实现同表内的数据拷贝。</p>
+                    <blockquote>
+                        <p>_object： 更新对象</p>
+                        <p>_field： 要更新的字段名称</p>
+                        <p>_value： 要更新的字段内容。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="21">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo"   methodName="getBeanOneByClassNameExtColumn" id="__idUserDeal">	  	 
+    <east:para name="className"  value="colUserDeal" type="String" />
+    <east:para name="fieldName" value="cdealNo" type="String" />
+    <east:para name="fieldValue"   value="${requestEx.dn}" type="String" />
+</east:service>
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo"   methodName="valueToHBean" id="idResult">	  	 
+    <east:para name="_object"  value="${__idUserDeal}" type="Object" /> 
+    <east:para name="_field"  value="id" type="String" /> 
+    <east:para name="_value"  value="0" type="Integer" /> 
+</east:service>
+<!--#<MACRO>
+    Jsp.call("/bspms_jsp/bspms_funs_html/ajax_set_field1_fun.jsp","${__idUserDeal}","ctitle","${requestEx.tp}");
+    Jsp.call("/bspms_jsp/bspms_funs_html/ajax_set_field1_fun.jsp","${__idUserDeal}","cdiscountMoney","${requestEx.dp}");
+    Jsp.call("/bspms_jsp/bspms_funs_html/ajax_save_bean_fun.jsp" ,"${__idUserDeal}");
+</MACRO>#-->
+</textarea>
+				</pre>
+                    </figure>
                 </div>
 
 
@@ -1206,6 +1256,22 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+                    <h2 id="dic-query-between">获取字典的某一范围</h2>
+                    <p>如下：获取字典中，value的值在1到5之间的，包含1和5.</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="7">	  	 
+<east:service beanName="pmsService.pmsDaoImpl.daoBsDataDic" methodName="getListBetween"  id="dicMaterialUseType">
+    <east:para name="_className" value="dicMaterialUseType" type="String" />
+    <east:para name="_valueLow" value="1" type="String" />
+    <east:para name="_valueHigh" value="5" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
                     <h2 id="dic-selector">下拉框</h2>
                     <p>循环字典，生成下拉框。</p>
                     <p>display: none;是为了在引入searchableSelect.js，将下拉框变为可输入的下拉框后，隐藏原始的下拉框。</p>
@@ -1428,6 +1494,9 @@ ${idPageNo}</textarea>
                                 <li>
                                     <a href="#db-cud-native">原生sql更新数据库</a>
                                 </li>
+                                <li>
+                                    <a href="#db-cud-macro">使用Macro更新</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -1486,6 +1555,9 @@ ${idPageNo}</textarea>
                             <ul class="nav">
                                 <li>
                                     <a href="#dic-query">获取字典</a>
+                                </li>
+                                <li>
+                                    <a href="#dic-query-between">获取字典的某一范围</a>
                                 </li>
                                 <li>
                                     <a href="#dic-selector">下拉框</a>
