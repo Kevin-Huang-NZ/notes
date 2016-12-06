@@ -375,6 +375,9 @@
 #--></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="annotation-local">静态代码</h2>
                     <p>静态代码用于美工设计界面样式，写在如下的注释内，框架在将静态html转换为jsp时会删除这部分代码。</p>
                     <div class="zero-clipboard">
@@ -387,6 +390,9 @@
 <!--#</JREMOVE>#--></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
@@ -406,6 +412,9 @@
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="basic-syntax-get-variate">引用变量</h2>
                     <p>在页面中任何部分（html、js中）都可以直接引用变量值。</p>
                     <div class="zero-clipboard">
@@ -417,6 +426,9 @@
 ${idPageNo}</textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="basic-syntax-if">分支语句</h2>
                     <p>如下,判断变量是否为null或者空串。</p>
                     <div class="zero-clipboard">
@@ -433,6 +445,9 @@ ${idPageNo}</textarea>
 </s:else></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="basic-syntax-if2">分支语句2</h2>
                     <p>c标签不能有else。</p>
                     <div class="zero-clipboard">
@@ -446,6 +461,9 @@ ${idPageNo}</textarea>
 </c:if></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="basic-syntax-array">数组</h2>
                     <p>定义数组： 定义一个数组，数值的变量名为lsCode</p>
                     <div class="zero-clipboard">
@@ -458,6 +476,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>往数组中add数据： 往数组lsCode中增加一个变量idPageNo的值。</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -471,6 +492,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>使用下标序号从数组里取值： 从lsCode中取得第二个元素（下标为1）放到变量idCode中</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -484,6 +508,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="basic-syntax-foreach">循环语句</h2>
                     <p>循环处理数组lsCode，在循环里可以通过变量objCode访问数组的当前内容，status.index表示当前数组下标序号。</p>
                     <div class="zero-clipboard">
@@ -499,6 +526,9 @@ ${idPageNo}</textarea>
 </c:forEach></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="basic-syntax-map">Map</h2>
                     <p>创建一个名为mapCode的map</p>
                     <div class="zero-clipboard">
@@ -511,6 +541,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>向mapCode中put一个对象(lsCode)，key值为"key1"</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -525,6 +558,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>循环map：</p>
                     <blockquote>
                         <p>使用mapKeys方法获取map的所有key值，放在一个数组中，数组的变量名为"listKeys"</p>
@@ -548,6 +584,9 @@ ${idPageNo}</textarea>
 </c:forEach></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
                 <div class="bs-docs-section">
                     <h1 class="page-header" id="db-query">数据库查询</h1>
@@ -565,6 +604,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="db-query-by-column">通过扩展字段查询</h2>
                     <p> 通过扩展字段查询1条数据。</p>
                     <p>例如：在colMonitor的表中检索一条数据，放在变量idObjMonitor中，该数据满足条件：字段cmonitorCode = 变量monitorCode的值。</p>
@@ -581,6 +623,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="db-query-by-searchTVL-and">searchTVL查询（AND）</h2>
                     <p>searchTVL是自定义标签可以解析的一种查询条件格式。</p>
                     <p>参数说明：</p>
@@ -620,6 +665,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>searchTVL查询返回值说明：</p>
                     <blockquote>
                         <p>list属性：保存数据库返回的数据列表，通过下边格式可以循环访问</p>
@@ -637,6 +685,9 @@ ${idPageNo}</textarea>
 </c:if></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>searchTVL查询返回值中除了list数据，还有分页相关的数据信息，page属性，如下：</p>
                     <blockquote>
                         <p>page.totalRecords： 数据库中的总记录条数，不是list的长度</p>
@@ -673,6 +724,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="db-query-by-native-sql">原生SQL查询</h2>
                     <p>本框架使用类访问数据，类和数据库表有一个映射关系，类属性和表的字段名有一个映射关系。</p>
                     <p>所以不能在sql中直接使用表名和字段名，除非确定不变的，比如id。</p>
@@ -724,6 +778,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>nativeQuerySqlMap方法参数说明：</p>
                     <blockquote>
                         <p>nativeSql： 原生sql，只不过表名、字段名都需要从类中获取，并且where条件中所有表都必须有一个类似t1.${__colOrganization.keepName.newsClass} = 'colOrganization' 的查询条件，用来关联表中的数据和类对象。</p>
@@ -749,6 +806,9 @@ ${idPageNo}</textarea>
 </c:if></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="db-query-by-native-sql-page">原生SQL查询分页数据</h2>
                     <p>与上边的原生sql一起使用，获取分页用的数据信息。</p>
                     <div class="zero-clipboard">
@@ -882,6 +942,9 @@ ${idPageNo}</textarea>
 </c:forEach></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
                 <div class="bs-docs-section">
@@ -951,6 +1014,9 @@ ${idPageNo}</textarea>
 </c:if></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
@@ -979,6 +1045,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="db-cud-macro">使用Macro更新</h2>
                     <p>使用封装的宏更新或者复制数据。通常更新逻辑封装成controls，使用ajax调用。</p>
                     <p>ajax_set_field1_fun提供多个版本，如：ajax_set_field2_fun，可以一次设置2个数据域。</p>
@@ -1019,6 +1088,9 @@ ${idPageNo}</textarea>
 </textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
@@ -1049,6 +1121,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="string-from-array">数组转换为字符串</h2>
                     <p>将数组中的内容循环拼接成一个字符串。</p>
                     <p>多用于拼接json字符串，或者sql查询条件in的内容。</p>
@@ -1071,6 +1146,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="string-to-array">字符串转换为数组</h2>
                     <p>将逗号分隔的一个字符串转换为数组，等同于split。</p>
                     <div class="zero-clipboard">
@@ -1087,6 +1165,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
                 <div class="bs-docs-section">
@@ -1105,6 +1186,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="number-long-add">长整数相加</h2>
                     <p>两个字符串形式的长整数相加。</p>
                     <div class="zero-clipboard">
@@ -1119,6 +1203,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="number-double-add">双精度浮点数相加</h2>
                     <p>两个字符串形式的双精度浮点数相加。</p>
                     <div class="zero-clipboard">
@@ -1133,6 +1220,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="number-avg">求平均值</h2>
                     <p>计算数组中所有map的某一数据域的平均值。</p>
                     <p>参数：</p>
@@ -1152,6 +1242,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="number-format">数字格式化</h2>
                     <p>格式化浮点数。</p>
                     <p>参数：</p>
@@ -1170,6 +1263,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
@@ -1188,6 +1284,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="date-time-now-time">当前时间</h2>
                     <p>获取当前时间，格式HH-mi-ss</p>
                     <p>类似函数还有：getNowHour、getNowMinute、getNowSecond</p>
@@ -1201,6 +1300,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="date-time-add-hour">加减小时</h2>
                     <p>给传入的时间加/减指定的小时。</p>
                     <p>参数：</p>
@@ -1220,6 +1322,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="date-time-add-day">加减天</h2>
                     <p>给传入的时间加/减指定的天。</p>
                     <p>参数：</p>
@@ -1239,6 +1344,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
@@ -1256,6 +1364,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="dic-query-between">获取字典的某一范围</h2>
                     <p>如下：获取字典中，value的值在1到5之间的，包含1和5.</p>
                     <div class="zero-clipboard">
@@ -1271,6 +1382,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
 
                     <h2 id="dic-selector">下拉框</h2>
                     <p>循环字典，生成下拉框。</p>
@@ -1295,6 +1409,9 @@ ${idPageNo}</textarea>
 </select></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>引入searchableSelect.js，将下拉框变为可输入的下拉框。</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -1317,6 +1434,9 @@ ${idPageNo}</textarea>
 </script> </textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="dic-view">展示字典字段</h2>
                     <p>循环字典，通过比较字典的value，获取对应的名称。</p>
                     <div class="zero-clipboard">
@@ -1335,6 +1455,9 @@ ${idPageNo}</textarea>
 </c:forEach> </textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
@@ -1366,6 +1489,9 @@ ${idPageNo}</textarea>
 </s:else></textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="else-session-scope">session scope</h2>
                     <p>访问登陆界面是，在url中增加参数，然后登陆。url中的参数可以通过sessionScope访问。</p>
                     <p>多用于隐藏一些系统管理的功能。</p>
@@ -1381,6 +1507,9 @@ ${idPageNo}</textarea>
 </textarea>
 				</pre>
                     </figure>
+
+
+
                     <h2 id="else-page-variate">分页常用变量</h2>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -1398,6 +1527,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                     <p>fromIndex用于原生sql的分页检索中的limit语句</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -1410,6 +1542,9 @@ ${idPageNo}</textarea>
 </east:service></textarea>
 				</pre>
                     </figure>
+
+
+
                 </div>
 
 
