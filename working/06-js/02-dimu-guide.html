@@ -1223,6 +1223,41 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="number-compare-int">比较整数</h2>
+                    <p>比较两个字符串形式的整数的大小。</p>
+                    <p>参数1大于参数2时，返回1；相等0；小于-1</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="compareInt"  id="_compareResult">
+    <east:para name="_val1" value="${oldInAmount}" type="String" />
+    <east:para name="_val2" value="${updateNum}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+                    <h2 id="number-compare-float">比较浮点数</h2>
+                    <p>比较两个字符串形式的浮点数的大小。</p>
+                    <p>参数1大于参数2时，返回1；相等0；小于-1</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="compareFloat"  id="_compareResult">
+    <east:para name="_val1" value="${oldInAmount}" type="String" />
+    <east:para name="_val2" value="${updateNum}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
                     <h2 id="number-avg">求平均值</h2>
                     <p>计算数组中所有map的某一数据域的平均值。</p>
                     <p>参数：</p>
@@ -1659,6 +1694,12 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#number-double-add">双精度浮点数相加</a>
+                                </li>
+                                <li>
+                                    <a href="#number-compare-int">比较整数</a>
+                                </li>
+                                <li>
+                                    <a href="#number-compare-float">比较浮点数</a>
                                 </li>
                                 <li>
                                     <a href="#number-avg">求平均值</a>
