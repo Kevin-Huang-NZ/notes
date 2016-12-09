@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+    <script>
+        $(document).ready(function() {
+            var timeoutId = null;
+
+            function rolling(ms, _this) {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(function() {
+                    addOne(_this);
+                    rolling(ms, _this);
+                }, ms);
+            }
+            //鼠标按下事件
+            $("i.fa-plus").mousedown(function() {
+                var _this = this;
+                addOne(_this);
+                rolling(600, _this);
+                return false;
+            });
+
+            //鼠标松开事件
+            $(window).mouseup(function() {
+                clearTimeout(timeoutId);
+                return false;
+            });
+
+            function addOne(_this) {
+                var num = $(_this).prev();
+                num.val(parseInt(num.val()) + 1);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" name="num" value="0" />&nbsp;&nbsp;<i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+</body>
+
+</html>
