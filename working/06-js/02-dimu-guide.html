@@ -1420,6 +1420,23 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="dic-query-like">获取相同前缀的字典内容</h2>
+                    <p>如下：获取字典中，value的值以'0'开头的内容.</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">	  	 
+<east:service beanName="pmsService.pmsDaoImpl.daoBsDataDic" methodName="getValueLikeRight"  id="dicChagingNumberType">
+    <east:para name="_className" value="dicChagingNumberType" type="String" />
+    <east:para name="_value" value="0" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
 
                     <h2 id="dic-selector">下拉框</h2>
                     <p>循环字典，生成下拉框。</p>
@@ -1734,6 +1751,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#dic-query-between">获取字典的某一范围</a>
+                                </li>
+                                <li>
+                                    <a href="#dic-query-like">获取相同前缀的字典</a>
                                 </li>
                                 <li>
                                     <a href="#dic-selector">下拉框</a>
