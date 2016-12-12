@@ -1,0 +1,1 @@
+$("#starDiv").left()
