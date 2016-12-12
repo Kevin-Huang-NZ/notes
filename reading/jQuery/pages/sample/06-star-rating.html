@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+    <script>
+        $(document).ready(function() {
+
+            var starDiv = $("#starRating"),
+                clevel = $("#clevel"),
+                starRatingIcons = starDiv.find("i"),
+                starAmount = starRatingIcons.length,
+                starDivWidth = starDiv.width(),
+                coordinates = new Array(starAmount * 2),
+                len = coordinates.length,
+                halfStarWidth = Math.ceil(starDivWidth / len),
+                remainder = Math.ceil(starDivWidth % len),
+                i = 0;
+
+            for (; i < len; i++) {
+                if (remainder > 0) {
+                    coordinates[i] = halfStarWidth + 1;
+                    remainder--;
+                } else {
+                    coordinates[i] = halfStarWidth;
+                }
+            }
+
+            console.log(coordinates);
+
+            function grade(num) {
+                if (num == '0') {
+                    starRatingIcons.removeClass("fa-star fa-star-o").addClass("fa-star-o");
+                }
+                for (var i = 1, len = 5; i <= len; i++) {
+                    var selector = "#star" + i;
+                    if (i <= num) {
+                        $(selector).removeClass("fa-star fa-star-o").addClass("fa-star");
+                    } else {
+                        $(selector).removeClass("fa-star fa-star-o").addClass("fa-star-o");
+                    }
+                }
+            }
+
+
+            grade(clevel.val() == "" ? '0' : clevel.val());
+            starRatingIcons.on("click", function() {
+                var rating = parseInt($(this).data("rating"));
+                clevel.val(rating);
+                grade(rating);
+            });
+
+            starRatingIcons.on("mouseenter", function() {
+                var rating = parseInt($(this).data("rating"));
+                // clevel.val(rating);
+                grade(rating);
+            });
+
+            starRatingIcons.on("mouseleave", function() {
+                grade(clevel.val());
+            });
+        });
+    </script>
+    <style>
+        .star-rating {
+            display: inline-block;
+            color: #90ee90;
+        }
+        
+        .star-rating:hover {
+            color: #b8860d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>信用等级</legend>
+        <input type="hidden" name="clevel" id="clevel" value="" />
+        <div id="starRating" class="star-rating">
+            <i class="fa fa-star fa-2x" name="star" id="star1" data-rating="1"></i>
+            <i class="fa fa-star fa-2x" name="star" id="star2" data-rating="2"></i>
+            <i class="fa fa-star fa-2x" name="star" id="star3" data-rating="3"></i>
+            <i class="fa fa-star fa-2x" name="star" id="star4" data-rating="4"></i>
+            <!--<i class="fa fa-star-o fa-2x" name="star" id="star5" data-rating="5"></i>-->
+    </fieldset>
+</body>
+
+</html>
