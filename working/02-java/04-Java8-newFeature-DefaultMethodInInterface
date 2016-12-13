@@ -1,0 +1,20 @@
+1、default method
+public interface HotelSummary {
+
+	City getCity();
+
+	default Integer getAverageRatingRounded() {
+		return getAverageRating() == null ? null : (int) Math.round(getAverageRating());
+	}
+
+}
+
+default修饰的方法，在接口实现类中可以不实现，实现类也不会报错。
+使用default可以方便的扩展接口，而不用担心实现类的编译错误。
+
+2、接口和抽象类的对比
+抽象类可以有构成函数，有状态。
+
+一个类继承了某个抽象类表示它“是什么”(is-a)，
+实现了某个接口表示它“有什么功能”或者“会做什么事”(can-do)。
+

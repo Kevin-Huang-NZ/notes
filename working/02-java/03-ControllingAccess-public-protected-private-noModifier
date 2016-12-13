@@ -1,0 +1,57 @@
+http://beginnersbook.com/2013/05/java-access-modifiers/
+
+1、类和接口
+XXX cannot be resolved to a type
+注意检查类的修饰符，尤其是没有明确声明的类（no modifier）
+
+
+            | Class | Package | Subclass | Subclass | World
+            |       |         |(same pkg)|(diff pkg)| 
+————————————+———————+—————————+——————————+——————————+————————
+public      |   +   |    +    |    +     |     +    |   +     
+————————————+———————+—————————+——————————+——————————+————————
+protected   |   +   |    +    |    +     |     +    |   o     
+————————————+———————+—————————+——————————+——————————+————————
+no modifier |   +   |    +    |    +     |     o    |   o
+————————————+———————+—————————+——————————+——————————+————————
+private     |   +   |    o    |    o     |     o    |   o
+
++ : accessible
+o : not accessible
+
+2、方法
+接口方法都是public的，no modifier时也是public。
+
+3、Access Modifiers Types
+The basic Accessibility Modifiers are of 4 types in Java. They are
+
+public
+protected
+package/default(no modifier)
+private
+
+
+4、嵌套类
+They are 2 categories of Nested classes based on the declarative context. They are:
+
+    Static member classes
+    Inner classes
+
+Inner classes are defined in 3 different categories. They are: 
+    Non-static member classes
+    Local classes
+    Anonymous classes
+
+例：
+class A {                // Top-level Class
+   static class B {…}       // Static member class
+   static interface C {…}   // Static member interface
+   class D {….}             // Non-static inner class
+   void func () {
+   class E {…….}           // Local class in non-static context
+   static void func1 () {
+     class F {…}              // Local class in static context
+   }
+   B bx = new B () {...} // Anonymous class in non static context 
+   static C cx= new C () {……} // Anonymous class in static context
+}
