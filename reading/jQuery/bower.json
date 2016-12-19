@@ -11,7 +11,8 @@
     "font-awesome": "^4.7.0",
     "fancybox": "^2.1.5",
     "cropper": "^2.3.4",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "alertifyjs": "^1.0.11"
   },
   "devDependencies": {}
 }
