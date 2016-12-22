@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="./lib/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="./lib/fancybox/jquery.fancybox.pack.js"></script>
+</head>
+
+<body>
+    <button type="button" id="btnPopup">Popup</button>
+    <a href="#" data-fancybox-type="iframe" id="popup"></a>
+    <script>
+        $(function() {
+            var popup = $("#popup");
+            popup.fancybox({
+                closeBtn: true,
+                minHeight: 500,
+                width: 640,
+                fitToView: false,
+                autoSize: false,
+                closeClick: false,
+                openEffect: 'none',
+                closeEffect: 'none',
+                beforeShow: function() {
+                    $(".fancybox-skin").css("background", "transparent rgba(0, 0, 0, 0)");
+                    $(".fancybox-skin").css("-webkit-box-shadow", "0 0 0 rgba(0, 0, 0, 0)");
+                    $(".fancybox-skin").css("-moz-box-shadow", "0 0 0 rgba(0, 0, 0, 0)");
+                    $(".fancybox-skin").css("box-shadow", "0 0 0 rgba(0, 0, 0, 0)");
+                }
+            });
+            $("#btnPopup").on("click", function() {
+                console.log("click..............");
+                popup.attr("href", "01-popup.html");
+                console.log(popup.attr("href"));
+                popup.click();
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
