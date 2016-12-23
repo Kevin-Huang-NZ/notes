@@ -52,7 +52,7 @@ b、client使用json格式提交请求数据，并且在jquery的ajax方法中�
         所以，抛出异常HttpMediaTypeNotSupportedException
 
 为什么body对象是空的呢：
-    从request数据到参数对象的转换，动作的真正执行者是HttpMessageConverter接口的子类，在readWithMessageConverters方法的循环中，
+    从request数据到参数对象的转换，动作的真正执行者是HttpMessageConverter接口的实现类，在readWithMessageConverters方法的循环中，
     逐个判断哪个子类可以处理这次转换。判断依据：
     1、MediaType
     2、参数的Class
