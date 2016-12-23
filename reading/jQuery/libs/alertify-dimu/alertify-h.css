@@ -1,0 +1,125 @@
+.alertify {
+    font-family: sans-serif;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 0;
+    right: 0;
+    top: 80px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+}
+
+.alertify.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.alertify,
+.alertify.show {
+    box-sizing: border-box;
+    transition: all 0.33s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.alertify,
+.alertify * {
+    box-sizing: border-box;
+}
+
+.alertify .dialog {
+    padding: 12px;
+}
+
+.alertify .dialog,
+.alertify .alert {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    transform: translateY(-50%);
+}
+
+.alertify .dialog>*,
+.alertify .alert>* {
+    width: 500px;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    background: #FFF;
+    border: 1px solid #8E8E8E;
+    /* browsers that don't support rgba */
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
+    -webkit-background-clip: padding;
+    /* Safari 4? Chrome 6? */
+    -moz-background-clip: padding;
+    /* Firefox 3.6 */
+    background-clip: padding-box;
+    /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+
+.alertify .dialog .msg,
+.alertify .alert .msg {
+    padding: 15px;
+    margin-bottom: 12px;
+    margin: 0;
+    text-align: left;
+}
+
+.alertify .dialog input:not(.form-control),
+.alertify .alert input:not(.form-control) {
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 100%;
+    padding: 12px;
+}
+
+.alertify .dialog input:not(.form-control):focus,
+.alertify .alert input:not(.form-control):focus {
+    outline-offset: -2px;
+}
+
+.alertify .dialog nav,
+.alertify .alert nav {
+    padding: 14px 15px 15px;
+    background: #F5F5F5;
+    border-top: 1px solid #DDD;
+    border-radius: 0 0 6px 6px;
+    box-shadow: inset 0 1px 0 #FFF;
+    text-align: right;
+}
+
+.alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button),
+.alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button) {
+    margin-left: 10px;
+    border-radius: 4px;
+    font-weight: normal;
+    padding: 4px 12px;
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(top, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+}
+
+.alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):hover,
+.alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):active,
+.alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):hover,
+.alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):active {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):focus,
+.alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):focus {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.alertify .dialog nav button.btn,
+.alertify .alert nav button.btn {
+    margin: 6px 4px;
+}
