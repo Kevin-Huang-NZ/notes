@@ -39,7 +39,10 @@ client：
 
 2、解决办法
 a、controller中将@RequestBody替换成@ModelAttribute。
-b、client使用json格式提交请求数据，并且在jquery的ajax方法中，设置contentType是"application/json; charset=utf-8"。(form表单序列化的是键值对)
+b、client使用json格式提交请求数据，并且在jquery的ajax方法中，设置
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
+	(form表单序列化的是键值对)
 
 三、读spring源码
 根据异常信息和源码得知：
