@@ -104,3 +104,8 @@
 		mv.addObject("criteria", criteria);
 		return mv;
 	}
+
+三、controller -> view(JSON)
+1、使用@ResponseBody修饰controller方法的返回值。
+
+2、controller方法返回ResponseEntity<T>类型的值。
