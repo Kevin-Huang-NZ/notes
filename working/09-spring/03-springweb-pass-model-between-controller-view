@@ -1,0 +1,106 @@
+一、view -> controller
+1、@PathVariable
+    截取url中的内容作为参数传递给controller方法。例如：
+
+    @GetMapping(value= {"/city","/city/{id}"})
+	public String city(@PathVariable("id") Optional<Long> id
+			, Map<String, Object> model) {
+		City city = null;
+		if (id.isPresent()) {
+			city = this.cityService.findOne(id.get());
+		}
+		model.put("city", city);
+		return "sb/popup_city";
+	}
+
+    这里使用Optional代表参数是可选的。
+
+2、form表单提交的formdata（application/x-www-form-urlencoded或者multipart/form-data），或者ajax提交的application/json
+直接绑定到参数中的entity bean
+	
+	@PostMapping(value = "/city")
+	public ResponseEntity<City> save(City data) {
+		City city = this.cityService.save(data);
+		return ResponseEntity.accepted().body(city);
+	}
+
+    客户端可以使用不同的contentType：
+        form：
+		btnSave.on("click", function() {
+			var _data = editForm.serialize(),
+				_url = "${baseUrl}" + editForm.attr("action");
+			$.post(_url, _data, function(_resp){
+				window.parent._search();
+			});
+		}); 
+		或者json：
+		btnSave.on("click", function() {
+			var _data = JSON.stringify(editForm.serializeObject()),
+				_url = "${baseUrl}" + editForm.attr("action");
+			console.log(_data);
+			$.ajaxSetup({contentType: "application/json", scriptCharset: "utf-8"});
+			$.post(_url, _data, function(_resp){
+				window.parent._search();
+			}, "json");
+		}); 
+
+3、单独的参数也可以通过name直接匹配到相应的controller方法参数中
+
+二、controller -> view
+1、controller返回String字符串，参数中添加Map<String, Object> model
+    返回值字符串指向view
+    向参数的model中put的数据可以在view中访问。例如：
+
+	@RequestMapping("/cities")
+	public String cities(CitySearchCriteria criteria
+			, Map<String, Object> model) {
+		// setting default pageSize and sortFields
+		if (criteria.isJustEnter()) {
+			criteria.setPageSize(10);
+			criteria.setSortFields("country:asc,state:asc,name:asc");
+		}
+		logger.info("{}", criteria.getPageable().getSort());
+		Page<City> cities = this.cityService.findCities(criteria, criteria.getPageable());
+		model.put("cities", cities);
+		model.put("criteria", criteria);
+		return "sb/cities";
+	}
+
+2、controller返回String字符串，参数中添加Model model
+    返回值字符串指向view
+    调用Model类的addAttribute(String key, Object value)方法，将数据存储到model中传递给view使用。例如：
+    
+	@RequestMapping("/cities")
+	public String cities(CitySearchCriteria criteria
+			, Model model) {
+		// setting default pageSize and sortFields
+		if (criteria.isJustEnter()) {
+			criteria.setPageSize(10);
+			criteria.setSortFields("country:asc,state:asc,name:asc");
+		}
+		logger.info("{}", criteria.getPageable().getSort());
+		Page<City> cities = this.cityService.findCities(criteria, criteria.getPageable());
+		model.addAttribute("cities", cities);
+		model.addAttribute("criteria", criteria);
+		return "sb/cities";
+	}
+
+3、contronller返回ModelAndView
+    ModelAndView.setViewName指定跳转到的view的名称
+    mv.addObject添加model数据给view使用。例如：
+	
+	@RequestMapping("/cities")
+	public ModelAndView cities(CitySearchCriteria criteria) {
+		// setting default pageSize and sortFields
+		if (criteria.isJustEnter()) {
+			criteria.setPageSize(10);
+			criteria.setSortFields("country:asc,state:asc,name:asc");
+		}
+		logger.info("{}", criteria.getPageable().getSort());
+		Page<City> cities = this.cityService.findCities(criteria, criteria.getPageable());
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("sb/cities");
+		mv.addObject("cities", cities);
+		mv.addObject("criteria", criteria);
+		return mv;
+	}

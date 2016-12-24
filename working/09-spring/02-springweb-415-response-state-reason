@@ -127,6 +127,7 @@ https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/
 
 本次问题关注的是FormHttpMessageConverter，
 FormHttpMessageConverter支持application/x-www-form-urlencoded和multipart/form-data，
+所以客户端提交的application/x-www-form-urlencoded可以匹配FormHttpMessageConverter的MediaType要求，
 但是，支持的参数Class是：MultiValueMap类型的，而controller里的参数是City，一个entity bean。
 就是死在这里了：
     public boolean canRead(Class<?> clazz, MediaType mediaType) {
@@ -135,3 +136,9 @@ FormHttpMessageConverter支持application/x-www-form-urlencoded和multipart/form
 		}
         ....
     }
+
+
+
+另一个常用的HttpMessageConverter是MappingJackson2HttpMessageConverter，它支持：
+MeidaType：application/json and application/*+json with UTF-8 character set
+可以绑定的参数类型是：typed beans, or untyped HashMap instances
