@@ -1,0 +1,144 @@
+一、问题
+1、异常
+2016-12-23 20:29:00.764 DEBUG 2952 --- [nio-8080-exec-6] .w.s.m.m.a.ServletInvocableHandlerMethod : Error resolving argument [0] [type=net.htn.sb.domain.entity.City]
+HandlerMethod details: 
+Controller [net.htn.sb.web.CityController]
+Method [public net.htn.sb.domain.entity.City net.htn.sb.web.CityController.save1(net.htn.sb.domain.entity.City)]
+
+
+org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:235) ~[spring-webmvc-4.3.4.RELEASE.jar:4.3.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:149) ~[spring-webmvc-4.3.4.RELEASE.jar:4.3.4.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:127) ~[spring-webmvc-4.3.4.RELEASE.jar:4.3.4.RELEASE]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121) ~[spring-web-4.3.4.RELEASE.jar:4.3.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:160) [spring-web-4.3.4.RELEASE.jar:4.3.4.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:129) [spring-web-4.3.4.RELEASE.jar:4.3.4.RELEASE]
+    .............
+
+2、出错代码
+controller：
+	@PostMapping(value = "/city1")
+	public @ResponseBody City save1(@RequestBody City data) {
+		logger.info("@ResponseBody & @RequestBody - {}", data);
+		return this.cityService.save(data);
+	}
+
+client：
+    btnSave.on("click", function() {
+        var _data = editForm.serialize(),
+            _url = "${baseUrl}" + editForm.attr("action");
+        $.post(_url, _data, function(_resp){
+            console.log(_resp);
+            window.parent._search();
+        });
+    });
+
+二、问题原因和解决办法
+1、问题原因
+    spring找不到对应的HandlerMethodArgumentResolver，不能将client提交的数据映射到参数中的类。
+
+2、解决办法
+a、controller中将@RequestBody替换成@ModelAttribute。
+b、client使用json格式提交请求数据，并且在jquery的ajax方法中，设置
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
+	(form表单序列化的是键值对)
+
+三、读spring源码
+根据异常信息和源码得知：
+    1、在ServletInvocableHandlerMethod中，调用父类InvocableHandlerMethod的方法getMethodArgumentValues解析参数。
+    2、getMethodArgumentValues中调用了HandlerMethodArgumentResolverComposite类的getArgumentResolver获取参数解析器，然后执行解析。
+    3、这里使用了@RequestBody修饰参数，所以获取到的解析器是：RequestResponseBodyMethodProcessor类。
+    4、RequestResponseBodyMethodProcessor类解析参数的方法resolveArgument中调用了自己的方法readWithMessageConverters。
+    5、然后再该方法中调用了父类的readWithMessageConverters方法，父类是：AbstractMessageConverterMethodArgumentResolver。
+    6、在AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters方法中，最终获取到的body对象是一个空对象（不是null），
+        所以，抛出异常HttpMediaTypeNotSupportedException
+
+为什么body对象是空的呢：
+    从request数据到参数对象的转换，动作的真正执行者是HttpMessageConverter接口的实现类，在readWithMessageConverters方法的循环中，
+    逐个判断哪个子类可以处理这次转换。判断依据：
+    1、MediaType
+    2、参数的Class
+    循环结束，所有的HttpMessageConverter都不能执行这次转换，所以body对象还是初始化时new的那个。
+
+
+
+四、关键代码
+
+		Object body = NO_VALUE;
+
+		try {
+			inputMessage = new EmptyBodyCheckingHttpInputMessage(inputMessage);
+
+			for (HttpMessageConverter<?> converter : this.messageConverters) {
+				Class<HttpMessageConverter<?>> converterType = (Class<HttpMessageConverter<?>>) converter.getClass();
+				if (converter instanceof GenericHttpMessageConverter) {
+					GenericHttpMessageConverter<?> genericConverter = (GenericHttpMessageConverter<?>) converter;
+					if (genericConverter.canRead(targetType, contextClass, contentType)) {
+						if (logger.isDebugEnabled()) {
+							logger.debug("Read [" + targetType + "] as \"" + contentType + "\" with [" + converter + "]");
+						}
+						if (inputMessage.getBody() != null) {
+							inputMessage = getAdvice().beforeBodyRead(inputMessage, param, targetType, converterType);
+							body = genericConverter.read(targetType, contextClass, inputMessage);
+							body = getAdvice().afterBodyRead(body, inputMessage, param, targetType, converterType);
+						}
+						else {
+							body = null;
+							body = getAdvice().handleEmptyBody(body, inputMessage, param, targetType, converterType);
+						}
+						break;
+					}
+				}
+				else if (targetClass != null) {
+					if (converter.canRead(targetClass, contentType)) {
+						if (logger.isDebugEnabled()) {
+							logger.debug("Read [" + targetType + "] as \"" + contentType + "\" with [" + converter + "]");
+						}
+						if (inputMessage.getBody() != null) {
+							inputMessage = getAdvice().beforeBodyRead(inputMessage, param, targetType, converterType);
+							body = ((HttpMessageConverter<T>) converter).read(targetClass, inputMessage);
+							body = getAdvice().afterBodyRead(body, inputMessage, param, targetType, converterType);
+						}
+						else {
+							body = null;
+							body = getAdvice().handleEmptyBody(body, inputMessage, param, targetType, converterType);
+						}
+						break;
+					}
+				}
+			}
+		}
+		catch (IOException ex) {
+			throw new HttpMessageNotReadableException("Could not read document: " + ex.getMessage(), ex);
+		}
+
+		if (body == NO_VALUE) {
+			if (httpMethod == null || !SUPPORTED_METHODS.contains(httpMethod) ||
+					(noContentType && inputMessage.getBody() == null)) {
+				return null;
+			}
+			throw new HttpMediaTypeNotSupportedException(contentType, this.allSupportedMediaTypes);
+		}
+
+五、HttpMessageConverter子类可以处理的转换判断表：
+偷个懒，现成的api doc，挨个去看吧
+https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/converter/HttpMessageConverter.html
+
+本次问题关注的是FormHttpMessageConverter，
+FormHttpMessageConverter支持application/x-www-form-urlencoded和multipart/form-data，
+所以客户端提交的application/x-www-form-urlencoded可以匹配FormHttpMessageConverter的MediaType要求，
+但是，支持的参数Class是：MultiValueMap类型的，而controller里的参数是City，一个entity bean。
+就是死在这里了：
+    public boolean canRead(Class<?> clazz, MediaType mediaType) {
+		if (!MultiValueMap.class.isAssignableFrom(clazz)) {
+			return false;
+		}
+        ....
+    }
+
+
+
+另一个常用的HttpMessageConverter是MappingJackson2HttpMessageConverter，它支持：
+MeidaType：application/json and application/*+json with UTF-8 character set
+可以绑定的参数类型是：typed beans, or untyped HashMap instances
