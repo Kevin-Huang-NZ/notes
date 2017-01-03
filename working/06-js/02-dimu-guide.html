@@ -1382,6 +1382,28 @@ ${idPageNo}</textarea>
 
 
 
+
+                    <h2 id="date-time-diff-days">相差天数</h2>
+                    <p>计算开始日期和结束日期之间的差值。</p>
+                    <p>参数：</p>
+                    <blockquote>
+                        <p>_dateStart：开始日期，格式：yyyy-mm-dd。</p>
+                        <p>_dateEnd：结束日期，格式：yyyy-mm-dd。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="getDiffDaysDate"  id="_diffDays">
+    <east:para name="_dateStart" value="${_one.ext.clogEndDate}" type="String" />
+    <east:para name="_dateEnd" value="${idNowDate}" type="String" />
+</east:service></textarea>
+                        </pre>
+                    </figure>
+
+
                 </div>
 
 
@@ -1597,11 +1619,25 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="else-url-decode">url参数decode</h2>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="decodeUriString" id="_decodeEmail">
+    <east:para name="_sourceObj" value="${requestEx.cemail}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
+
+
+
                 </div>
-
-
-
-
             </div>
             <div class="col-md-3">
                 <nav id="rightNav" class="bs-docs-sidebar hidden-print hidden-sm hidden-xs affix-top">
@@ -1741,6 +1777,9 @@ ${idPageNo}</textarea>
                                 <li>
                                     <a href="#date-time-add-day">加减天</a>
                                 </li>
+                                <li>
+                                    <a href="#date-time-diff-days">相差天数</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -1774,6 +1813,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#else-page-variate">分页常用变量</a>
+                                </li>
+                                <li>
+                                    <a href="#else-url-decode">url参数Decode</a>
                                 </li>
                             </ul>
                         </li>
