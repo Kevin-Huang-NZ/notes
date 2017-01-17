@@ -1,2 +1,89 @@
-1、批量杀死进程
+一、批量杀死进程
     ps aux|grep qemu|awk '{print $2}'|xargs kill -9
+
+二、yum
+1、添加yum源
+google需要的源名称、地址
+# yum install epel-release
+或者
+# rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+
+2、管理yum源
+# ls /etc/yum.repos.d/
+目录下的文件对应每一个yum源，可以通过enabled控制开关
+enabled=0（关）
+enabled=1（开）
+
+3、查找命令对应的软件包
+# yum provides /usr/sbin/semanage
+# yum whatprovides /usr/sbin/semanage
+
+4、安装
+# yum install -y p7zip
+
+三、firewall-cmd
+1、停用防火墙
+# systemctl stop firewalld
+# systemctl disable firewalld
+# firewall-cmd --state
+
+2、启用防火墙
+# systemctl enable firewalld
+# systemctl start firewalld
+# firewall-cmd --state
+
+3、zone
+# firewall-cmd --get-zones
+
+# firewall-cmd --get-default-zone
+
+# firewall-cmd --set-default-zone=work
+
+4、list-all
+# firewall-cmd --list-all
+# firewall-cmd --list-all --zone=work
+
+5、service
+# firewall-cmd --list-services
+
+# firewall-cmd --zone=work --add-service=http --permanent
+# firewall-cmd –reload
+
+# firewall-cmd --zone=work --remove-service=http --permanent
+# firewall-cmd --reload
+
+6、port
+# firewall-cmd --zone=public --list-ports
+
+# firewall-cmd --zone=work --add-port=62626/tcp --permanent
+# firewall-cmd –reload
+
+# firewall-cmd --zone=work --remove-port=62626/tcp --permanent
+# firewall-cmd --reload
+
+四、selinux
+1、安装
+# yum install selinux-policy
+
+2、启用、停用、查看
+# getenforce
+
+# setenforce 0
+# setenforce 1
+或者
+# vi /etc/selinux/config
+
+3、使用semanage管理selinux
+安装：
+# yum -y install policycoreutils-python
+
+4、端口
+# semanage port -l | grep ssh
+# semanage port -a -t ssh_port_t -p tcp 62626
+# man semanage-port
+
+5、boolean项
+# semanage boolean -l | grep ftp
+# semanage boolean -m --on ftpd_full_access
+查看修改过的项目
+# semanage boolean -l -C
