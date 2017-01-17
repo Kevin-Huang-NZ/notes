@@ -141,6 +141,9 @@ links http://www.google.com
 # firewall-cmd --zone=public --add-service=ftp --permanent
 # systemctl start vsftpd
 
+# systemctl enable vsftpd
+Created symlink from /etc/systemd/system/multi-user.target.wants/vsftpd.service to /usr/lib/systemd/system/vsftpd.service.
+
 解决问题：
 增加chroot_local_user后，用户登录出现下边的错误：
     Response:	500 OOPS: chroot
