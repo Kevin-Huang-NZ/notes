@@ -1,0 +1,42 @@
+一、jdk
+下载jdk
+解压：
+$ tar -zxvf server-jre-8u121-linux-x64.tar.gz -C ../soft/
+$ cd ../soft/
+$ mv jdk1.8.0_121 jdk8u121
+
+配置java_home和path
+1、用户
+$ vi ~/.bash_profile
+    JAVA_HOME=/home/htn/soft/jdk8u121
+    PATH=$PATH:$JAVA_HOME/bin
+    export PATH
+
+# source ~/.bash_profile
+
+
+2、全局
+# vi /etc/profile.d/jdk.sh
+    JAVA_HOME=/home/htn/soft/jdk8u121
+    PATH=$PATH:$JAVA_HOME/bin
+    export PATH
+
+# source /etc/profile
+不起作用：logout -> login
+
+
+二、tomcat
+下载tomcat:
+$ wget http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
+解压：
+$ tar -zxvf apache-tomcat-8.5.11.tar.gz -C ../soft/
+$ cd ../soft/
+$ mv apache-tomcat-8.5.11/ tomcat8
+
+
+1、防火墙
+# firewall-cmd --zone=public --add-port=8080/tcp --permanent
+# firewall-cmd --reload
+# firewall-cmd --list-all
+
+2、配置tomcat管理用户

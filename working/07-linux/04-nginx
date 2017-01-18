@@ -1,0 +1,14 @@
+一、安装
+# yum install nginx
+# systemctl start nginx
+# systemctl enable nginx
+
+# firewall-cmd --list-all
+# firewall-cmd --zone=public --add-service=http --permanent
+# firewall-cmd --reload
+如果准备修改nginx的端口，需要把新的端口加到防火墙中：
+# firewall-cmd --zone=public --add-port=7080/tcp --permanent
+
+# links http://192.168.1.131
+
+二、基本配置
