@@ -85,7 +85,7 @@ jdk和tomcat安装到/opt目录
 3.1、setenv.sh
 # vi /opt/tomcat/v8.5.11/bin/setenv.sh
     #add tomcat pid
-    CATALINA_PID="$CATALINA_BASE/tomcat.pid"
+    CATALINA_PID=/run/tomcat.pid
     #add java environment
     JAVA_HOME=/opt/java/jdk8u121
     JAVA_OPTS="-server -XX:PermSize=256M -XX:MaxPermSize=1024m -Xms512M -Xmx1024M -XX:MaxNewSize=256m"
@@ -99,7 +99,7 @@ jdk和tomcat安装到/opt目录
 
     [Service]
     Type=forking
-    PIDFile=/opt/tomcat/v8.5.11/tomcat.pid
+    PIDFile=/run/tomcat.pid
     ExecStart=/opt/tomcat/v8.5.11/bin/startup.sh
     ExecReload=/bin/kill -s HUP $MAINPID
     ExecStop=/bin/kill -s QUIT $MAINPID
@@ -110,3 +110,6 @@ jdk和tomcat安装到/opt目录
 
 3.3、配置自启动
 # systemctl enable tomcat
+
+
+(修改配置后有时候 systemctl daemon-reload不起作用，需要重启机器 )
