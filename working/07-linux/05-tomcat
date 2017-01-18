@@ -39,4 +39,42 @@ $ mv apache-tomcat-8.5.11/ tomcat8
 # firewall-cmd --reload
 # firewall-cmd --list-all
 
-2、配置tomcat管理用户
+2、配置环境变量CATALINA_HOME
+$ vi ~/.bash_profile
+    CATALINA_HOME=/home/htn/soft/tomcat8
+
+3、配置tomcat管理用户
+$ cd $CATALINA_HOME
+$ vi conf/tomcat-users.xml
+    <tomcat-users xmlns="http://tomcat.apache.org/xml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+                version="1.0">
+    <role rolename="manager-gui"/>
+    <user username="htn" password="123456" roles="manager-gui"/>
+    </tomcat-users>
+
+4、启停
+启动：
+$ ./bin/startup.sh
+
+查看：
+$ ps -ef | grep tomcat
+$ links http://127.0.0.1:8080
+
+停止：
+$ ./bin/shutdown.sh
+或者
+$ kill -9 xxxx
+xxxx是进程id，ps命令可以查看到
+
+5、远程访问管理界面
+没有配置成功。
+在conf/context.xml中增加了如下配置，不起作用：
+<Context>
+  ...
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow=".*"/>
+  <Valve className="org.apache.catalina.authenticator.BasicAuthenticator" />
+  ...
+</Context>
