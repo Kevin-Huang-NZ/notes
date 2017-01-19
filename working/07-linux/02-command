@@ -87,3 +87,12 @@ enabled=1（开）
 # semanage boolean -m --on ftpd_full_access
 查看修改过的项目
 # semanage boolean -l -C
+
+
+6、查看审查日志：
+cat /var/log/audit/audit.log | grep nginx | grep denied
+查看原因
+audit2why
+生成并加载policy
+audit2allow -M nginx
+semodule -i nginx.pp

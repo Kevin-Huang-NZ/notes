@@ -11,4 +11,42 @@
 
 # links http://192.168.1.131
 
-二、基本配置
+二、网站目录
+# mkdir /var/www /var/www/html
+# chown -R htn /var/www/html
+# chgrp -R nginx /var/www/html
+# find /var/www/html -type d -exec chmod g+rx {} +
+# find /var/www/html -type f -exec chmod g+r {} +
+
+# find /var/www/html -type d -exec chmod u+rwx {} +
+# find /var/www/html -type f -exec chmod u+rw {} +
+
+# find /var/www/html -type d -exec chmod g+s {} +
+
+# chmod -R o-rwx /var/www/html/
+
+'s'：
+set uid
+set gid
+This sets the "set gid" bit for the group on the directories. Files and folders created inside these directories will always have www-data as the group, permitting the web server access.
+
+
+三、配置
+1、基本配置
+
+
+2、反向代理测试
+
+
+
+九九、基本配置
+1、修改root目录403错误
+cat /var/log/audit/audit.log | grep nginx | grep denied | audit2allow -M mynginx
+semodule -i mynginx.pp
+
+尝试了一下命令，没有作用：
+semanage boolean -m --on httpd_can_network_connect -P
+semanage fcontext -a -t httpd_sys_content_t "/var/www/html(/.*)?" -P
+删除：
+semanage boolean -m --off httpd_can_network_connect -P
+semanage fcontext -d -t httpd_sys_content_t "/var/www/html(/.*)?" -P
