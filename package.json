@@ -1,0 +1,11 @@
+{
+    "name": "Notes",
+    "version": "1.0.0",
+    "author": "KevinHuang (hh@52htn.net)",
+    "description": "",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "bower": "^1.7.9"
+    },
+    "devDependencies": {}
+}
