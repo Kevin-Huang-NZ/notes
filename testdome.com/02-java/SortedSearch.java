@@ -13,8 +13,8 @@ public class SortedSearch {
             return sortedArray.length;
         }
         
-//        long count = Arrays.stream(sortedArray).filter(w -> w < lessThan).count();
-//        return count;
+    //    long count = Arrays.stream(sortedArray).filter(w -> w < lessThan).count();
+    //    return (int)count;
         
         int minIndex = 0;
         int maxIndex = sortedArray.length - 1;
