@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $("#t1").val(true == true == true);
+            $("#t2").val(false == true == true);
+            $("#t3").val(true == false == true);
+            $("#t4").val(true == true == false);
+            $("#t5").val(true == false == false);
+            $("#t6").val(false == true == false);
+            $("#t7").val(false == false == true);
+            $("#t8").val(false == false == false);
+            console.log(true == true == true);
+            console.log(false == true == true);
+            console.log(true == false == true);
+            console.log(true == true == false);
+            console.log(true == false == false);
+            console.log(false == true == false);
+            console.log(false == false == true);
+            console.log(false == false == false);
+        });
+    </script>
+</head>
+
+<body>
+    <label for="t1">true == true == true</label> <input type="text" id="t1" value=""><br/>
+    <label for="t2">false == true == true</label> <input type="text" id="t2" value=""><br/>
+    <label for="t3">true == false == true</label> <input type="text" id="t3" value=""><br/>
+    <label for="t4">true == true == false</label> <input type="text" id="t4" value=""><br/>
+    <label for="t5">true == false == false</label> <input type="text" id="t5" value=""><br/>
+    <label for="t6">false == true == false</label> <input type="text" id="t6" value=""><br/>
+    <label for="t7">false == false == true</label> <input type="text" id="t7" value=""><br/>
+    <label for="t8">false == false == false</label> <input type="text" id="t8" value=""><br/>
+</body>
+
+</html>
