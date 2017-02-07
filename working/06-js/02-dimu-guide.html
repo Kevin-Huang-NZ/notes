@@ -1168,6 +1168,23 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="string-to-array1">字符串转换为数组1</h2>
+                    <p>将字符串按照连接符分割为数组，等同于split。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="splitString" id="__ids">
+    <east:para name="_sStr" value="${requestEx.ids}" type="String" />
+    <east:para name="_linkLetter" value=";" type="String" />
+</east:service>
+				</pre>
+                    </figure>
+
+
+
                 </div>
 
                 <div class="bs-docs-section">
@@ -1733,6 +1750,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#string-to-array">字符串转换为数组</a>
+                                </li>
+                                <li>
+                                    <a href="#string-to-array1">字符串转换为数组1</a>
                                 </li>
                             </ul>
                         </li>
