@@ -1,0 +1,18 @@
+使用apache httpclient访问https协议站点时，程序抛出异常：
+sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+原因：没有将站点的SSL证书加入到jre的密钥库中。
+
+解决：
+    1、使用浏览器访问站点，下载SSL证书，以chrome为例：
+        打开网站
+        右键->检查
+        在security页中，点击 View certificate弹出证书
+    2、保存证书
+        证书详细信息，复制到文件。一路默认即可。
+    3、导入文件到jre的密钥库
+        jre密钥库文件：%JAVA_HOME%\jre\lib\security\cacerts
+        导入命令：
+        keytool -importcert -keystore D:\soft\java\jdk1.8.0_66\jre\lib\security\cacerts -file D:\immigration.cer
+    
+    
