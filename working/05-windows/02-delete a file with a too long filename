@@ -1,0 +1,4 @@
+mkdir empty
+robocopy empty hello-world /s /mir
+rmdir empty
+rmdir hello-world
