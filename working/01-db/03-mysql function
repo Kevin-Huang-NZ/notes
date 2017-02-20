@@ -1,0 +1,44 @@
+1 Control Flow Functions
+
+1.1 IF
+Syntax：
+    IF(expr1,expr2,expr3)
+Sample：
+    SELECT SUM(IF(t.`column_id`=210,1,0)),SUM(IF(t.`column_id`=4013,1,0))
+    FROM t_news t;
+
+1.2 IFNULL
+Syntax：
+    IFNULL(expr1,expr2)
+Sample：
+    SELECT IFNULL(t.name,'Please name it')
+    FROM test t;
+
+
+
+
+2 String Functions
+
+2.1 CONCAT
+Syntax：
+    CONCAT(str1,str2,...)
+Sample：
+    SELECT CONCAT('Hello', ' ', 'World');
+
+2.2 CONCAT_WS
+Syntax：
+    CONCAT_WS(separator,str1,str2,...)
+Sample：
+    SELECT CONCAT(' ', 'Hello', 'World');
+
+
+
+
+3 Data and Time Functions
+
+3.1 DATEDIFF
+    Only the date parts of the values are used in the calculation.
+Syntax：
+    DATEDIFF(expr1,expr2)
+Sample：
+    SELECT DATEDIFF('2007-12-31 23:59:59','2007-12-30');
