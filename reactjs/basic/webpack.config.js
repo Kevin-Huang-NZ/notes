@@ -1,10 +1,11 @@
-var debug = process.env.NODE_ENV !== "production";
+var debug = false;//process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: debug ? "inline-sourcemap" : false,
+    context: path.resolve(__dirname, './'),
     entry: {
         app: "./src/js/index.js",
         // vendor: ['lodash']
@@ -19,8 +20,7 @@ module.exports = {
             loader: 'babel-loader',
             query: {
                 presets: [
-                    ['react', {}],
-                    ['es2015', { modules: false }]
+                    'react', ['es2015', { modules: false }]
                 ],
                 plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
             }
@@ -36,9 +36,16 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         // filename: "[chunkhash].[name].js"
-        filename: "[name].js"
+        filename: "[name].js",
+        publicPath: '/dist'
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, './'),
     },
     plugins: debug ? [] : [
+        new webpack.EnvironmentPlugin({ 
+            NODE_ENV: JSON.stringify("production") 
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             // names: ['vendor', 'manifest'],
