@@ -58,7 +58,6 @@ ReactDOM.render(
       </div>
       <div className="col-md-6">
         <div className="thumbnail">
-          <LoginForm />
         </div>
       </div>
     </div>
