@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-var moment = require('moment');
-var _ = require('lodash');
+import moment from 'moment';
+import _ from 'lodash';
+// var moment = require('moment');
+// var _ = require('lodash');
 
 export default class Clock extends React.Component {
     constructor(props) {
