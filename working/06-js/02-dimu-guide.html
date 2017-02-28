@@ -1651,6 +1651,22 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="else-url-encode">url参数encode</h2>
+                    <p>encodeUriString或者encodeUriStringOnce，encodeUriString方法encode两次。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="encodeUriStringOnce" id="_decodeEmail">
+    <east:para name="_sourceObj" value="${requestEx.cemail}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
 
 
 
@@ -1836,6 +1852,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#else-url-decode">url参数Decode</a>
+                                </li>
+                                <li>
+                                    <a href="#else-url-encode">url参数encode</a>
                                 </li>
                             </ul>
                         </li>
