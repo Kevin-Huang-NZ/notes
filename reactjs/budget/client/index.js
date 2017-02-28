@@ -1,9 +1,10 @@
-// import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import React from 'react';
 
-// import App from 'containers/App';
-// import store from 'store';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers/Todos'
+import App from './components/Todos/App'
 
 import ArrayKey from 'components/ArrayKey';
 import Calculator from 'components/Calculator';
@@ -15,10 +16,15 @@ import './style.css';
 
 import 'index.html';
 
+
+
+
 const posts = [
     {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
     {id: 2, title: 'Installation', content: 'You can install React from npm.'}
-];
+]
+
+let store = createStore(todoApp)
 
 ReactDOM.render(
   
@@ -58,6 +64,9 @@ ReactDOM.render(
       </div>
       <div className="col-md-6">
         <div className="thumbnail">
+          <Provider store={store}>
+            <App />
+          </Provider>
         </div>
       </div>
     </div>
