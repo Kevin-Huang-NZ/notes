@@ -1,0 +1,6 @@
+
+2、查看mysql配置
+    root用户登录，执行下边命令：
+    show variables;
+    或者
+    show variables like '%xxxx%';
