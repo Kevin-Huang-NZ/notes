@@ -25,6 +25,24 @@
 
     drop table htn.user;
 
+4、建/删索引
+    create index idx_user_0 on user(email);
+    create unique index idx_user_0 on user(email);
+
+    drop index idx_user_0 on user;
+
+5、修改表结构
+    alter table table_name sub_command [options]
+    比如： 
+        ALTER TABLE t1 ROW_FORMAT = COMPRESSED;
+        ALTER TABLE t1 AUTO_INCREMENT = 13;
+        ALTER TABLE t1 CHARACTER SET = utf8;
+
+        ALTER TABLE t1 CHANGE b b BIGINT NOT NULL;
+        ALTER TABLE t1 MODIFY col1 BIGINT UNSIGNED DEFAULT 1 COMMENT 'my column';
+
+        
+
 二、管理命令
 1、查看mysql配置
     root用户登录，执行下边命令：
@@ -73,4 +91,7 @@
 
     notee;
 
-11、help.................
+11、查看引擎
+    show engines;
+
+99、help.................

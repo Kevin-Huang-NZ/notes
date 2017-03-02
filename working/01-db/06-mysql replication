@@ -42,12 +42,13 @@
     
 7、验证
     登陆主库建表、插入数据：
-        CREATE TABLE `htn`.`user`(  
-        `id` BIGINT NOT NULL AUTO_INCREMENT,
-        `email` VARCHAR(200) NOT NULL,
-        `password` VARCHAR(200) NOT NULL,
-        PRIMARY KEY (`id`)
-        ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
+        CREATE TABLE `test`.`user`(  
+            `id` BIGINT NOT NULL AUTO_INCREMENT,
+            `email` VARCHAR(200) NOT NULL,
+            `password` VARCHAR(100) NOT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE INDEX `idx_user_0` (`email`)
+        ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci; /*ROW_FORMAT=COMPRESSED;*/
 
         insert into htn.user(email,password) values('hh@htn.net','@#$%^G*&D^SFSHDISDUSJH*&&');
     
