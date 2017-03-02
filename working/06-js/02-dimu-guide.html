@@ -1185,7 +1185,7 @@ ${idPageNo}</textarea>
 
 
 
-                    <h2 id="string-to-array1">字符串替换</h2>
+                    <h2 id="#string-replace">字符串替换</h2>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
                     </div>
@@ -1196,6 +1196,23 @@ ${idPageNo}</textarea>
     <east:para name="_sVal" value="${target}" type="String" />
     <east:para name="_sReplaced" value="xxx" type="String" />
     <east:para name="_sReplaceNew" value="ooo" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
+                    <h2 id="#string-html-remove">htmlRemove</h2>
+                    <p>删除字符串中的html标签，超过长度截断并补上三个点。如果不希望截断，去掉第二个参数即可。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">	  	 
+<east:service beanName="eastUtilService" methodName="htmlRemove"  id="_cmemo">
+    <east:para name="_html" value="${_oneGoodsExchange.ext.cmemo}" type="String" />
+    <east:para name="_nMaxLen" value="100" type="Integer" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1789,6 +1806,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#string-replace">字符串替换</a>
+                                </li>
+                                <li>
+                                    <a href="#string-html-remove">htmlRemove</a>
                                 </li>
                             </ul>
                         </li>
