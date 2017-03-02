@@ -1,0 +1,114 @@
+1、主库配置
+    [mysqld]
+    log-bin=mysql-bin
+    server-id=1
+    binlog-do-db=htn
+
+2、主库创建replication用户
+    root用户登录mysql主库，执行：
+        CREATE USER 'repl'@'localhost' IDENTIFIED BY '123456';
+        GRANT REPLICATION SLAVE ON *.* TO 'repl'@'localhost' IDENTIFIED BY '123456';
+
+3、导出主库
+    锁表：
+        FLUSH TABLES WITH READ LOCK;
+    
+    获取主库bin log信息：
+        SHOW MASTER STATUS;
+        记录下show master status命令执行结果中的file,position，。
+
+    导出主库：
+        mysqldump -P 3307 -u root -p --databases htn --master-data > htn.db
+
+    解锁：
+        unlock tables;
+
+4、从库配置
+    [mysqld]
+    server-id=1
+
+5、导入数据到从库
+    mysql -P 3308 -u root -p < htn.db
+
+6、从库上配置主库信息
+    root用户登录mysql主库，执行：
+        change master to master_host='localhost',master_user='repl',master_password='123456', master_port=3307, master_log_file='mysql-bin.000002',master_log_pos=611;
+    
+    启动主从复制：
+        start slave；
+    
+    查看slave状态：
+        show slave status\G
+    
+7、验证
+    登陆主库建表、插入数据：
+        CREATE TABLE `htn`.`user`(  
+        `id` BIGINT NOT NULL AUTO_INCREMENT,
+        `email` VARCHAR(200) NOT NULL,
+        `password` VARCHAR(200) NOT NULL,
+        PRIMARY KEY (`id`)
+        ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
+
+        insert into htn.user(email,password) values('hh@htn.net','@#$%^G*&D^SFSHDISDUSJH*&&');
+    
+    登陆从库，查看表和数据
+        show tables;
+        select * from htn.user;
+
+
+
+
+
+备份配置文件内容：
+master：
+
+    [mysqld]
+    log-bin=mysql-bin
+    server-id=1
+    binlog-do-db=htn
+    #binlog_ignore_db=mysql
+
+    basedir = C:/0-D/00-soft/mysql-master-slave/mysql3307
+    datadir = C:/0-D/00-soft/mysql-master-slave/mysql3307/data
+    port = 3307
+
+    sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES 
+
+    symbolic-links=0
+    # bind-address = 
+    wait_timeout=90
+    net_read_timeout=90
+    connect_timeout=90
+    character-set-server=UTF8
+    default-storage-engine=INNODB
+    max_connections=100
+    lower_case_table_names=1
+
+    [mysqld_safe]
+    #log-error=C:/0-D/00-soft/mysql-master-slave/mysql3307/log/mysqld.log
+    #pid-file=C:/0-D/00-soft/mysql-master-slave/mysql3307/mysqld.pid
+
+slave:
+
+    [mysqld]
+    server-id=2
+
+    basedir = C:/0-D/00-soft/mysql-master-slave/mysql3308
+    datadir = C:/0-D/00-soft/mysql-master-slave/mysql3308/data
+    port = 3308
+
+    sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES 
+
+    symbolic-links=0
+    # bind-address = 
+    wait_timeout=90
+    net_read_timeout=90
+    connect_timeout=90
+    character-set-server=UTF8
+    default-storage-engine=INNODB
+    max_connections=100
+    lower_case_table_names=1
+
+    [mysqld_safe]
+    #log-error=C:/0-D/00-soft/mysql-master-slave/mysql3308/log/mysqld.log
+    #pid-file=C:/0-D/00-soft/mysql-master-slave/mysql3308/mysqld.pid

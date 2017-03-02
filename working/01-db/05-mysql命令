@@ -1,6 +1,76 @@
+一、常用命令
+1、建/删库
+    CREATE DATABASE IF NOT EXISTS htn CHARACTER SET utf8 COLLATE utf8_general_ci;
+    drop user htn;
 
-2、查看mysql配置
+2、创建/删用户
+    grant all privileges on  htn.* to  'htn'@'%' identified by '123456';
+    flush privileges;
+    或
+    create user 'htn'@'%' identified by '123456';
+    grant all privileges on  htn.* to  'htn'@'%';
+    flush privileges;
+
+    drop user htn;
+    flush privileges;
+
+
+3、建/删表
+    CREATE TABLE `htn`.`user`(  
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(200) NOT NULL,
+    `password` VARCHAR(200) NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
+
+    drop table htn.user;
+
+二、管理命令
+1、查看mysql配置
     root用户登录，执行下边命令：
     show variables;
     或者
     show variables like '%xxxx%';
+
+2、查看数据库列表
+    show databases;
+
+3、选择数据库
+    use database_name;
+
+4、查看表列表
+    show tables;
+
+5、查看表定义
+    desc table_name;
+
+6、修改用户密码
+    ALTER USER 'htn'@'localhost' IDENTIFIED BY '123456';
+
+7、修改配置
+    set variable_name value;
+
+    例如，查看并修改最大连接数量：
+    show variables like '%max_connection%';
+    set global max_connections = 200;
+
+    注意：set修改的只是当前正在运行的mysql的参数，一旦重启，设置就会恢复到配置文件的状态。
+
+8、查看连接列表
+    show full processlist;
+
+9、查看数据库状态
+    show status;
+    或者
+    show status like '%xxxxx%';
+
+    比如：
+    show status like 'Max_used_connections';
+
+10、输出执行结果到文件
+    tee file_path;
+    之后命令的执行过程都会记录到file_path中。
+
+    notee;
+
+11、help.................
