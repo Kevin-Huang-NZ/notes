@@ -50,7 +50,7 @@
             UNIQUE INDEX `idx_user_0` (`email`)
         ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci; /*ROW_FORMAT=COMPRESSED;*/
 
-        insert into htn.user(email,password) values('hh@htn.net','@#$%^G*&D^SFSHDISDUSJH*&&');
+        insert into htn.user(email,password) values('hh@htn.net',password('123456'));
     
     登陆从库，查看表和数据
         show tables;
