@@ -39,6 +39,9 @@
     
     查看slave状态：
         show slave status\G
+        确认：
+            Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
     
 7、验证
     登陆主库建表、插入数据：
