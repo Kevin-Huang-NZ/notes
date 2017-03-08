@@ -1,7 +1,7 @@
 一、常用命令
 1、建/删库
     CREATE DATABASE IF NOT EXISTS htn CHARACTER SET utf8 COLLATE utf8_general_ci;
-    drop user htn;
+    drop database if exists htn;
 
 2、创建/删用户
     grant all privileges on  htn.* to  'htn'@'%' identified by '123456';
@@ -11,7 +11,7 @@
     grant all privileges on  htn.* to  'htn'@'%';
     flush privileges;
 
-    drop user htn;
+    drop user if exists htn;
     flush privileges;
 
 
@@ -23,7 +23,7 @@
     PRIMARY KEY (`id`)
     ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
 
-    drop table htn.user;
+    drop table if exists htn.user;
 
 4、建/删索引
     create index idx_user_0 on user(email);
@@ -40,6 +40,29 @@
 
         ALTER TABLE t1 CHANGE b b BIGINT NOT NULL;
         ALTER TABLE t1 MODIFY col1 BIGINT UNSIGNED DEFAULT 1 COMMENT 'my column';
+
+6、创建触发器
+    delimiter //
+
+    create trigger ins_user_triggered after insert on htn.user
+    for each row
+    begin
+    insert into user_triggered(email) value(new.email);
+    end;//
+
+    delimiter ;
+
+    drop trigger if exists trigger_name;
+
+    开启binary log后，需要在ini文件中设置相应的variable才能创建触发器：
+        [mysqld]
+        log_bin_trust_function_creators=1
+
+    before|after
+    insert|update|delete
+    new|old
+    in insert statement only new can be used; in delete statement only old can be used.
+
 
         
 
@@ -93,5 +116,21 @@
 
 11、查看引擎
     show engines;
+
+12、查看触发器
+    use db_name;
+    show triggers\G
+
+    查看触发器定义：
+    show create trigger trigger_name\G
+
+13、定界符
+    delimiter //
+    ......
+    delimiter ;
+    默认定界符是分号，如果在命令行中输入存储过程，内容中会有分号，所以需要重定义定界符。
+
+14、执行sql文件
+    source sql_file_path;
 
 99、help.................
