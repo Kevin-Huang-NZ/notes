@@ -1,0 +1,100 @@
+1、参数
+    [IN | OUT | INOUT] var_name data-type
+    IN：输入参数
+    OUT：输出参数
+    INOUT：输入输出参数
+
+2、返回值
+    procedure：可以使用out参数返回数据。
+    function：在声明时使用returns声明返回值类型，在函数体中使用return返回返回值。
+
+    返回结果集：
+    a、在procedure中执行的select语句，如果没有into，都会作为procedure的返回值输出。比如：
+        delimiter $$
+        create procedure test_return_resultset()
+        begin
+        select * from user;
+        select * from user_triggered;
+        end$$
+        delimiter ;
+
+        call test_return_resultset();
+
+    b、在procedure中定义临时表，向临时表中插入数据，在procedure外读取
+        drop temporary table if exists tmp_user;
+        create temporary table tmp_user(email varchar(200) not null);
+
+3、变量
+    定义
+    declare var_name data-type default default_value;
+
+    设值
+    set var_name = var_value;
+
+    select into 设值
+    select email into var_name from user where ......;
+
+4、分支
+    IF search_condition THEN statement_list
+        [ELSEIF search_condition THEN statement_list] ...
+        [ELSE statement_list]
+    END IF
+
+5、case
+    CASE
+        WHEN search_condition THEN statement_list
+        [WHEN search_condition THEN statement_list] ...
+        [ELSE statement_list]
+    END CASE
+    或者
+    CASE case_value
+        WHEN when_value THEN statement_list
+        [WHEN when_value THEN statement_list] ...
+        [ELSE statement_list]
+    END CASE
+
+6、循环
+    [begin_label:] LOOP
+        statement_list
+        
+        IF continue_condition THEN ITERATE label;
+
+        IF break_condition THEN LEAVE label;
+
+    END LOOP [end_label]
+
+
+
+    [begin_label:] REPEAT
+        statement_list
+    UNTIL search_condition
+    END REPEAT [end_label]
+
+
+    [begin_label:] WHILE search_condition DO
+        statement_list
+    END WHILE [end_label]
+
+    其中：
+        a、begin_label和end_label必须同时出现，且名字相同。
+        b、leave和iterate用来控制循环跳转，相当于break和continue。
+    
+7、使用用户会话变量或者系统变量
+    在procedure和function内部可以使用会话变量 @ 和 系统变量 @@
+
+
+8、游标(cursor)
+    定义：
+    DECLARE done INT DEFAULT 0;
+    DECLARE curNeedUpdate CURSOR FOR SELECT `email` FROM `user`  WHERE DATEDIFF(`latest_update_pwd`, NOW()) > expireDays;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+
+    使用：
+
+    OPEN curNeedUpdate;
+        
+    REPEAT
+        FETCH curNeedUpdate INTO email;
+        statement_list
+    UNTIL done END REPEAT;
+    CLOSE curNeedUpdate;

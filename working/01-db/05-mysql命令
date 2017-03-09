@@ -40,18 +40,21 @@
 
         ALTER TABLE t1 CHANGE b b BIGINT NOT NULL;
         ALTER TABLE t1 MODIFY col1 BIGINT UNSIGNED DEFAULT 1 COMMENT 'my column';
+        
+        ALTER TABLE `htn`.`user` ADD COLUMN `latest_update_pwd` TIMESTAMP DEFAULT NOW()   NOT NULL AFTER `password`;
 
 6、创建触发器
-    delimiter //
+    delimiter $$
 
     create trigger ins_user_triggered after insert on htn.user
     for each row
     begin
-    insert into user_triggered(email) value(new.email);
-    end;//
+        insert into user_triggered(email) value(new.email);
+    end$$
 
     delimiter ;
 
+    删除：
     drop trigger if exists trigger_name;
 
     开启binary log后，需要在ini文件中设置相应的variable才能创建触发器：
@@ -63,8 +66,69 @@
     new|old
     in insert statement only new can be used; in delete statement only old can be used.
 
+7、存储过程(procedure或者function)
 
+    USE `htn`;
+
+    DROP PROCEDURE IF EXISTS `update_user_password`;
+    DELIMITER $$
+
+    CREATE PROCEDURE `update_user_password`(IN expireDays INT, OUT updatedAmount INT)
+    BEGIN
+        DECLARE email VARCHAR(200);
+        DECLARE retVal INT DEFAULT 0;
+        DECLARE done INT DEFAULT 0;
+        DECLARE curNeedUpdate CURSOR FOR SELECT `email` FROM `user`  WHERE DATEDIFF(`latest_update_pwd`, NOW()) > expireDays;
+        DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
         
+        OPEN curNeedUpdate;
+        
+        REPEAT
+            FETCH curNeedUpdate INTO email;
+            UPDATE `user` SET `password` = PASSWORD('123456'), `latest_update_pwd`=NOW() WHERE `email`=email;
+            SET retVal = retVal + 1;
+        UNTIL done END REPEAT;
+        CLOSE curNeedUpdate;
+        SET updatedAmount = retVal;
+        END$$
+
+    DELIMITER ;
+
+    执行：
+    call update_user_password(-1, @num);
+    select @num;
+
+    其中：@num以@开通，表明是用户定义的变量。如果是2个@，代表系统变量。
+
+8、定义事件
+
+    delimiter $$
+    create event everyday_update_user_password
+    on schedule at
+    CURRENT_TIMESTAMP + interval 1 day
+    do
+    begin
+    call update_user_password(30,@num);
+    end$$
+    DELIMITER ;
+
+9、定义函数
+
+    USE `htn`;
+
+    DROP function IF EXISTS `hello`;
+    DELIMITER $$
+
+    CREATE FUNCTION `hello` (s CHAR(20))
+        RETURNS CHAR(50) DETERMINISTIC
+    begin
+        RETURN CONCAT('Hello, ',s,'!');
+    end$$
+
+    DELIMITER ;
+
+    执行：
+    select hello('world');
 
 二、管理命令
 1、查看mysql配置
@@ -125,12 +189,20 @@
     show create trigger trigger_name\G
 
 13、定界符
-    delimiter //
+    delimiter $$
     ......
     delimiter ;
     默认定界符是分号，如果在命令行中输入存储过程，内容中会有分号，所以需要重定义定界符。
 
 14、执行sql文件
     source sql_file_path;
+
+15、查看存储过程(function同)
+    show procedure status\G
+    查看定义：
+    show create procedure procedure_name\G
+
+16、查看事件
+    show events;
 
 99、help.................
