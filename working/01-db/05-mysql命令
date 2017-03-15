@@ -16,18 +16,18 @@
 
 
 3、建/删表
-    CREATE TABLE `htn`.`user`(  
+    CREATE TABLE `user`(  
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(200) NOT NULL,
     `password` VARCHAR(200) NOT NULL,
     PRIMARY KEY (`id`)
     ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
 
-    drop table htn.user;
+    drop table user;
 
 4、建/删索引
-    create index idx_user_0 on user(email);
-    create unique index idx_user_0 on user(email);
+    CREATE INDEX idx_user_0 ON user(email,password);
+    CREATE UNIQUE INDEX idx_user_1 ON user(email);
 
     drop index idx_user_0 on user;
 
@@ -41,7 +41,8 @@
         ALTER TABLE t1 CHANGE b b BIGINT NOT NULL;
         ALTER TABLE t1 MODIFY col1 BIGINT UNSIGNED DEFAULT 1 COMMENT 'my column';
 
-        
+6、insert
+    INSERT INTO user (email,password) VALUES ('1@1.com',PASSWORD('123456')),('2@2.com',PASSWORD('123456'));
 
 二、管理命令
 1、查看mysql配置
@@ -93,5 +94,13 @@
 
 11、查看引擎
     show engines;
+    结果说明：
+        Non_unique：是否不唯一。1代表可以重复。
+        Seq_in_index：列在索引中的序号，从1开始。
+        Collation：排序方式，A：升序，null：不排序。
+        Cardinality：基数，不重复值的格式，基数越大，索引效率越高。
+
+12、查看collation
+    show collation;
 
 99、help.................
