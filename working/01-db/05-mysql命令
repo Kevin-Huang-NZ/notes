@@ -23,11 +23,7 @@
     PRIMARY KEY (`id`)
     ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
 
-<<<<<<< HEAD
-    drop table user;
-=======
-    drop table if exists htn.user;
->>>>>>> ea098c80ccd40027c3e3b2f8f19faa93a41f9f31
+    drop table if exists user;
 
 4、建/删索引
     CREATE INDEX idx_user_0 ON user(email,password);
@@ -70,10 +66,6 @@
     new|old
     in insert statement only new can be used; in delete statement only old can be used.
 
-<<<<<<< HEAD
-6、insert
-    INSERT INTO user (email,password) VALUES ('1@1.com',PASSWORD('123456')),('2@2.com',PASSWORD('123456'));
-=======
 7、存储过程(procedure或者function)
 
     USE `htn`;
@@ -137,7 +129,10 @@
 
     执行：
     select hello('world');
->>>>>>> ea098c80ccd40027c3e3b2f8f19faa93a41f9f31
+    
+10、insert
+    INSERT INTO user (email,password) VALUES ('1@1.com',PASSWORD('123456')),('2@2.com',PASSWORD('123456'));
+
 
 二、管理命令
 1、查看mysql配置
@@ -189,14 +184,6 @@
 
 11、查看引擎
     show engines;
-    结果说明：
-        Non_unique：是否不唯一。1代表可以重复。
-        Seq_in_index：列在索引中的序号，从1开始。
-        Collation：排序方式，A：升序，null：不排序。
-        Cardinality：基数，不重复值的格式，基数越大，索引效率越高。
-
-12、查看collation
-    show collation;
 
 12、查看触发器
     use db_name;
@@ -221,5 +208,13 @@
 
 16、查看事件
     show events;
+
+17、查看collation
+    show collation;
+    结果说明：
+        Non_unique：是否不唯一。1代表可以重复。
+        Seq_in_index：列在索引中的序号，从1开始。
+        Collation：排序方式，A：升序，null：不排序。
+        Cardinality：基数，不重复值的格式，基数越大，索引效率越高。
 
 99、help.................
