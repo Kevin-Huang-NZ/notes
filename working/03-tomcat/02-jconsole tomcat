@@ -1,0 +1,6 @@
+修改catalina.bat
+    在set "CATALINA_OPTS=%CATALINA_OPTS%  -server"之后增加：
+    set JAVA_OPTS=%JAVA_OPTS% -Dcom.sun.management.jmxremote.port=1090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false
+
+访问jconsole
+    jconsole ip:port

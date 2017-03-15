@@ -1,5 +1,5 @@
 1、主库配置
-    [mysqld]
+    在[mysqld]下增加：
     log-bin=mysql-bin
     server-id=1
     binlog-do-db=htn
@@ -15,7 +15,7 @@
     
     获取主库bin log信息：
         SHOW MASTER STATUS;
-        记录下show master status命令执行结果中的file,position，。
+        记录下show master status命令执行结果中的file,position。
 
     导出主库：
         mysqldump -P 3307 -u root -p --databases htn --master-data > htn.db
@@ -39,6 +39,9 @@
     
     查看slave状态：
         show slave status\G
+        确认：
+            Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
     
 7、验证
     登陆主库建表、插入数据：
