@@ -25,6 +25,8 @@
 
     drop table if exists user;
 
+    CREATE TABLE user_without_pwd AS SELECT email,nickname from user limit 1;
+
 4、建/删索引
     CREATE INDEX idx_user_0 ON user(email,password);
     CREATE UNIQUE INDEX idx_user_1 ON user(email);
@@ -46,10 +48,10 @@
 6、创建触发器
     delimiter $$
 
-    create trigger ins_user_triggered after insert on htn.user
+    create trigger aft_ins_user after insert on user
     for each row
     begin
-        insert into user_triggered(email) value(new.email);
+        insert into user_without_pwd(email) value(new.email);
     end$$
 
     delimiter ;
@@ -133,6 +135,59 @@
 10、insert
     INSERT INTO user (email,password) VALUES ('1@1.com',PASSWORD('123456')),('2@2.com',PASSWORD('123456'));
 
+    SELECT last_insert_id();
+
+    INSERT INTO user_without_pwd SELECT email,nickname from user; 
+
+11、update
+    UPDATE user SET nickname='ahaha' WHERE email='1@1.com';
+
+    UPDATE user_without_pwd AS uwp JOIN user AS u ON uwp.email=u.email AND u.nickname='ahaha' SET uwp.nickname='ahaha';
+
+12、delete
+    DELETE FROM user_without_pwd WHERE email='1@1.com';
+
+    DELETE user_without_pwd FROM user_without_pwd JOIN user ON user_without_pwd.email=user.email AND user.email='2@2.com';
+
+
+
+ CREATE TABLE `user_order`(  
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `user_id` BIGINT NOT NULL,
+    `order_no` VARCHAR(50) NOT NULL,
+    `order_time` DATETIME NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=INNODB CHARSET=utf8 COLLATE=utf8_general_ci;
+
+    set @rownum:=0;
+    INSERT INTO user_order (user_id,order_no,order_time) SELECT id, concat(id,'-',@rownum := @rownum + 1) ,NOW() FROM user;
+    INSERT INTO user_order (user_id,order_no,order_time) SELECT id, concat(id,'-',@rownum := @rownum + 1) ,NOW() FROM user;
+    INSERT INTO user_order (user_id,order_no,order_time) SELECT id, concat(id,'-',@rownum := @rownum + 1) ,NOW() FROM user;
+    set @rownum:=null;
+
+
+select uo.order_no, uo.order_time,uwp.nickname
+from user u, user_order uo, user_without_pwd uwp
+where u.id=uo.user_id
+  and u.email = uwp.email
+  and u.email='1@1.com';
+
+
+select uo.order_no, uo.order_time,uwp.nickname
+from user u 
+    join user_order uo on u.id=uo.user_id 
+    join user_without_pwd uwp on u.email = uwp.email
+where u.email='1@1.com';
+
+
+select uo.order_no, uo.order_time,uwp.nickname
+from user_order uo 
+    join user u on u.id=uo.user_id 
+    join user_without_pwd uwp on u.email = uwp.email
+where u.email='1@1.com';
+
+select u.email,uwp.nickname
+from user u left join user_without_pwd uwp on u.email=uwp.email
 
 二、管理命令
 1、查看mysql配置
@@ -216,5 +271,8 @@
         Seq_in_index：列在索引中的序号，从1开始。
         Collation：排序方式，A：升序，null：不排序。
         Cardinality：基数，不重复值的格式，基数越大，索引效率越高。
+
+18、查看view
+show full tables in ywt where table_type like 'VIEW';
 
 99、help.................
