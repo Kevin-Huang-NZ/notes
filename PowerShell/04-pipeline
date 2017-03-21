@@ -1,0 +1,21 @@
+pipeline：管道
+    符号： |
+
+管道就是将左侧命令的执行结果作为输入参数，传递给右侧的命令。
+
+可以使用 help <cmdlet-name> -full查看命令那些参数可以接受管道输入，以及可以接受的类型。
+使用Get-Member查看右侧命令输出结果的类型。
+
+
+示例：
+
+1、查询服务并停止
+    Get-Service -name mysql* | Stop-Service
+
+2、查询并导出
+    get-service -name mysql* | Export-Csv c:\0-d\mysql-services.csv
+    get-service -name mysql* | Export-Clixml c:\0-d\mysql-services.xml
+
+3、选择输出域
+    get-service -name mysql* | Select-Object -Property name,status
+    get-service -name mysql* | %{$_.name}

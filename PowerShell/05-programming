@@ -1,0 +1,72 @@
+1、变量
+    $开头
+    不强制要求指定类型，但是可以使用[]指定。
+
+    设置变量：
+        [string] $a = "aaaa"
+        $a = "aaaa"
+    变量取值：
+        $a
+
+也可以通过命令设置获取变量：
+    Set-Variable aa 100
+    Get-Variable aa
+    Clear-Variable aa
+    Remove-Variable aa
+
+变量赋值：
+    $a = "aaa"
+    $b = "bbb"
+    $c = "$a$b"
+    $d = '$a$b'
+    $e = $a
+
+2、注释
+    #
+
+    <#
+    #>
+
+3、数组与循环
+    for ($i=0; $i -le 10; $i++){
+        Write-Host("index: $i")
+    }
+
+    $arr = 1..6
+    foreach ($i in $arr){ $i }
+
+    $arr = "a","b","c"
+    foreach ($i in $arr){ $i }
+
+    $arr | %{$_}
+
+4、分支
+    $a = "aa"
+
+    if ($a -eq "aa") {
+        Write-host("aaaaaa");
+    } elseif ($a -eq "bb") {
+        Write-host("bbbbbb");
+    } else{
+        Write-host("cccccc");
+    }
+
+5、交互
+    读取输入：
+        $a = Read-Host("Please input a name")
+    输出：
+        Write-Host("Your name is $a")
+
+6、比较
+    -eq, -ne, -ge, -gt, -le, -lt
+
+
+7、函数
+    function pingip($ip) {
+        ping $ip;
+        
+        return $ip;
+    }
+
+    pingip("192.168.1.104");
+

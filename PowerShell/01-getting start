@@ -1,0 +1,26 @@
+1、安装
+    https://msdn.microsoft.com/en-us/powershell/scripting/setup/setup-reference
+
+2、启动：
+    Start Menu -> All Programs -> Accessories -> Windows PowerShell
+        Windows PowerShell
+        Windows PowerShell ISE
+
+    Windows PowerShell：命令行
+    Windows PowerShell ISE：脚本编辑运行环境
+
+3、Power Shell和cmd
+    Power Shell中有很多命令和cmd中的命令相似，但是它们并不一样，Power Shell命令也不是对cmd命令的封装。
+    这些同名的命令，只是Power Shell命令的别名，为了用户输入简单，同时方便cmd、bash用户的平滑过渡。
+    
+    get-alias：查看Power Shell别名对应的原始命令。
+
+    在Power Shell中执行cmd命令:
+        cmd /c dir
+    
+    在cmd中执行Power Shell命令：
+    powershell dir
+
+
+
+

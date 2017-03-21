@@ -1,0 +1,37 @@
+1、get-help
+    cmd中的help
+    bash中的man
+
+    power shell中有get-help和help：
+        get-help：执行结果显示在一页。
+        help: 分页显示执行结果。空格向后翻一页，enter向后换一行。退出：冒号+q，或者 ctrl+c
+    
+    参数：
+        help <command-name> -[examples | detailed | full]
+        command-name:支持通配符
+
+2、Get-History
+    查看命令执行历史。
+    别名：history
+
+    相关：Clear-History
+
+3、Get-ChildItem
+    列表显示文件目录。
+    别名：ls
+
+4、Get-Alias
+    Get-Alias <alias-name>
+    带参数，查看别名信息；不带参数，列表所有别名。
+    别名：gal
+
+5、Get-Member
+    用于查看其他命令输出结果的结构。包括：
+        类型名
+        数据域信息
+
+6、Set-Location
+    路径跳转。
+    别名：cd
+    ~：特殊路径，当前用户的home目录。
+

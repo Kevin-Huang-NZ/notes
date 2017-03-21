@@ -1,0 +1,10 @@
+1、Eable-PSRemoting
+    开启本机的远程访问服务。
+
+2、Enter-PSSession
+    登陆远程机器，例如：
+    Enter-PSSession -ComputerName localhost
+
+3、Invoke-Command
+    在远程机器上执行命令，执行结果返回本机。
+    Invoke-Command -ComputerName localhost,localhost {Get-EventLog -LogName system -new 3}
