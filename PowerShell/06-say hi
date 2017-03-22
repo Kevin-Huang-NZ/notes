@@ -1,0 +1,6 @@
+function sayHello() {
+    param([string] $name = $(throw "Please specify a name."))
+    Write-Host "Hello $name"
+}
+
+sayHello("Kevin")

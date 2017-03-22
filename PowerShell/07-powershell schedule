@@ -1,0 +1,18 @@
+1. Open Task Scheduler and Create a new task. Name it and set your security options.
+
+2. Set Triggers
+    Click on the Triggers tab and set your schedule or event that will trigger the running of your Powershell script.
+
+3. Create your action
+    Action: Start a program
+    Program/script: Powershell.exe
+
+4. Set arguments
+    -ExecutionPolicy Bypass c:\scripts\myscript.ps1
+
+5. Save your scheduled task and run it.
+
+6. If your script has some params
+    At step 4. Set arguments, looks like:
+    -ExecutionPolicy Bypass c:\scripts\myscript.ps1 -RunType $true -Path c:\mydatafiles
+    

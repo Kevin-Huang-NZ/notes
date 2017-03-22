@@ -1,0 +1,44 @@
+function Invoke-MySQL {
+    Param([Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $true)]
+        [string]$Query
+        )
+
+    $MySQLAdminUserName = 'root'
+    $MySQLAdminPassword = '123456'
+    #$MySQLDatabase = 'DATABASE'
+    $MySQLHost = 'localhost'
+    $ConnectionString = "server=" + $MySQLHost + "; port=3307; uid=" + $MySQLAdminUserName + "; pwd=" + $MySQLAdminPassword
+
+    Try {
+        Add-Type -Path 'C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.dll'
+        $Connection = New-Object MySql.Data.MySqlClient.MySqlConnection
+        $Connection.ConnectionString = $ConnectionString
+        $Connection.Open()
+
+        $Command = New-Object MySql.Data.MySqlClient.MySqlCommand($Query, $Connection)
+        $DataAdapter = New-Object MySql.Data.MySqlClient.MySqlDataAdapter($Command)
+        $DataSet = New-Object System.Data.DataSet
+        $RecordCount = $DataAdapter.Fill($DataSet, "data")
+        $DataSet.Tables[0]
+    }
+    Catch {
+        throw "ERROR : Unable to run query : $query `n$Error[0]"
+    }
+    Finally {
+        if ($Connection -ne $null) {
+            $Connection.Close()
+        }
+    }
+}
+
+Invoke-MySQL -Query "show slave status"
+
+
+
+
+
+Tips:
+    Download MySQL Connector/NET first.

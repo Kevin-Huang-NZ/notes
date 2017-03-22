@@ -1,0 +1,93 @@
+function Invoke-MySQL {
+    Param([Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $true)]
+        [string]$Query
+        )
+
+    $MySQLAdminUserName = 'root'
+    $MySQLAdminPassword = '123456'
+    #$MySQLDatabase = 'DATABASE'
+    $MySQLHost = 'localhost'
+    $ConnectionString = "server=" + $MySQLHost + "; port=3308; uid=" + $MySQLAdminUserName + "; pwd=" + $MySQLAdminPassword
+
+    Try {
+        Add-Type -Path 'C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.9\Assemblies\v4.5\MySql.Data.dll'
+        $Connection = New-Object MySql.Data.MySqlClient.MySqlConnection
+        $Connection.ConnectionString = $ConnectionString
+        $Connection.Open()
+
+        $Command = New-Object MySql.Data.MySqlClient.MySqlCommand($Query, $Connection)
+        $DataAdapter = New-Object MySql.Data.MySqlClient.MySqlDataAdapter($Command)
+        $DataSet = New-Object System.Data.DataSet
+        $RecordCount = $DataAdapter.Fill($DataSet, "data")
+        $DataSet.Tables[0]
+    }
+    Catch {
+        throw "ERROR : Unable to run query : $query `n$Error[0]"
+    }
+    Finally {
+        if ($Connection -ne $null) {
+            $Connection.Close()
+        }
+    }
+}
+
+
+function Analyse-Result {
+    Param([Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $true)]
+        [Array]$Result
+        )
+    
+
+    $ItemList = $Result.ItemArray
+    $LogFile = $ItemList[5]
+    $LogPos = $ItemList[6]
+
+    <#
+    for($i = 0; $i -lt $Result.Length; $i++) {
+        $row = $Result[$i]
+        if ($row.Contains('Master_Log_File')) {
+            $tokens = $_.Split(':',[StringSplitOptions]::RemoveEmptyEntries)
+            $LogFile = $tokens[1]
+        } elseif ($row.Contains('Read_Master_Log_Pos')) {
+            $tokens = $_.Split(':',[StringSplitOptions]::RemoveEmptyEntries)
+            $LogPos = $tokens[1]
+        }
+    }
+
+    Write-Host $($Result.ItemArray.length )
+    for($i=0;$i -lt $Result.ItemArray.length;$i++)
+    { 
+        write-host "value is : $i $($Result.ItemArray[$i])"
+    }
+    #>
+
+    Write-Host "Current Master Log File: $LogFile"
+    Write-Host "Current readed Log Position: $LogPos"
+
+    $Previous = Get-Content 'c:\current'
+    if ($Previous.Length -gt 0) {
+        $PreLogFile = $Previous[0]
+        $PreLogPos = $Previous[1]
+
+        if ($PreLogFile -eq $LogFile -and $PreLogPos -eq $LogPos) {
+            Write-Host "Did not read more log from master."
+            Restart-Mysql
+        }
+    }
+
+    $LogFile | Out-File 'c:\current'
+    $LogPos | Out-File -Append 'c:\current'
+}
+
+function Restart-Mysql() {
+    Get-Service -Name mysql3308 | Restart-Service
+}
+
+
+Invoke-MySQL -Query "show slave status" | Analyse-Result

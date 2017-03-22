@@ -1,0 +1,26 @@
+$User = "your email address"
+$PWord = ConvertTo-SecureString -String "your password" -AsPlainText -Force
+$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $User,$PWord
+
+$From = $User
+$To = "To email address"
+$Cc = "cc email address 1","cc email address 2"
+$Subject = "Test"
+$Body = "This is a testing mail."
+$Attachment = "C:\tmp\temp.txt"
+$SMTPServer = "smtp.gmail.com"
+$SMTPPort = "587"
+Send-MailMessage -From $From -to $To -Cc $Cc -Subject $Subject -Body $Body -SmtpServer $SMTPServer -Port $SMTPPort -UseSsl -Credential $Credential -Attachments $Attachment
+
+
+
+
+Tips:
+    If you get this message when the code is fired:
+        Send-MailMessage : The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required.
+    
+    1. Please make sure your password is correct.
+    2. You have to allow less secure apps to access your account
+        Sign in with your google account.
+        Go to My Account -> Sign-in & Security.
+        Next to "Access for less secure apps," select Turn on. 
