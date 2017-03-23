@@ -1,0 +1,54 @@
+@echo off
+mysql -P3308 -uroot -p123456 -e "show slave status\G" > temp
+setlocal ENABLEDELAYEDEXPANSION
+for /f "delims=: tokens=1,*" %%i in (temp) do (
+	set str1=%%i
+	::trim left
+	for /f "tokens=* delims= " %%a in ("!str1!") do set str1=%%a
+	::trim right whitespace (up to 100 spaces at the end)
+	for /l %%a in (1,1,200) do if "!str1:~-1!"==" " set str1=!str1:~0,-1!
+
+	If "!str1!"=="Master_Log_File" (
+		echo !str1!
+		set newLogFile=%%j
+	)
+	If "!str1!"=="Read_Master_Log_Pos" (
+		set newLogPos=%%j
+	)
+)
+
+echo %newLogFile%
+echo %newLogPos%
+
+IF "%newLogPos%"=="" (
+	echo Can't query from mysql.
+	goto restartMysql
+)
+
+
+set previousFile=previous
+IF EXIST %previousFile% (
+	for /f "delims=: tokens=1,*" %%i in (%previousFile%) do (
+		set preLogFile=%%i
+		set preLogPos=%%j
+	)
+	
+	echo !preLogFile!
+	echo !preLogPos!
+	
+	if !preLogFile! == !newLogFile! if !preLogPos! == !newLogPos! (
+		echo Restart Mysql
+		goto restartMysql
+	) else (
+		goto writePrevious
+	)
+) else (
+	goto writePrevious
+)
+
+:restartMysql
+net stop mysql3308
+net start mysql3308
+:writePrevious
+echo !newLogFile!:!newLogPos!>!previousFile!
+pause

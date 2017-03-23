@@ -1,0 +1,7 @@
+@echo off
+mysql -P3308 -uroot -p123456 -e "show slave status\G" > temp.txt
+setlocal ENABLEDELAYEDEXPANSION
+for /f "delims=: tokens=1,*" %%i in (temp.txt) do (
+	set str1=%%i
+    echo !str1!
+)
