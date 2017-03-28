@@ -1,6 +1,17 @@
 抓取nunu.co.nz的商品图片。
 
 
+milk                   http://www.nunu.co.nz/milk.html
+honeyproducts          http://www.nunu.co.nz/honeyproducts.html
+supplements            http://www.nunu.co.nz/supplements.html
+mother-baby            http://www.nunu.co.nz/mother-baby.html
+beauty-personal-care   http://www.nunu.co.nz/beauty-personal-care.html
+commodity              http://www.nunu.co.nz/commodity.html
+
+
+
+
+
 [string]$basePath = 'C:\0-D\01-work\ps\nunu\'
 [string]$logFile = -Join($basePath, 'grab.log')
 [string]$srcUrl = -Join($basePath, 'source-url.txt')
