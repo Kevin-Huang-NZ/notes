@@ -10,9 +10,8 @@ commodity              http://www.nunu.co.nz/commodity.html
 
 
 
-
-
-[string]$basePath = 'C:\0-D\01-work\ps\nunu\'
+[string]$libsPath = 'D:\program\ps\libs\'
+[string]$basePath = 'D:\program\ps\nunu\'
 [string]$logFile = -Join($basePath, 'grab.log')
 [string]$srcUrl = -Join($basePath, 'source-url.txt')
 [string]$listPagePath = -Join($basePath, 'listPages\')
@@ -25,7 +24,8 @@ commodity              http://www.nunu.co.nz/commodity.html
 Main-Entry
 
 function Main-Entry() {
-    Add-Type -Path ..\libs\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll
+    [string]$libPath1 = -Join($libsPath,'HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll')
+    Add-Type -Path $libPath1
     # 分步执行
     # 1、抓取列表页
     # Grab-Parse-List
@@ -45,15 +45,19 @@ function Parse-All-Good-Pages() {
         [string]$catalog = $tokens[0]
 
         [string]$catalogPath = -Join($basePath, $catalog)
-            Write-Output $catalogPath
 
-        Get-ChildItem $catalogPath -Directory | %{
+        Get-ChildItem $catalogPath -Directory|%{
             $goodFolder = $_.Name
             $goodHtml = -Join($catalogPath, '\', $goodFolder, '\', $goodFolder, '.html')
             $titleFile = -Join($catalogPath, '\', $goodFolder, '\', $titleFileName)
             $imageFile = -Join($catalogPath, '\', $goodFolder, '\', $imageFileName)
-
-            Parse-One-Good-Page -htmlFile $goodHtml -titleFile $titleFile -imageFile $imageFile
+            
+            Parse-One-Good-Page -goodHtml $goodHtml -titleFile $titleFile -imageFile $imageFile
+            <#
+            Write-Output $goodHtml
+            Write-Output $titleFile
+            Write-Output $imageFile
+            #>
         }
 
     }
@@ -185,7 +189,7 @@ function Parse-One-Good-Page {
         Mandatory = $true,
         ParameterSetName = '',
         ValueFromPipeline = $false)]
-        [string]$htmlFile,
+        [string]$goodHtml,
         [Parameter(
         Mandatory = $true,
         ParameterSetName = '',
@@ -198,12 +202,15 @@ function Parse-One-Good-Page {
         [string]$imageFile
         )
     
-
+    <#
+    Write-Output $goodHtml
+    Write-Output $titleFile
+    Write-Output $imageFile
+    #>
     Try {
-    
         $doc = New-Object HtmlAgilityPack.HtmlDocument
-        $doc.LoadHtml((get-content $htmlFile -encoding utf8))
-
+        $doc.LoadHtml((get-content $goodHtml -encoding utf8))
+        
         if (Test-Path -Path $titleFile) {
             Remove-Item $titleFile
         }
@@ -212,14 +219,16 @@ function Parse-One-Good-Page {
             Remove-Item $imageFile
         }
         
-        $doc.DocumentNode.SelectSingleNode("//div[@class='product-view']//h1[@class='dp-product-name']").Value | Out-File $titleFile
-        $doc.DocumentNode.SelectNodes("//div[@class='product-view']//div[@class='zoomWrapper']/img").Value | ForEach-Object {
+        $doc.DocumentNode.SelectSingleNode("//div[@class='product-view']//h1[@class='dp-product-name']").InnerText | Out-File $titleFile
+        $doc.DocumentNode.SelectNodes("//div[@class='product-view']//div[@class='product-image product-image-zoom']//img") | ForEach-Object {
             $_.Attributes['src'].Value | Out-File -Append $imageFile
         }
         $doc.DocumentNode.SelectNodes("//div[@id='product_tabs_attributes_tabbed_contents']//img") | ForEach-Object {
             $_.Attributes['src'].Value | Out-File -Append $imageFile
         }
-
+    <#
+    Write-Output $doc.DocumentNode.SelectNodes("//div[@class='product-view']//div[@class='product-image product-image-zoom']//img")
+        #>
     }
     Catch {
         -Join('[parse] Failed-----',$htmlFile) | Out-File $logFile -Append

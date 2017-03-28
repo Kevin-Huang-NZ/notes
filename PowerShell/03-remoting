@@ -1,4 +1,4 @@
-1、Eable-PSRemoting
+1、Enable-PSRemoting
     开启本机的远程访问服务。
 
 2、Enter-PSSession
@@ -8,3 +8,11 @@
 3、Invoke-Command
     在远程机器上执行命令，执行结果返回本机。
     Invoke-Command -ComputerName localhost,localhost {Get-EventLog -LogName system -new 3}
+
+
+
+4、运行ps1脚本出现错误：
+    无法加载文件 D:\program\ps\nunu\grab-nunu.ps1，因为在此系统上禁止运行脚本。
+
+    使用 get-executionpolicy 查看当前系统的执行策略，如果是Restricted，将其修改为RemoteSigned
+        set-executionpolicy remotesigned
