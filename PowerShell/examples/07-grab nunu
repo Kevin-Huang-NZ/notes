@@ -1,3 +1,252 @@
 抓取nunu.co.nz的商品图片。
 
 
+[string]$basePath = 'C:\0-D\01-work\ps\nunu\'
+[string]$logFile = -Join($basePath, 'grab.log')
+[string]$srcUrl = -Join($basePath, 'source-url.txt')
+[string]$listPagePath = -Join($basePath, 'listPages\')
+[string]$goodsFileName = 'goods.txt'
+[string]$titleFileName = 'title.txt'
+[string]$imageFileName = 'image.txt'
+
+
+
+Main-Entry
+
+function Main-Entry() {
+    Add-Type -Path ..\libs\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll
+    # 分步执行
+    # 1、抓取列表页
+    # Grab-Parse-List
+
+    # 2、抓取商品页
+    # Grab-Goods
+
+    # 3、解析商品页，抓取商品图片
+    Parse-All-Good-Pages
+
+}
+
+function Parse-All-Good-Pages() {
+
+    Get-Content $srcUrl | %{
+        $tokens = $_.Split(' ',[StringSplitOptions]::RemoveEmptyEntries)
+        [string]$catalog = $tokens[0]
+
+        [string]$catalogPath = -Join($basePath, $catalog)
+            Write-Output $catalogPath
+
+        Get-ChildItem $catalogPath -Directory | %{
+            $goodFolder = $_.Name
+            $goodHtml = -Join($catalogPath, '\', $goodFolder, '\', $goodFolder, '.html')
+            $titleFile = -Join($catalogPath, '\', $goodFolder, '\', $titleFileName)
+            $imageFile = -Join($catalogPath, '\', $goodFolder, '\', $imageFileName)
+
+            Parse-One-Good-Page -htmlFile $goodHtml -titleFile $titleFile -imageFile $imageFile
+        }
+
+    }
+}
+
+
+function Grab-Goods() {
+
+    Get-Content $srcUrl | %{
+        $tokens = $_.Split(' ',[StringSplitOptions]::RemoveEmptyEntries)
+        [string]$catalog = $tokens[0]
+
+        
+        [string]$catalogPath = -Join($basePath, $catalog)
+        [string]$goodsFile = -Join($basePath, $catalog, '\', $goodsFileName)
+
+        if (Test-Path -Path $goodsFile) {
+            [int]$goodNo = 1
+            Get-Content $goodsFile | %{
+
+                $tokens = $_.Split(' ',[StringSplitOptions]::RemoveEmptyEntries)
+                [string]$goodUrl = $tokens[0]
+                [string]$coverImgUrl = $tokens[1]
+
+                [string]$oneGoodPath=-Join($catalogPath, '\', $goodNo)
+                if (Test-Path -Path $oneGoodPath) {
+                    Remove-Item $oneGoodPath -Recurse
+                }
+                New-Item -Path $oneGoodPath -ItemType directory
+
+                [string]$goodHtml = -Join($oneGoodPath,'\',$goodNo,'.html')
+                [string]$coverImg = -Join($oneGoodPath,'\', 'cover.jpg')
+
+                Download-File -url $goodUrl -outFile $goodHtml
+                Download-File -url $coverImgUrl -outFile $coverImg
+
+                $goodNo = $goodNo + 1
+            }
+        }
+    }
+}
+
+function Grab-Parse-List() {
+
+    if (Test-Path -Path $listPagePath) {
+    } else {
+        New-Item -Path $listPagePath -ItemType directory
+    }
+
+    Get-Content $srcUrl | %{
+        $tokens = $_.Split(' ',[StringSplitOptions]::RemoveEmptyEntries)
+        $catalog = $tokens[0]
+        $baseUrl = $tokens[1]
+
+        
+        [string]$catalogPath = -Join($basePath, $catalog)
+        [string]$goodsFile = -Join($basePath, $catalog, '\', $goodsFileName)
+
+        if (Test-Path -Path $catalogPath) {
+        } else {
+            New-Item -Path $basePath -Name $catalog -ItemType directory
+        }
+
+        if (Test-Path -Path $goodsFile) {
+            Remove-Item $goodsFile
+        }
+
+        [int]$pageNo = 1
+        [boolean]$continue = $true
+        do{
+            [string]$htmlFileName = $catalog + '-' + $pageNo + '.html'
+            [string]$htmlFile = -Join($listPagePath,$htmlFileName)
+
+            [string]$url = -Join($baseUrl, '?p=', $pageNo)
+
+            if (Download-File -url $url -outFile $htmlFile) {
+                $continue = Parse-List-Page -htmlFile $htmlFile -outFile $goodsFile
+            }
+            -Join('Current page: ', $pageNo, '; Has next page: ', $continue) | Write-Output 
+            $pageNo = $pageNo + 1
+        } while($continue)
+
+    }
+}
+
+
+
+function Parse-List-Page {
+    Param([Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$htmlFile,
+        [Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$outFile
+        )
+    
+
+    Try {
+        $doc = New-Object HtmlAgilityPack.HtmlDocument
+        $doc.LoadHtml((get-content $htmlFile -encoding utf8))
+        
+        
+        
+        $doc.DocumentNode.SelectNodes("//div[@class='product-image-top']/div/a") | ForEach-Object {
+            -Join($_.Attributes['href'].value, '                 ',$_.SelectSingleNode("img").Attributes['src'].Value) | Out-File -Append $outFile
+        }
+
+        [boolean]$hasNext = $false
+        if ($doc.DocumentNode.SelectSingleNode("//li/a[@class='next i-next']")) {
+            $hasNext = $true
+        }
+        return $hasNext
+    }
+    Catch {
+        -Join('[parse] Failed-----',$htmlFile) | Out-File $logFile -Append
+        return $false
+    }
+    Finally {
+    }
+}
+
+
+function Parse-One-Good-Page {
+    Param([Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$htmlFile,
+        [Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$titleFile,
+        [Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$imageFile
+        )
+    
+
+    Try {
+    
+        $doc = New-Object HtmlAgilityPack.HtmlDocument
+        $doc.LoadHtml((get-content $htmlFile -encoding utf8))
+
+        if (Test-Path -Path $titleFile) {
+            Remove-Item $titleFile
+        }
+
+        if (Test-Path -Path $imageFile) {
+            Remove-Item $imageFile
+        }
+        
+        $doc.DocumentNode.SelectSingleNode("//div[@class='product-view']//h1[@class='dp-product-name']").Value | Out-File $titleFile
+        $doc.DocumentNode.SelectNodes("//div[@class='product-view']//div[@class='zoomWrapper']/img").Value | ForEach-Object {
+            $_.Attributes['src'].Value | Out-File -Append $imageFile
+        }
+        $doc.DocumentNode.SelectNodes("//div[@id='product_tabs_attributes_tabbed_contents']//img") | ForEach-Object {
+            $_.Attributes['src'].Value | Out-File -Append $imageFile
+        }
+
+    }
+    Catch {
+        -Join('[parse] Failed-----',$htmlFile) | Out-File $logFile -Append
+        return $false
+    }
+    Finally {
+    }
+}
+
+
+
+function Download-File() {
+    Param([Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$url,
+        [Parameter(
+        Mandatory = $true,
+        ParameterSetName = '',
+        ValueFromPipeline = $false)]
+        [string]$outFile
+        )
+
+    Try {
+
+        if (Test-Path -Path $outFile) {
+            Remove-Item $outFile
+        }
+
+        Invoke-WebRequest $url -OutFile $outFile
+        -Join('[grab ] Success-----',$url) | Out-File $logFile -Append
+        return $true
+    }
+    Catch {
+        -Join('[grab ] Failed------',$url) | Out-File $logFile -Append
+        return $false
+    }
+    Finally {
+    }
+}
