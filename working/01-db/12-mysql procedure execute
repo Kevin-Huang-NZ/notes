@@ -1,0 +1,43 @@
+DELIMITER $$
+
+USE `wefind_temp`$$
+
+DROP PROCEDURE IF EXISTS `add_tag_columns`$$
+
+CREATE DEFINER=`safework`@`%` PROCEDURE `add_tag_columns`()
+BEGIN
+    DECLARE targetSchema VARCHAR(64) DEFAULT 'FIRECONTROL_NEW';
+    DECLARE schemaName VARCHAR(64) DEFAULT 't_news';
+    DECLARE tableName VARCHAR(64) DEFAULT 't_news';
+
+    
+    DECLARE done INT DEFAULT 0;
+    DECLARE curNeedUpdate CURSOR FOR SELECT `table_name`,`table_schema` FROM `information_schema`.`tables`  WHERE `table_name` LIKE 'T_NEWS%' AND `table_schema`=targetSchema;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+    
+    OPEN curNeedUpdate;
+    REPEAT
+        FETCH curNeedUpdate INTO tableName,schemaName;
+        SELECT * FROM `information_schema`.`columns`  WHERE `table_name` = tableName AND `table_schema`=schemaName AND `column_name`='tag11';
+        SET @rows = FOUND_ROWS();
+        IF @rows = 0 THEN
+	    SET @i = 11;
+	    SET @len = 30;
+	    WHILE @i <= @len DO
+		SET @updatesql  =CONCAT('alter table `', schemaName, '`.`', tableName, '` add tag', @i,' varchar(255) default '''';' );
+		PREPARE sqltext FROM @updatesql;
+		EXECUTE  sqltext;
+		
+		SET @updatesql1  =CONCAT('alter table ', schemaName, '.', tableName, ' add index tag', @i,' (tag', @i,');' );
+		PREPARE sqltext1 FROM @updatesql1;
+		EXECUTE  sqltext1;
+		
+		SET @i = @i + 1;
+	    END WHILE;
+        END IF;
+        
+    UNTIL done END REPEAT;
+    CLOSE curNeedUpdate;
+END$$
+
+DELIMITER ;
