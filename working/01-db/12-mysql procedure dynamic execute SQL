@@ -7,7 +7,7 @@ DROP PROCEDURE IF EXISTS `add_tag_columns`$$
 CREATE DEFINER=`safework`@`%` PROCEDURE `add_tag_columns`()
 BEGIN
     DECLARE targetSchema VARCHAR(64) DEFAULT 'FIRECONTROL_NEW';
-    DECLARE schemaName VARCHAR(64) DEFAULT 't_news';
+    DECLARE schemaName VARCHAR(64) DEFAULT 't_news'; 
     DECLARE tableName VARCHAR(64) DEFAULT 't_news';
 
     
