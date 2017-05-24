@@ -12,4 +12,4 @@
     如果是2.2的问题，也可以尝试将存储过程移到另外一个库。或者，给参数增加COLLATE xxxxx的修饰。
 
     比如：
-        IN rUsername VARCHAR(24) COLLATE utf8_unicode_ci, -- COLLATE added
+        IN rUsername VARCHAR(24) COLLATE utf8_unicode_ci, -- COLLATE added 
