@@ -14,4 +14,4 @@
     比如：
         IN rUsername VARCHAR(24) COLLATE utf8_unicode_ci, -- COLLATE added 
 
-        git config --global credential.helper wincred
+        
