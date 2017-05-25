@@ -24,11 +24,11 @@ BEGIN
 	    SET @i = 11;
 	    SET @len = 30;
 	    WHILE @i <= @len DO
-		SET @updatesql  =CONCAT('alter table `', schemaName, '`.`', tableName, '` add tag', @i,' varchar(255) default '''';' );
+		SET @updatesql  =CONCAT('alter table `', schemaName, '`.`', tableName, '` add `tag', @i,'` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci default '''' ;' );
 		PREPARE sqltext FROM @updatesql;
 		EXECUTE  sqltext;
 		
-		SET @updatesql1  =CONCAT('alter table ', schemaName, '.', tableName, ' add index tag', @i,' (tag', @i,');' );
+		SET @updatesql1  =CONCAT('alter table `', schemaName, '`.`', tableName, '` add index `tag', @i,'` (`tag', @i,'`);' );
 		PREPARE sqltext1 FROM @updatesql1;
 		EXECUTE  sqltext1;
 		
