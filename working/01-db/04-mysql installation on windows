@@ -69,7 +69,7 @@
         ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
     
     启动数据库时加上参数：
-        --init-file=root用户密码问价你路径
+        --init-file=root用户密码文件的路径
     
     比如：
         bin\mysqld --console --init-file=D:\soft\mysql-master-slave\mysql3307\init-password.txt

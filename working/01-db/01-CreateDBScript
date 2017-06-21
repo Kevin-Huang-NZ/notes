@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS htn CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS carpenter CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 grant all privileges on  htn.* to  'htn'@'%' identified by '123456';
 
