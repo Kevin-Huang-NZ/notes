@@ -626,6 +626,26 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="db-query-by-column2">通过扩展字段查询2</h2>
+                    <p> 通过2个扩展字段查询1条数据。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getBeanOneByClassNameExtColumn2" id="idObjXXX">	  	 
+	<east:para name="className" value="colMonitor" type="String" />
+	<east:para name="fieldName0" value="cmonitorCode" type="String" />
+	<east:para name="fieldValue0" value="${monitorCode}" type="String" />
+	<east:para name="fieldName1" value="cmonitorCode" type="String" />
+	<east:para name="fieldValue1" value="${monitorCode}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
                     <h2 id="db-query-by-searchTVL-and">searchTVL查询（AND）</h2>
                     <p>searchTVL是自定义标签可以解析的一种查询条件格式。</p>
                     <p>参数说明：</p>
@@ -634,6 +654,7 @@ ${idPageNo}</textarea>
                         <p>page：分页控制中的页面，查询第几页。</p>
                         <p>pageSize：每页的数据条数。</p>
                         <p>searchTVL： where条件，多个条件使用逗号(多个逗号不会出错)连接，实际执行时会使用AND连接符连接。val两端没有单引号的，系统会自动加单引号把val的值引起来。</p>
+                        <p>在同一个条件中，在tag、val、link中添加多组数据，可以实现OR查询条件。tag、val、link中的多个值用逗号连接，数量必须匹配。</p>
                         <blockquote>
                             <p>LITTLER = "!{LL}";</p>
                             <p>BIGGER = "!{BG}";</p>
@@ -644,7 +665,8 @@ ${idPageNo}</textarea>
                             <p>IN = "!{IN}";</p>
                             <p>LIKE = "!{LIKE}"; 使用like连接符时，如果val传值中没有%，系统会自动在两端补充%</p>
                         </blockquote>
-                        <p>orderName：排序字段，只能有一个</p>
+                        <p>orderName：排序字段.如果有多个用逗号分隔，并且，除了最后一个可以使用扩展名，其他必须用实际的数据库字段名并加上升降序。</p>
+                        <p>如：${idNewsClass.extKeepName.cstartTime} desc,cdate</p>
                         <p>descOrAsc：升降序，true为降序，false为升序
                         </p>
                     </blockquote>
@@ -1079,6 +1101,9 @@ ${idPageNo}</textarea>
     <east:para name="_object"  value="${__idUserDeal}" type="Object" /> 
     <east:para name="_field"  value="id" type="String" /> 
     <east:para name="_value"  value="0" type="Integer" /> 
+</east:service>
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo"   methodName="saveHBean" id="__savedFireWarningId">
+    <east:para name="_Object" value="${__idUserDeal}" type="Object" /> 
 </east:service>
 <!--#<MACRO>
     Jsp.call("/bspms_jsp/bspms_funs_html/ajax_set_field1_fun.jsp","${__idUserDeal}","ctitle","${requestEx.tp}");
@@ -1700,7 +1725,19 @@ ${idPageNo}</textarea>
 
 
 
-
+                    <h2 id="else-pattern-no">自动生成编号</h2>
+                    <p>getDefaultPattern方法根据传递的参数，自动生成相应格式的编号。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getDefaultPattern"  id="defaultTeacherNo">
+    <east:para name="patternStr" value="{seq(&apos;T%09d&apos;)}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
 
 
                 </div>
@@ -1756,6 +1793,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#db-query-by-column">通过扩展字段查询</a>
+                                </li>
+                                <li>
+                                    <a href="#db-query-by-column2">通过扩展字段查询2</a>
                                 </li>
                                 <li>
                                     <a href="#db-query-by-searchTVL-and">searchTVL查询(AND)</a>
@@ -1894,6 +1934,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#else-url-encode">url参数encode</a>
+                                </li>
+                                <li>
+                                    <a href="#else-pattern-no">自动生成编号</a>
                                 </li>
                             </ul>
                         </li>
