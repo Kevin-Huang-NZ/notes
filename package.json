@@ -5,7 +5,13 @@
     "description": "",
     "license": "Apache-2.0",
     "dependencies": {
-        "bower": "^1.7.9"
+        "highcharts": "^5.0.14",
+        "highcharts-more": "^0.1.2",
+        "jquery": "^3.2.1",
+        "moment": "^2.18.1",
+        "yarn": "^0.27.5"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "main": "index.js",
+    "repository": "https://github.com/Kevin-Huang-NZ/notes.git"
 }
