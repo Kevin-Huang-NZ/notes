@@ -158,7 +158,7 @@ http://serverfault.com/questions/825407/boolean-ftp-home-dir-is-not-defined-rhel
 
 
 八、安装MariaDB
-# yum install mariadb-server nariadb -y
+# yum install mariadb-server mariadb -y
 启动：
 # systemctl start mariadb.service
 
