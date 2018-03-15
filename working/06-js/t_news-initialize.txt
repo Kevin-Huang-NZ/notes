@@ -1,0 +1,111 @@
+
+
+注意替换schem_name，也就是下边的‘HOSPITALAGENT’和‘hospitalagent’
+
+
+1、删除物理表
+SELECT CONCAT('DROP TABLE ',t.table_name,';') FROM information_schema.`TABLES` t
+WHERE t.`TABLE_SCHEMA`='HOSPITALAGENT'
+AND t.`TABLE_NAME` LIKE 't_news_%'
+
+
+2、查看、删除字典定义和数据
+SELECT t.* 
+FROM hospitalagent.t_news t
+WHERE t.`column_id`= 1609
+
+
+DELETE FROM hospitalagent.t_news 
+WHERE `column_id`= 1609
+
+**
+步骤3、4中的2461880是用下边sql检索出来的虚拟表的父类的id：
+SELECT t.*
+FROM hospitalagent.t_news t
+WHERE t.`column_id`= 1601 AND t.ext1 = '0'
+
+3、查看、删除虚拟表字段定义
+
+SELECT t.*
+FROM hospitalagent.t_news t
+WHERE t.`column_id`= 2001 
+  AND EXISTS (
+    SELECT t1.id
+    FROM hospitalagent.t_news t1
+    WHERE t1.`column_id`= 1601 AND t1.ext1 = '2461880' AND t1.ext3 = t.ext1
+  )
+
+不推荐直接执行，最好是检索出来，看着一个个删除
+DELETE t FROM hospitalagent.t_news t INNER JOIN hospitalagent.t_news t1 ON t1.`column_id`= 1601 AND t1.ext1 = '2461880' AND t1.ext3 = t.ext1
+WHERE t.`column_id`= 2001 
+
+
+4、查看、删除虚拟表定义
+
+SELECT t.*
+FROM hospitalagent.t_news t
+WHERE t.`column_id`= 1601 AND t.ext1 = '2461880'
+
+DELETE t
+FROM hospitalagent.t_news t
+WHERE t.`column_id`= 1601 AND t.ext1 = '2461880'
+
+
+5、从其他库里导入虚拟表结构(注意sql中的schema_name)
+
+先在源数据库中找到虚拟表的父类的id
+SELECT t.*
+FROM sportlottery.t_news t
+WHERE t.`column_id`= 1601 AND t.ext1 = '0'
+
+查看源数据库中的虚拟表定义
+SELECT t.*
+FROM sportlottery.t_news t
+WHERE t.`column_id`= 1601 AND t.ext1 = '2461880'
+  AND t.ext3='colWeixinUser'
+  
+  
+表定义导入到新的数据库：
+INSERT INTO `hospitalagent`.`t_news`
+            (`column_id`,`title`,`s_title`,`type`,`tag1`,`tag2`,`tag3`,`tag4`,`tag5`,`tag6`,`tag7`,`tag8`,`tag9`,`tag10`,
+             `publish_time`,`checker_id`,`check_result`,`check_date`,`click_times`,`user_id`,`cid`,`score`,`cost`,`extern_table`,`cdate`,`group_sn`,
+             `ext1`,`ext2`,`ext3`,`ext4`,`ext5`,`ext6`,`ext7`,`ext8`,`ext9`,`ext10`,`ext11`,`ext12`,`ext13`,`ext14`,
+             `order_pos`,`order_num`,
+             `ext15`,`ext16`,`ext17`,`ext18`,`ext19`,`ext20`,
+             `tag11`,`tag12`,`tag13`,`tag14`,`tag15`,`tag16`,`tag17`,`tag18`,`tag19`,`tag20`,`tag21`,`tag22`,`tag23`,`tag24`,`tag25`,`tag26`,`tag27`,`tag28`,`tag29`,`tag30`)
+SELECT `column_id`,`title`,`s_title`,`type`,`tag1`,`tag2`,`tag3`,`tag4`,`tag5`,`tag6`,`tag7`,`tag8`,`tag9`,`tag10`,
+             `publish_time`,`checker_id`,`check_result`,`check_date`,`click_times`,`user_id`,`cid`,`score`,`cost`,`extern_table`,`cdate`,`group_sn`,
+             `ext1`,`ext2`,`ext3`,`ext4`,`ext5`,`ext6`,`ext7`,`ext8`,`ext9`,`ext10`,`ext11`,`ext12`,`ext13`,`ext14`,
+             `order_pos`,`order_num`,
+             `ext15`,`ext16`,`ext17`,`ext18`,`ext19`,`ext20`,
+             `tag11`,`tag12`,`tag13`,`tag14`,`tag15`,`tag16`,`tag17`,`tag18`,`tag19`,`tag20`,`tag21`,`tag22`,`tag23`,`tag24`,`tag25`,`tag26`,`tag27`,`tag28`,`tag29`,`tag30`
+FROM sportlottery.t_news t
+WHERE t.`column_id`= 1601 AND t.ext1 = '2461880'
+  AND t.ext3='colWeixinUser'
+
+表字段定义导入到新的数据库
+INSERT INTO `hospitalagent`.`t_news`
+            (`column_id`,`title`,`s_title`,`type`,`tag1`,`tag2`,`tag3`,`tag4`,`tag5`,`tag6`,`tag7`,`tag8`,`tag9`,`tag10`,
+             `publish_time`,`checker_id`,`check_result`,`check_date`,`click_times`,`user_id`,`cid`,`score`,`cost`,`extern_table`,`cdate`,`group_sn`,
+             `ext1`,`ext2`,`ext3`,`ext4`,`ext5`,`ext6`,`ext7`,`ext8`,`ext9`,`ext10`,`ext11`,`ext12`,`ext13`,`ext14`,
+             `order_pos`,`order_num`,
+             `ext15`,`ext16`,`ext17`,`ext18`,`ext19`,`ext20`,
+             `tag11`,`tag12`,`tag13`,`tag14`,`tag15`,`tag16`,`tag17`,`tag18`,`tag19`,`tag20`,`tag21`,`tag22`,`tag23`,`tag24`,`tag25`,`tag26`,`tag27`,`tag28`,`tag29`,`tag30`)
+SELECT `column_id`,`title`,`s_title`,`type`,`tag1`,`tag2`,`tag3`,`tag4`,`tag5`,`tag6`,`tag7`,`tag8`,`tag9`,`tag10`,
+             `publish_time`,`checker_id`,`check_result`,`check_date`,`click_times`,`user_id`,`cid`,`score`,`cost`,`extern_table`,`cdate`,`group_sn`,
+             `ext1`,`ext2`,`ext3`,`ext4`,`ext5`,`ext6`,`ext7`,`ext8`,`ext9`,`ext10`,`ext11`,`ext12`,`ext13`,`ext14`,
+             `order_pos`,`order_num`,
+             `ext15`,`ext16`,`ext17`,`ext18`,`ext19`,`ext20`,
+             `tag11`,`tag12`,`tag13`,`tag14`,`tag15`,`tag16`,`tag17`,`tag18`,`tag19`,`tag20`,`tag21`,`tag22`,`tag23`,`tag24`,`tag25`,`tag26`,`tag27`,`tag28`,`tag29`,`tag30`
+FROM sportlottery.t_news t
+WHERE t.`column_id`= 2001 
+  AND t.ext1='colWeixinUser'
+  
+  
+  
+  
+7、修改字段类型成longtext
+ALTER TABLE `hospitalagent`.`t_news_industry_news`   
+  CHANGE `ext16` `ext16` LONGTEXT NULL, 
+  DROP INDEX `ext16`,
+  ADD  INDEX `ext16` (`ext16`(200));
