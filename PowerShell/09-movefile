@@ -1,1 +1,2 @@
 Get-ChildItem E:\source -recurse | Where-Object Name -like *pb.xv | Move-Item -Destination E:\pb
+Get-ChildItem E:\pdf | Where-Object Name -like 'Intro.*' | Rename-Item -NewName {$_.name -replace 'Intro.', 'intro_'}
