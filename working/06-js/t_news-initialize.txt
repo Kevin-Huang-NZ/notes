@@ -4,15 +4,33 @@
 
 
 1、删除物理表
+
 SELECT CONCAT('DROP TABLE ',t.table_name,';') FROM information_schema.`TABLES` t
 WHERE t.`TABLE_SCHEMA`='HOSPITALAGENT'
 AND t.`TABLE_NAME` LIKE 't_news_%'
-
+AND t.`TABLE_NAME` NOT IN (
+'t_news_sys_columns',
+'t_news_snap'
+)
 
 2、查看、删除字典定义和数据
 SELECT t.* 
-FROM hospitalagent.t_news t
+FROM t_news t
 WHERE t.`column_id`= 1609
+AND t.ext3 NOT IN (
+'dicCheckStatus',
+'dicCountry',
+'dicCurrency',
+'dicGender',
+'dicIdType',
+'dicNationality',
+'dicMarriage',
+'dicIdType',
+'dicSysFuns',
+'dicSysRole',
+'dicUserStatus',
+'dicYesOrNo'
+)
 
 
 DELETE FROM hospitalagent.t_news 
