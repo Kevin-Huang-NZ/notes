@@ -32,20 +32,16 @@ AND t.ext3 NOT IN (
 'dicYesOrNo'
 )
 
-
-DELETE FROM hospitalagent.t_news 
-WHERE `column_id`= 1609
-
 **
 步骤3、4中的2461880是用下边sql检索出来的虚拟表的父类的id：
 SELECT t.*
-FROM hospitalagent.t_news t
+FROM t_news t
 WHERE t.`column_id`= 1601 AND t.ext1 = '0'
 
 3、查看、删除虚拟表字段定义
 
 SELECT t.*
-FROM hospitalagent.t_news t
+FROM t_news t
 WHERE t.`column_id`= 2001 
   AND EXISTS (
     SELECT t1.id
@@ -54,18 +50,18 @@ WHERE t.`column_id`= 2001
   )
 
 不推荐直接执行，最好是检索出来，看着一个个删除
-DELETE t FROM hospitalagent.t_news t INNER JOIN hospitalagent.t_news t1 ON t1.`column_id`= 1601 AND t1.ext1 = '2461880' AND t1.ext3 = t.ext1
+DELETE t FROM t_news t INNER JOIN t_news t1 ON t1.`column_id`= 1601 AND t1.ext1 = '2461880' AND t1.ext3 = t.ext1
 WHERE t.`column_id`= 2001 
 
 
 4、查看、删除虚拟表定义
 
 SELECT t.*
-FROM hospitalagent.t_news t
+FROM t_news t
 WHERE t.`column_id`= 1601 AND t.ext1 = '2461880'
 
 DELETE t
-FROM hospitalagent.t_news t
+FROM t_news t
 WHERE t.`column_id`= 1601 AND t.ext1 = '2461880'
 
 
