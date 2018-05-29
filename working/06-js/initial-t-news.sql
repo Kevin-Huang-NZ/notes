@@ -59,10 +59,16 @@ ALTER TABLE `t_news_base_news`
   DROP INDEX `ext16`,
   ADD  INDEX `ext16` (`ext16`(200));
   
+ALTER TABLE `t_news_base_news`   
+  CHANGE `ext15` `ext15` VARCHAR(1000) CHARSET utf8 COLLATE utf8_general_ci DEFAULT ''  NULL;
+  
 ALTER TABLE `t_news_base_notice`   
   CHANGE `ext14` `ext14` LONGTEXT NULL, 
   DROP INDEX `ext14`,
   ADD  INDEX `ext14` (`ext14`(200));
+  
+ALTER TABLE `t_news_base_notice`   
+  CHANGE `ext13` `ext13` VARCHAR(1000) CHARSET utf8 COLLATE utf8_general_ci DEFAULT ''  NULL;
   
 
 
@@ -92,37 +98,4 @@ insert into `t_news` (`id`, `column_id`, `title`, `s_title`, `type`, `tag1`, `ta
 
 insert into `t_news` (`id`, `column_id`, `title`, `s_title`, `type`, `tag1`, `tag2`, `tag3`, `tag4`, `tag5`, `tag6`, `tag7`, `tag8`, `tag9`, `tag10`, `publish_time`, `checker_id`, `check_result`, `check_date`, `click_times`, `user_id`, `cid`, `score`, `cost`, `extern_table`, `cdate`, `group_sn`, `ext1`, `ext2`, `ext3`, `ext4`, `ext5`, `ext6`, `ext7`, `ext8`, `ext9`, `ext10`, `ext11`, `ext12`, `ext13`, `ext14`, `order_pos`, `order_num`, `ext15`, `ext16`, `ext17`, `ext18`, `ext19`, `ext20`, `tag11`, `tag12`, `tag13`, `tag14`, `tag15`, `tag16`, `tag17`, `tag18`, `tag19`, `tag20`, `tag21`, `tag22`, `tag23`, `tag24`, `tag25`, `tag26`, `tag27`, `tag28`, `tag29`, `tag30`) values('100001','1601',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,'0',NULL,NULL,'1','1',NULL,NULL,'t_news_staff','2018-01-11 10:39:28',NULL,'100000','员工','colStaff','','','','','',NULL,'','','','','',NULL,'9','','1','','','',NULL,'','','','','','','','','','','','','','','','','','','','');
 insert into `t_news` (`id`, `column_id`, `title`, `s_title`, `type`, `tag1`, `tag2`, `tag3`, `tag4`, `tag5`, `tag6`, `tag7`, `tag8`, `tag9`, `tag10`, `publish_time`, `checker_id`, `check_result`, `check_date`, `click_times`, `user_id`, `cid`, `score`, `cost`, `extern_table`, `cdate`, `group_sn`, `ext1`, `ext2`, `ext3`, `ext4`, `ext5`, `ext6`, `ext7`, `ext8`, `ext9`, `ext10`, `ext11`, `ext12`, `ext13`, `ext14`, `order_pos`, `order_num`, `ext15`, `ext16`, `ext17`, `ext18`, `ext19`, `ext20`, `tag11`, `tag12`, `tag13`, `tag14`, `tag15`, `tag16`, `tag17`, `tag18`, `tag19`, `tag20`, `tag21`, `tag22`, `tag23`, `tag24`, `tag25`, `tag26`, `tag27`, `tag28`, `tag29`, `tag30`) values('100002','2001',NULL,'',NULL,'{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"999999999\",\"minVal\":\"0\",\"canRetrieve\":\"0\",\"defaultVal\":\"0\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}',NULL,NULL,'0',NULL,'0','1','1','0.00',NULL,'','2018-03-07 11:41:13','','colStaff',NULL,'','','','','','','','','','{\"caption\":\"员工工号\",\"name\":\"cstaffNo\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"{seq(\'ST%09d\')}\",\"memoVal\":\"\"}','{\"caption\":\"姓名\",\"name\":\"crealName\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"手机号\",\"name\":\"cphone\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','0','0','{\"caption\":\"登陆密码\",\"name\":\"cpassword\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"邮箱\",\"name\":\"cemail\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"状态\",\"name\":\"cstatus\",\"type\":\"1\",\"pattern\":\"\",\"refClassName\":\"dicUserStatus\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"0-冻结；1-正常；默认1-正常\"}','{\"caption\":\"员工角色\",\"name\":\"crole\",\"type\":\"1\",\"pattern\":\"\",\"refClassName\":\"dicSysRole\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"1为超级协调员\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','{\"caption\":\"\",\"name\":\"\",\"type\":\"0\",\"pattern\":\"\",\"refClassName\":\"\",\"maxVal\":\"\",\"minVal\":\"\",\"canRetrieve\":\"0\",\"defaultVal\":\"\",\"memoVal\":\"\"}','','','','','','','','','','');
-<<<<<<< HEAD
 
-
-##创建物理表之后执行
-ALTER TABLE `t_news_snap`   
-  CHANGE `ext16` `ext16` LONGTEXT NULL, 
-  DROP INDEX `ext16`,
-  ADD  INDEX `ext16` (`ext16`(200));
-  
-ALTER TABLE `t_news_img_pool`   
-  CHANGE `ext14` `ext14` LONGTEXT NULL, 
-  DROP INDEX `ext14`,
-  ADD  INDEX `ext14` (`ext14`(200));
-
-ALTER TABLE `t_news_base_news`   
-  CHANGE `ext15` `ext15` VARCHAR(1000) CHARSET utf8 COLLATE utf8_general_ci DEFAULT ''  NULL;
-  
-ALTER TABLE `t_news_base_news`   
-  CHANGE `ext16` `ext16` LONGTEXT NULL, 
-  DROP INDEX `ext16`,
-  ADD  INDEX `ext16` (`ext16`(200));
-  
-ALTER TABLE `t_news_base_notice`   
-  CHANGE `ext13` `ext13` VARCHAR(1000) CHARSET utf8 COLLATE utf8_general_ci DEFAULT ''  NULL;
-  
-ALTER TABLE `t_news_base_notice`   
-  CHANGE `ext14` `ext14` LONGTEXT NULL, 
-  DROP INDEX `ext14`,
-  ADD  INDEX `ext14` (`ext14`(200));
-
-ALTER TABLE `t_news_base_scroller`   
-  CHANGE `ext12` `ext12` VARCHAR(1000) CHARSET utf8 COLLATE utf8_general_ci DEFAULT ''  NULL;
-=======
->>>>>>> 319df56391b49893e77d12c2c1155f36b1a8e196
