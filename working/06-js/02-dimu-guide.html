@@ -762,41 +762,45 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="48">
-<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__colOrganization">	  	 
-	<east:para name="className" value="colOrganization" type="String" />
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colHdfLift">       
+    <east:para name="className" value="colHdfLift" type="String" />
 </east:service>
-<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__colLine">	  	 
-	<east:para name="className" value="colLine" type="String" />
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colHdfGroup">      
+    <east:para name="className" value="colHdfGroup" type="String" />
 </east:service>
-<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__colPole">	  	 
-	<east:para name="className" value="colPole" type="String" />
+<east:service beanName="eastUtilService" methodName="setValue"  id="tnLift">
+    <east:para name="_tableName" value="${colHdfLift.externTable}" type="Object" />
+    <east:para name="_default" value="t_news" type="Object" />
 </east:service>
-<east:service beanName="eastUtilService" methodName="setValue"  id="__tnOrganization">
-	<east:para name="_tableName" value="${__colOrganization.externTable}" type="Object" />
-	<east:para name="_default" value="t_news" type="Object" />
+<east:service beanName="eastUtilService" methodName="setValue"  id="tnGroup">
+    <east:para name="_tableName" value="${colHdfGroup.externTable}" type="Object" />
+    <east:para name="_default" value="t_news" type="Object" />
 </east:service>
-<east:service beanName="eastUtilService" methodName="setValue"  id="__tnLine">
-	<east:para name="_tableName" value="${__colLine.externTable}" type="Object" />
-	<east:para name="_default" value="t_news" type="Object" />
-</east:service>
-<east:service beanName="eastUtilService" methodName="setValue"  id="__tnPole">
-	<east:para name="_tableName" value="${__colPole.externTable}" type="Object" />
-	<east:para name="_default" value="t_news" type="Object" />
-</east:service>
-<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="__rsPole">
-	<east:para name="nativeSql" value="SELECT t3.${__colPole.extKeepName.cpoleCode} AS poleCode,'1' AS p
-									FROM  ${__tnOrganization} t1,${__tnLine} t2,${__tnPole} t3
-									WHERE t1.${__colOrganization.keepName.newsClass} = 'colOrganization' 
-										AND t2.${__colLine.keepName.newsClass} = 'colLine' 
-										AND t3.${__colPole.keepName.newsClass} = 'colPole' 
-										AND t2.${__colLine.extKeepName.corganizationCode} = t1.${__colOrganization.extKeepName.corganizationCode} 
-										AND t3.${__colPole.extKeepName.clineCode} = t2.${__colLine.extKeepName.clineCode} 
-										AND (t1.${__colOrganization.extKeepName.corganizationCode} = '${userOrgan}' OR t1.${__colOrganization.extKeepName.cparentOrganization} = '${userOrgan}') 
-										LIMIT ${fromIndex},${page_size}
-									 "
-									type="String" />
-	<east:para name="_out_nodes_name" value="poleCode,p" type="String" />
-	<east:para name="token" value="123qweasd" type="String" />
+<east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
+        <east:para name="_val" value="${pageSize * (pageNo - 1)}" type="Object" />
+      </east:service>
+      
+<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="rsLift">
+    <east:para name="nativeSql" value="SELECT t2.${colHdfGroup.extKeepName.cgroupNo} AS cgroupNo
+            ,t2.${colHdfGroup.extKeepName.cgroupName} AS cgroupName
+            ,t1.${colHdfLift.extKeepName.cliftNo} AS cliftNo
+            ,t1.${colHdfLift.extKeepName.cliftName} AS cliftName
+            ,t1.${colHdfLift.extKeepName.cipAddress} AS cipAddress
+            ,t1.${colHdfLift.extKeepName.cipUser} AS cipUser
+            ,t1.${colHdfLift.extKeepName.cipPassword} AS cipPassword
+            ,t1.id AS id
+            FROM  ${tnLift} t1 LEFT JOIN ${tnGroup} t2
+            ON t2.${colHdfGroup.keepName.newsClass} = 'colHdfGroup'
+                AND t2.column_id=1603
+                AND t1.${colHdfLift.extKeepName.cgroupNo} = t2.${colHdfGroup.extKeepName.cgroupNo}
+            WHERE t1.${colHdfLift.keepName.newsClass} = 'colHdfLift'
+            AND t1.column_id=1603
+            ${whereKeyWord}
+            ORDER BY t1.${colHdfLift.extKeepName.cliftNo} DESC
+            "
+            type="String" />
+    <east:para name="_out_nodes_name" value="cgroupNo,cgroupName,cliftNo,cliftName,cipAddress,cipUser,cipPassword,id" type="String" />
+    <east:para name="token" value="123qweasd" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1608,6 +1612,39 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="dic-sql">原生SQL查询模拟字典</h2>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="25">	  	 
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colStaff">      
+    <east:para name="className" value="colStaff" type="String" />
+    </east:service>
+    <east:service beanName="eastUtilService" methodName="setValue"  id="tnStaff">
+    <east:para name="_tableName" value="${colStaff.externTable}" type="Object" />
+    <east:para name="_default" value="t_news" type="Object" />
+    </east:service>
+    <east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="dicStaff">
+    <east:para name="nativeSql" value="SELECT 
+                        t1.${colStaff.extKeepName.cstaffNo} AS dicVal
+                        ,t1.${colStaff.extKeepName.crealName} AS dicName
+                    FROM  ${tnStaff} t1
+                    WHERE t1.${colStaff.keepName.newsClass} = 'colStaff' 
+                        AND t1.column_id = 1603
+                        AND t1.${colStaff.extKeepName.ccompanyNo}  = '${_ccompanyNo}'
+                    ORDER BY t1.${colStaff.extKeepName.cstaffNo}
+                        "
+                    type="String" />
+    <east:para name="_out_nodes_name" value="dicVal,dicName" type="String" />
+    <east:para name="token" value="123qweasd" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
                 </div>
 
 
@@ -1933,6 +1970,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#dic-view">展示字典字段</a>
+                                </li>
+                                <li>
+                                    <a href="#dic-sql">原生SQL查询模拟字典</a>
                                 </li>
                             </ul>
                         </li>
