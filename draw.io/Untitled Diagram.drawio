@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2019-12-12T01:44:06.342Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36" etag="8_dw7agLvLxelRRNPmPx" version="12.3.9" type="github" pages="1">
+<mxfile host="www.draw.io" modified="2019-12-12T01:46:37.919Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36" etag="52_pZ-qluHfdvqHyuaLY" version="12.3.9" type="github" pages="1">
   <diagram id="yESwXEvI0tJ8sqi6aTUE" name="Page-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -30,10 +30,18 @@
         <mxCell id="-kgnQ5JJzTtvgg19kSp7-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="-kgnQ5JJzTtvgg19kSp7-19" target="-kgnQ5JJzTtvgg19kSp7-33">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
+        <mxCell id="-kgnQ5JJzTtvgg19kSp7-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=ERmany;startFill=0;endArrow=ERmany;endFill=0;" edge="1" parent="1" source="-kgnQ5JJzTtvgg19kSp7-19" target="-kgnQ5JJzTtvgg19kSp7-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="280"/>
+              <mxPoint x="180" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="-kgnQ5JJzTtvgg19kSp7-19" value="户" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="265" y="200" width="100" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="-kgnQ5JJzTtvgg19kSp7-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=ERmany;endFill=0;startArrow=ERmany;startFill=0;" edge="1" parent="1" source="-kgnQ5JJzTtvgg19kSp7-20" target="-kgnQ5JJzTtvgg19kSp7-21">
+        <mxCell id="-kgnQ5JJzTtvgg19kSp7-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=ERmany;endFill=0;startArrow=ERmany;startFill=0;" edge="1" parent="1" source="-kgnQ5JJzTtvgg19kSp7-20" target="-kgnQ5JJzTtvgg19kSp7-21">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="-kgnQ5JJzTtvgg19kSp7-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=ERmany;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="-kgnQ5JJzTtvgg19kSp7-20" target="-kgnQ5JJzTtvgg19kSp7-31">
@@ -60,6 +68,9 @@
         </mxCell>
         <mxCell id="-kgnQ5JJzTtvgg19kSp7-35" value="医生" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="590" y="110" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="-kgnQ5JJzTtvgg19kSp7-40" value="子女添加机器人，通过机器人和户的关系，最终关联到户。" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="10" y="520" width="340" height="20" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
