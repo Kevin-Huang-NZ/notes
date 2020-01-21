@@ -763,25 +763,25 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="48">
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colHdfLift">       
-    <east:para name="className" value="colHdfLift" type="String" />
+	<east:para name="className" value="colHdfLift" type="String" />
 </east:service>
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colHdfGroup">      
-    <east:para name="className" value="colHdfGroup" type="String" />
+	<east:para name="className" value="colHdfGroup" type="String" />
 </east:service>
 <east:service beanName="eastUtilService" methodName="setValue"  id="tnLift">
-    <east:para name="_tableName" value="${colHdfLift.externTable}" type="Object" />
-    <east:para name="_default" value="t_news" type="Object" />
+	<east:para name="_tableName" value="${colHdfLift.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
 </east:service>
 <east:service beanName="eastUtilService" methodName="setValue"  id="tnGroup">
-    <east:para name="_tableName" value="${colHdfGroup.externTable}" type="Object" />
-    <east:para name="_default" value="t_news" type="Object" />
+	<east:para name="_tableName" value="${colHdfGroup.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
 </east:service>
 <east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
-        <east:para name="_val" value="${pageSize * (pageNo - 1)}" type="Object" />
-      </east:service>
+	<east:para name="_val" value="${pageSize * (pageNo - 1)}" type="Object" />
+</east:service>
       
 <east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="rsLift">
-    <east:para name="nativeSql" value="SELECT t2.${colHdfGroup.extKeepName.cgroupNo} AS cgroupNo
+	<east:para name="nativeSql" value="SELECT t2.${colHdfGroup.extKeepName.cgroupNo} AS cgroupNo
             ,t2.${colHdfGroup.extKeepName.cgroupName} AS cgroupName
             ,t1.${colHdfLift.extKeepName.cliftNo} AS cliftNo
             ,t1.${colHdfLift.extKeepName.cliftName} AS cliftName
@@ -799,8 +799,8 @@ ${idPageNo}</textarea>
             ORDER BY t1.${colHdfLift.extKeepName.cliftNo} DESC
             "
             type="String" />
-    <east:para name="_out_nodes_name" value="cgroupNo,cgroupName,cliftNo,cliftName,cipAddress,cipUser,cipPassword,id" type="String" />
-    <east:para name="token" value="123qweasd" type="String" />
+	<east:para name="_out_nodes_name" value="cgroupNo,cgroupName,cliftNo,cliftName,cipAddress,cipUser,cipPassword,id" type="String" />
+	<east:para name="token" value="123qweasd" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1097,17 +1097,17 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="21">
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo"   methodName="getBeanOneByClassNameExtColumn" id="__idUserDeal">	  	 
-    <east:para name="className"  value="colUserDeal" type="String" />
-    <east:para name="fieldName" value="cdealNo" type="String" />
-    <east:para name="fieldValue"   value="${requestEx.dn}" type="String" />
+	<east:para name="className"  value="colUserDeal" type="String" />
+	<east:para name="fieldName" value="cdealNo" type="String" />
+	<east:para name="fieldValue"   value="${requestEx.dn}" type="String" />
 </east:service>
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo"   methodName="valueToHBean" id="idResult">	  	 
-    <east:para name="_object"  value="${__idUserDeal}" type="Object" /> 
-    <east:para name="_field"  value="id" type="String" /> 
-    <east:para name="_value"  value="0" type="Integer" /> 
+	<east:para name="_object"  value="${__idUserDeal}" type="Object" /> 
+	<east:para name="_field"  value="id" type="String" /> 
+	<east:para name="_value"  value="0" type="Integer" /> 
 </east:service>
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo"   methodName="saveHBean" id="__savedFireWarningId">
-    <east:para name="_Object" value="${__idUserDeal}" type="Object" /> 
+	<east:para name="_Object" value="${__idUserDeal}" type="Object" /> 
 </east:service>
 <!--#<MACRO>
     Jsp.call("/bspms_jsp/bspms_funs_html/ajax_set_field1_fun.jsp","${__idUserDeal}","ctitle","${requestEx.tp}");
@@ -1144,9 +1144,9 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="6">	  	 
 <east:service beanName="eastUtilService" methodName="subString" id="retuenValue">
-    <east:para name="_string"	value="${objWeather.ext.cupdateTime}" type="String" />
-    <east:para name="_nStartIndex" value="0" type="Integer" />
-    <east:para name="_nEndIndex" value="10" type="Integer" />
+	<east:para name="_string"	value="${objWeather.ext.cupdateTime}" type="String" />
+	<east:para name="_nStartIndex" value="0" type="Integer" />
+	<east:para name="_nEndIndex" value="10" type="Integer" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1187,10 +1187,10 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="8">	  	 
 <east:service beanName="eastUtilService" methodName="setValue"  id="strTimes">
-    <east:para name="_value" value="00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23" type="Object" />
+	<east:para name="_value" value="00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23" type="Object" />
 </east:service>
 <east:service beanName="eastUtilService" methodName="getListOfString"  id="lsTimes">
-    <east:para name="_value" value="${strTimes}" type="String" />
+	<east:para name="_value" value="${strTimes}" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1206,8 +1206,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="splitString" id="__ids">
-    <east:para name="_sStr" value="${requestEx.ids}" type="String" />
-    <east:para name="_linkLetter" value=";" type="String" />
+	<east:para name="_sStr" value="${requestEx.ids}" type="String" />
+	<east:para name="_linkLetter" value=";" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1222,9 +1222,9 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="7">	  	 
 <east:service beanName="eastUtilService" methodName="replaceStr" id="_idResult">
-    <east:para name="_sVal" value="${target}" type="String" />
-    <east:para name="_sReplaced" value="xxx" type="String" />
-    <east:para name="_sReplaceNew" value="ooo" type="String" />
+	<east:para name="_sVal" value="${target}" type="String" />
+	<east:para name="_sReplaced" value="xxx" type="String" />
+	<east:para name="_sReplaceNew" value="ooo" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1240,8 +1240,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="6">	  	 
 <east:service beanName="eastUtilService" methodName="htmlRemove"  id="_cmemo">
-    <east:para name="_html" value="${_oneGoodsExchange.ext.cmemo}" type="String" />
-    <east:para name="_nMaxLen" value="100" type="Integer" />
+	<east:para name="_html" value="${_oneGoodsExchange.ext.cmemo}" type="String" />
+	<east:para name="_nMaxLen" value="100" type="Integer" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1313,8 +1313,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="compareInt"  id="_compareResult">
-    <east:para name="_val1" value="${oldInAmount}" type="String" />
-    <east:para name="_val2" value="${updateNum}" type="String" />
+	<east:para name="_val1" value="${oldInAmount}" type="String" />
+	<east:para name="_val2" value="${updateNum}" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1330,8 +1330,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="compareFloat"  id="_compareResult">
-    <east:para name="_val1" value="${oldInAmount}" type="String" />
-    <east:para name="_val2" value="${updateNum}" type="String" />
+	<east:para name="_val1" value="${oldInAmount}" type="String" />
+	<east:para name="_val2" value="${updateNum}" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1352,8 +1352,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="avg"  id="avgTem">
-    <east:para name="_list" value="${lsChart}" type="List" />
-    <east:para name="_field" value="t" type="String" /> 
+	<east:para name="_list" value="${lsChart}" type="List" />
+	<east:para name="_field" value="t" type="String" /> 
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1373,8 +1373,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="formatFloatV1"  id="avgTem">
-    <east:para name="_value" value="${avgTem}" type="Object" />
-    <east:para name="_format" value="%.0f" type="String" /> 
+	<east:para name="_value" value="${avgTem}" type="Object" />
+	<east:para name="_format" value="%.0f" type="String" /> 
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1419,7 +1419,7 @@ ${idPageNo}</textarea>
 
 
                     <h2 id="date-time-add-hour">加减小时</h2>
-                    <p>给传入的时间加/减指定的小时。</p>
+                    <p>给传入的时间加/减指定的小时。相关：getMinuteOffset、getSecondOffset</p>
                     <p>参数：</p>
                     <blockquote>
                         <p>_ymdhms：目标时间，格式：yyyy-mm-dd HH:mi:ss。</p>
@@ -1462,6 +1462,28 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="date-time-add-month">加减月</h2>
+                    <p>给传入的时间加/减指定的月。</p>
+                    <p>参数：</p>
+                    <blockquote>
+                        <p>_ymd：目标时间，格式：yyyy-mm-dd。</p>
+                        <p>_offsetMonth：加/减的月，正整数或者负整数。</p>
+                    </blockquote>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">	  	 
+<east:service beanName="eastUtilService" methodName="monthDateOffset"  id="_idNextMonthDate">
+	<east:para name="ymdhms" value="2019-05-03" type="String" />
+	<east:para name="_offsetSecond" value="1" type="Integer" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
 
                     <h2 id="date-time-diff-days">相差天数</h2>
                     <p>计算开始日期和结束日期之间的差值。</p>
@@ -1477,8 +1499,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="getDiffDaysDate"  id="_diffDays">
-    <east:para name="_dateStart" value="${_one.ext.clogEndDate}" type="String" />
-    <east:para name="_dateEnd" value="${idNowDate}" type="String" />
+	<east:para name="_dateStart" value="${_one.ext.clogEndDate}" type="String" />
+	<east:para name="_dateEnd" value="${idNowDate}" type="String" />
 </east:service></textarea>
                         </pre>
                     </figure>
@@ -1497,7 +1519,7 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="pmsService.pmsDaoImpl.daoBsDataDic" methodName="getNewsDicClassNameChildrenEx"  id="dicChannel">
-    <east:para name="className" value="dicChannel" type="String" />
+	<east:para name="className" value="dicChannel" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1513,9 +1535,9 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="7">	  	 
 <east:service beanName="pmsService.pmsDaoImpl.daoBsDataDic" methodName="getListBetween"  id="dicMaterialUseType">
-    <east:para name="_className" value="dicMaterialUseType" type="String" />
-    <east:para name="_valueLow" value="1" type="String" />
-    <east:para name="_valueHigh" value="5" type="String" />
+	<east:para name="_className" value="dicMaterialUseType" type="String" />
+	<east:para name="_valueLow" value="1" type="String" />
+	<east:para name="_valueHigh" value="5" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1531,8 +1553,8 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="6">	  	 
 <east:service beanName="pmsService.pmsDaoImpl.daoBsDataDic" methodName="getValueLikeRight"  id="dicChagingNumberType">
-    <east:para name="_className" value="dicChagingNumberType" type="String" />
-    <east:para name="_value" value="0" type="String" />
+	<east:para name="_className" value="dicChagingNumberType" type="String" />
+	<east:para name="_value" value="0" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1585,7 +1607,7 @@ ${idPageNo}</textarea>
                     }
             });              
     },300); 
-</script> </textarea>
+</script></textarea>
 				</pre>
                     </figure>
 
@@ -1600,13 +1622,13 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="10">	  	 
 <c:forEach items="${dicDispose}" var="objDispose" varStatus="status">
-    <c:if test="${idDispose == objDispose.dicVal}">
-        <east:service beanName="eastUtilService" methodName="setValue"  id="idDisposeName">
-            <east:para name="_value" value="${objDispose.dicName}" type="Object" />
-            <east:para name="_defaultValue" value="${idDispose}" type="Object" />
-        </east:service>
-    </c:if>
-</c:forEach> </textarea>
+	<c:if test="${idDispose == objDispose.dicVal}">
+		<east:service beanName="eastUtilService" methodName="setValue"  id="idDisposeName">
+			<east:para name="_value" value="${objDispose.dicName}" type="Object" />
+			<east:para name="_defaultValue" value="${idDispose}" type="Object" />
+		</east:service>
+	</c:if>
+</c:forEach></textarea>
 				</pre>
                     </figure>
 
@@ -1620,14 +1642,14 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="25">	  	 
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colStaff">      
-    <east:para name="className" value="colStaff" type="String" />
-    </east:service>
-    <east:service beanName="eastUtilService" methodName="setValue"  id="tnStaff">
-    <east:para name="_tableName" value="${colStaff.externTable}" type="Object" />
-    <east:para name="_default" value="t_news" type="Object" />
-    </east:service>
-    <east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="dicStaff">
-    <east:para name="nativeSql" value="SELECT 
+	<east:para name="className" value="colStaff" type="String" />
+</east:service>
+<east:service beanName="eastUtilService" methodName="setValue"  id="tnStaff">
+	<east:para name="_tableName" value="${colStaff.externTable}" type="Object" />
+	<east:para name="_default" value="t_news" type="Object" />
+</east:service>
+<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="dicStaff">
+	<east:para name="nativeSql" value="SELECT 
                         t1.${colStaff.extKeepName.cstaffNo} AS dicVal
                         ,t1.${colStaff.extKeepName.crealName} AS dicName
                     FROM  ${tnStaff} t1
@@ -1637,8 +1659,8 @@ ${idPageNo}</textarea>
                     ORDER BY t1.${colStaff.extKeepName.cstaffNo}
                         "
                     type="String" />
-    <east:para name="_out_nodes_name" value="dicVal,dicName" type="String" />
-    <east:para name="token" value="123qweasd" type="String" />
+	<east:para name="_out_nodes_name" value="dicVal,dicName" type="String" />
+	<east:para name="token" value="123qweasd" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1739,7 +1761,7 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="decodeUriString" id="_decodeEmail">
-    <east:para name="_sourceObj" value="${requestEx.cemail}" type="String" />
+	<east:para name="_sourceObj" value="${requestEx.cemail}" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1755,7 +1777,7 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	  	 
 <east:service beanName="eastUtilService" methodName="encodeUriStringOnce" id="_decodeEmail">
-    <east:para name="_sourceObj" value="${requestEx.cemail}" type="String" />
+	<east:para name="_sourceObj" value="${requestEx.cemail}" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1771,7 +1793,7 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">	
 <east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="getDefaultPattern"  id="defaultTeacherNo">
-    <east:para name="patternStr" value="{seq(&apos;T%09d&apos;)}" type="String" />
+	<east:para name="patternStr" value="{seq(&apos;T%09d&apos;)}" type="String" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1948,6 +1970,9 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#date-time-add-day">加减天</a>
+                                </li>
+                                <li>
+                                    <a href="#date-time-add-month">加减月</a>
                                 </li>
                                 <li>
                                     <a href="#date-time-diff-days">相差天数</a>
