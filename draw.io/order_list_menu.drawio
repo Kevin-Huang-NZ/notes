@@ -1,6 +1,6 @@
-<mxfile host="www.draw.io" modified="2020-02-20T21:25:23.122Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" etag="FVlcjPMEMscijdNf--OY" version="12.7.2" type="github">
+<mxfile host="www.draw.io" modified="2020-02-20T21:27:17.100Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" etag="ZAH1xQ8IXYn8Op558HAa" version="12.7.2" type="github">
   <diagram name="Page-1" id="52a04d89-c75d-2922-d76d-85b35f80e030">
-    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1673" dy="934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -43,8 +43,8 @@
         <mxCell id="d0jnjU2pJw37aTX6-w42-9" value="完成？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="600" y="470" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="d0jnjU2pJw37aTX6-w42-10" value="6" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" vertex="1" parent="1">
-          <mxGeometry x="440" y="880" width="140" height="80" as="geometry" />
+        <mxCell id="d0jnjU2pJw37aTX6-w42-10" value="" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="610" y="738" width="140" height="80" as="geometry" />
         </mxCell>
         <mxCell id="d0jnjU2pJw37aTX6-w42-11" value="企业选择立即支付或等待7天自动支付" style="text;html=1;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;align=center;" vertex="1" parent="d0jnjU2pJw37aTX6-w42-10">
           <mxGeometry y="26" width="140" height="44" as="geometry" />
@@ -170,13 +170,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="d0jnjU2pJw37aTX6-w42-55" value="这以后，可以申请仲裁？" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="560" y="770" width="240" height="20" as="geometry" />
+          <mxGeometry x="910" y="750" width="180" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="d0jnjU2pJw37aTX6-w42-56" value="" style="endArrow=block;html=1;exitX=0.396;exitY=-0.15;exitDx=0;exitDy=0;entryX=0.145;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;endFill=1;strokeWidth=4;fillColor=#fad7ac;strokeColor=#b46504;exitPerimeter=0;" edge="1" parent="1" source="d0jnjU2pJw37aTX6-w42-55">
+        <mxCell id="d0jnjU2pJw37aTX6-w42-56" value="" style="endArrow=block;html=1;entryX=0.145;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;endFill=1;strokeWidth=4;fillColor=#fad7ac;strokeColor=#b46504;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="630" y="787.97" as="sourcePoint" />
-            <mxPoint x="676.1500000000001" y="692" as="targetPoint" />
+            <mxPoint x="910" y="760" as="sourcePoint" />
+            <mxPoint x="840.0000000000001" y="743" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=block;endFill=1;strokeWidth=1;" edge="1" parent="1" source="d0jnjU2pJw37aTX6-w42-49" target="d0jnjU2pJw37aTX6-w42-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-58" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeWidth=6;strokeColor=#0000FF;" vertex="1" parent="1">
+          <mxGeometry x="490" y="620" width="340" height="210" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
