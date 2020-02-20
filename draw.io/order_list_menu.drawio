@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2020-02-20T21:20:27.806Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" etag="XIS1fmvmJGh4zqZUPJFC" version="12.7.2" type="github">
+<mxfile host="www.draw.io" modified="2020-02-20T21:21:38.232Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" etag="C8RrLKMfEmRzC1adx2mT" version="12.7.2" type="github">
   <diagram name="Page-1" id="52a04d89-c75d-2922-d76d-85b35f80e030">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -35,6 +35,9 @@
           <mxGeometry y="26" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="d0jnjU2pJw37aTX6-w42-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="d0jnjU2pJw37aTX6-w42-9" target="d0jnjU2pJw37aTX6-w42-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="d0jnjU2pJw37aTX6-w42-9" target="d0jnjU2pJw37aTX6-w42-48">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="d0jnjU2pJw37aTX6-w42-9" value="完成？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -147,6 +150,12 @@
         </mxCell>
         <mxCell id="d0jnjU2pJw37aTX6-w42-47" value="这期间，企业可以申请退款。如果是套餐，可以申请无条件退工。" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="80" y="230" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-48" value="4、5、6" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="595" y="640" width="170" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-49" value="支付流程（可互相评价）" style="text;html=1;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;align=center;" vertex="1" parent="d0jnjU2pJw37aTX6-w42-48">
+          <mxGeometry y="26" width="170" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
