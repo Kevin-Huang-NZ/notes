@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2020-02-20T21:25:01.826Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" etag="-MaW8ULauYWLYJ9jCWis" version="12.7.2" type="github">
+<mxfile host="www.draw.io" modified="2020-02-20T21:25:23.122Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36" etag="FVlcjPMEMscijdNf--OY" version="12.7.2" type="github">
   <diagram name="Page-1" id="52a04d89-c75d-2922-d76d-85b35f80e030">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -167,6 +167,15 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="200" y="730" as="sourcePoint" />
             <mxPoint x="250" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-55" value="这以后，可以申请仲裁？" style="text;html=1;strokeColor=#b85450;fillColor=#f8cecc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="770" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="d0jnjU2pJw37aTX6-w42-56" value="" style="endArrow=block;html=1;exitX=0.396;exitY=-0.15;exitDx=0;exitDy=0;entryX=0.145;entryY=1.013;entryDx=0;entryDy=0;entryPerimeter=0;endFill=1;strokeWidth=4;fillColor=#fad7ac;strokeColor=#b46504;exitPerimeter=0;" edge="1" parent="1" source="d0jnjU2pJw37aTX6-w42-55">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="630" y="787.97" as="sourcePoint" />
+            <mxPoint x="676.1500000000001" y="692" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
