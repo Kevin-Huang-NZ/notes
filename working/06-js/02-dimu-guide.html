@@ -406,9 +406,9 @@
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="5">
-<east:service beanName="eastUtilService" methodName="setValue"  id="idPageNo">
-  <east:para name="_value" value="${requestEx.pageNo}" type="Object" />
-  <east:para name="_defaultValue" value="1" type="Object" />
+<east:service beanName="eastUtilService" methodName="setValue" id="idPageNo">
+	<east:para name="_value" value="${requestEx.pageNo}" type="Object" />
+	<east:para name="_defaultValue" value="1" type="Object" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -437,7 +437,7 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="7">
-<s:if test="${idPageNo == null || idPageNo == ''}">
+<s:if test="${idPageNo eq null || idPageNo eq ''}">
   do something
 </s:if>
 <s:else>
@@ -456,7 +456,7 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="4">
-<c:if test="${idPageNo == null || idPageNo == ''}">
+<c:if test="${idPageNo eq null || idPageNo eq ''}">
   do something
 </c:if></textarea>
 				</pre>
@@ -495,7 +495,7 @@ ${idPageNo}</textarea>
 
 
 
-                    <p>使用下标序号从数组里取值： 从lsCode中取得第二个元素（下标为1）放到变量idCode中</p>
+                    <p>使用下标序号从数组里取值： 从lsCode中取得第1个元素（下标为0）放到变量idCode中</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
                     </div>
@@ -504,7 +504,7 @@ ${idPageNo}</textarea>
 					<textarea readonly="readonly" rows="5">
 <east:service beanName="eastUtilService" methodName="listGet" id="idCode">
 	<east:para name="_list"	value="${lsCode}" type="Object" />
-	<east:para name="_index" value="1" type="Integer" />
+	<east:para name="_index" value="0" type="Integer" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -519,9 +519,9 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="6">
-<c:forEach items="${lsCode}" var="objCode" varStatus="status">
-	${objCode}
-	${status.index}
+<c:forEach items="${lsCode}" var="_one" varStatus="_status">
+	${_one}
+	${_status.index}
 	do something
 </c:forEach></textarea>
 				</pre>
@@ -576,10 +576,10 @@ ${idPageNo}</textarea>
 <east:service beanName="eastUtilService" methodName="mapKeys"  id="listKeys">
 	<east:para name="_map" value="${mapCode}" type="Object" /> 
 </east:service>
-<c:forEach items="${listKeys}" var="_idKey" varStatus="status">
+<c:forEach items="${listKeys}" var="_one" varStatus="_status">
 	<east:service beanName="eastUtilService" methodName="mapGet"  id="mapValue">
 		<east:para name="_map" value="${mapCode}" type="Object" />
-		<east:para name="_key" value="${_idKey}" type="String" /> 
+		<east:para name="_key" value="${_one}" type="String" /> 
 	</east:service>
 </c:forEach></textarea>
 				</pre>
@@ -700,7 +700,7 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="6">
-<c:if test="${rsMonitor.list != null && fn:length(rsMonitor.list) > 0}">
+<c:if test="${rsMonitor.list ne null && fn:length(rsMonitor.list) gt 0}">
 	<c:forEach items="${rsMonitor.list}" var="objMonitor" varStatus="status">
 		do something
 	</c:forEach>
@@ -762,44 +762,33 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="48">
-<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colHdfLift">       
-	<east:para name="className" value="colHdfLift" type="String" />
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colRecruitmentApplication">
+	<east:para name="className" value="colRecruitmentApplication" type="String" />
 </east:service>
-<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colHdfGroup">      
-	<east:para name="className" value="colHdfGroup" type="String" />
-</east:service>
-<east:service beanName="eastUtilService" methodName="setValue"  id="tnLift">
-	<east:para name="_tableName" value="${colHdfLift.externTable}" type="Object" />
-	<east:para name="_default" value="t_news" type="Object" />
-</east:service>
-<east:service beanName="eastUtilService" methodName="setValue"  id="tnGroup">
-	<east:para name="_tableName" value="${colHdfGroup.externTable}" type="Object" />
+<east:service beanName="eastUtilService" methodName="setValue" id="tnRecruitmentApplication">
+	<east:para name="_tableName" value="${colRecruitmentApplication.externTable}" type="Object" />
 	<east:para name="_default" value="t_news" type="Object" />
 </east:service>
 <east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
 	<east:para name="_val" value="${pageSize * (pageNo - 1)}" type="Object" />
 </east:service>
       
-<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="rsLift">
-	<east:para name="nativeSql" value="SELECT t2.${colHdfGroup.extKeepName.cgroupNo} AS cgroupNo
-            ,t2.${colHdfGroup.extKeepName.cgroupName} AS cgroupName
-            ,t1.${colHdfLift.extKeepName.cliftNo} AS cliftNo
-            ,t1.${colHdfLift.extKeepName.cliftName} AS cliftName
-            ,t1.${colHdfLift.extKeepName.cipAddress} AS cipAddress
-            ,t1.${colHdfLift.extKeepName.cipUser} AS cipUser
-            ,t1.${colHdfLift.extKeepName.cipPassword} AS cipPassword
-            ,t1.id AS id
-            FROM  ${tnLift} t1 LEFT JOIN ${tnGroup} t2
-            ON t2.${colHdfGroup.keepName.newsClass} = 'colHdfGroup'
-                AND t2.column_id=1603
-                AND t1.${colHdfLift.extKeepName.cgroupNo} = t2.${colHdfGroup.extKeepName.cgroupNo}
-            WHERE t1.${colHdfLift.keepName.newsClass} = 'colHdfLift'
-            AND t1.column_id=1603
-            ${whereKeyWord}
-            ORDER BY t1.${colHdfLift.extKeepName.cliftNo} DESC
-            "
-            type="String" />
-	<east:para name="_out_nodes_name" value="cgroupNo,cgroupName,cliftNo,cliftName,cipAddress,cipUser,cipPassword,id" type="String" />
+<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="rsResult">
+	<east:para name="nativeSql" value="SELECT t1.id AS id
+			,t1.${colRecruitmentApplication.extKeepName.crecruitmentNo} AS crecruitmentNo
+			,t1.${colRecruitmentApplication.extKeepName.cproviderNo} AS cproviderNo
+			,t1.${colRecruitmentApplication.extKeepName.capplyTime} AS capplyTime
+			,t1.${colRecruitmentApplication.extKeepName.cmemo} AS cmemo
+			,t1.${colRecruitmentApplication.extKeepName.cstatus} AS cstatus
+			,t1.${colRecruitmentApplication.extKeepName.creply} AS creply
+		FROM ${tnRecruitmentApplication} t1
+		WHERE t1.${colRecruitmentApplication.keepName.newsClass} = 'colRecruitmentApplication'
+			AND t1.column_id=1603
+		ORDER BY t1.id DESC
+		LIMIT ${fromIndex},${pageSize}
+		"
+		type="String" />
+	<east:para name="_out_nodes_name" value="id,crecruitmentNo,cproviderNo,capplyTime,cmemo,cstatus,creply" type="String" />
 	<east:para name="token" value="123qweasd" type="String" />
 </east:service></textarea>
 				</pre>
@@ -843,68 +832,68 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="135">
-<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="__rsPoleCount">
-	<east:para name="nativeSql" value="SELECT count('1') AS totalRecords, CEIL(count('1')/${page_size}) AS totalPages
-									FROM  ${__tnOrganization} t1,${__tnLine} t2,${__tnPole} t3
-									WHERE t1.${__colOrganization.keepName.newsClass} = 'colOrganization' 
-										AND t2.${__colLine.keepName.newsClass} = 'colLine' 
-										AND t3.${__colPole.keepName.newsClass} = 'colPole' 
-										AND t2.${__colLine.extKeepName.corganizationCode} = t1.${__colOrganization.extKeepName.corganizationCode} 
-										AND t3.${__colPole.extKeepName.clineCode} = t2.${__colLine.extKeepName.clineCode} 
-										AND (t1.${__colOrganization.extKeepName.corganizationCode} = '${userOrgan}' OR t1.${__colOrganization.extKeepName.cparentOrganization} = '${userOrgan}') 
-									 "
-									type="String" />
+<east:service beanName="pmsService" methodName="nativeQuerySqlMap" id="rsPagination">
+	<east:para name="nativeSql" value="SELECT count('1') AS totalRecords
+			, CEIL(count('1')/${pageSize}) AS totalPages
+		FROM (
+			SELECT t1.id
+			FROM ${tnRecruitmentApplication} t1
+			WHERE t1.${colRecruitmentApplication.keepName.newsClass} = 'colRecruitmentApplication'
+				AND t1.column_id=1603
+		) pv
+		"
+		type="String" />
 	<east:para name="_out_nodes_name" value="totalRecords,totalPages" type="String" />
 	<east:para name="token" value="123qweasd" type="String" />
 </east:service>
-<c:forEach items="${__rsPoleCount}" var="objPoleCount" varStatus="status">
+<c:forEach items="${rsPagination}" var="_one" varStatus="_status">
 	<east:service beanName="eastUtilService" methodName="setValue"  id="totalRecords">
-		<east:para name="_value" value="${objPoleCount.totalRecords}" type="Object" />
+		<east:para name="_value" value="${_one.totalRecords}" type="Object" />
 	</east:service> 
 	<east:service beanName="eastUtilService" methodName="setValue"  id="totalPages">
-		<east:para name="_value" value="${objPoleCount.totalPages}" type="Object" />
+		<east:para name="_value" value="${_one.totalPages}" type="Object" />
 	</east:service> 
-	<s:if test="${(page_no - 1) <= 0}">
+	<s:if test="${(pageNo - 1) <= 0}">
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pagePrev">
 			<east:para name="_value" value="1" type="Object" />
 		</east:service> 
 	</s:if>
 	<s:else>
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pagePrev">
-			<east:para name="_value" value="${page_no - 1}" type="Object" />
+			<east:para name="_value" value="${pageNo - 1}" type="Object" />
 		</east:service> 
 	</s:else>
-	<s:if test="${(page_no + 1) > totalPages}">
+	<s:if test="${(pageNo + 1) > totalPages}">
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageNext">
 			<east:para name="_value" value="${totalPages}" type="Object" />
 		</east:service> 
 	</s:if>
 	<s:else>
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageNext">
-			<east:para name="_value" value="${page_no + 1}" type="Object" />
+			<east:para name="_value" value="${pageNo + 1}" type="Object" />
 		</east:service> 
 	</s:else>
-	<s:if test="${page_no > 5}">
+	<s:if test="${pageNo > 5}">
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageOne">
-			<east:para name="_value" value="${page_no-4}" type="Object" />
+			<east:para name="_value" value="${pageNo-4}" type="Object" />
 		</east:service> 
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageTwo">
-			<east:para name="_value" value="${page_no-3}" type="Object" />
+			<east:para name="_value" value="${pageNo-3}" type="Object" />
 		</east:service> 
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageThree">
-			<east:para name="_value" value="${page_no-2}" type="Object" />
+			<east:para name="_value" value="${pageNo-2}" type="Object" />
 		</east:service> 
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFour">
-			<east:para name="_value" value="${page_no-1}" type="Object" />
+			<east:para name="_value" value="${pageNo-1}" type="Object" />
 		</east:service> 
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageFive">
-			<east:para name="_value" value="${page_no}" type="Object" />
+			<east:para name="_value" value="${pageNo}" type="Object" />
 		</east:service> 
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSix">
-			<east:para name="_value" value="${page_no + 1}" type="Object" />
+			<east:para name="_value" value="${pageNo + 1}" type="Object" />
 		</east:service> 
 		<east:service beanName="eastUtilService" methodName="setValue"  id="pageSeven">
-			<east:para name="_value" value="${page_no + 2}" type="Object" />
+			<east:para name="_value" value="${pageNo + 2}" type="Object" />
 		</east:service> 
 	</s:if>
 	<s:else>
@@ -986,33 +975,33 @@ ${idPageNo}</textarea>
 	<li> <a  onclick="searchByPage('${rsMonitor.page.pagePrev}'); return false;" >上一页</a> 	</li> 
 	<s:if test="${rsMonitor.page.one ne null}">
 		<li>
-					<a  <s:if test="${rsMonitor.page.one eq page_no}"> class="on" </s:if>
+					<a  <s:if test="${rsMonitor.page.one eq pageNo}"> class="on" </s:if>
 						onclick="searchByPage('${rsMonitor.page.one}'); return false;">${rsMonitor.page.one}</a>
 		</li>
 	</s:if>
 	<s:if test="${rsMonitor.page.two ne null}">
-		<li>	<a   <s:if test="${rsMonitor.page.two eq page_no}"> class="on" </s:if>
+		<li>	<a   <s:if test="${rsMonitor.page.two eq pageNo}"> class="on" </s:if>
 						onclick="searchByPage('${rsMonitor.page.two}'); return false;">${rsMonitor.page.two}</a>
 		</li>		
 	</s:if>
 	 <s:if test="${rsMonitor.page.three ne null}">
-		<li>		<a  <s:if test="${rsMonitor.page.three eq page_no}"> class="on" </s:if>
+		<li>		<a  <s:if test="${rsMonitor.page.three eq pageNo}"> class="on" </s:if>
 						onclick="searchByPage('${rsMonitor.page.three}'); return false;">${rsMonitor.page.three}</a>
 		</li>	
 	 </s:if>
 
 	 <s:if test="${rsMonitor.page.four ne null}">
-				<li>			<a  <s:if test="${rsMonitor.page.four eq page_no}"> class="on" </s:if>
+				<li>			<a  <s:if test="${rsMonitor.page.four eq pageNo}"> class="on" </s:if>
 						onclick="searchByPage('${rsMonitor.page.four}'); return false;">${rsMonitor.page.four}</a>
 			</li>	
 	 </s:if>
 	 <s:if test="${rsMonitor.page.five ne null}">
-				<li>			<a  <s:if test="${rsMonitor.page.five eq page_no}"> class="on" </s:if>
+				<li>			<a  <s:if test="${rsMonitor.page.five eq pageNo}"> class="on" </s:if>
 						onclick="searchByPage('${rsMonitor.page.five}'); return false;">${rsMonitor.page.five}</a>
 			</li>	
 	 </s:if>  
 	 <s:if test="${rsMonitor.page.six ne null}">
-				<li>			<a  <s:if test="${rsMonitor.page.six eq page_no}"> class="on" </s:if>
+				<li>			<a  <s:if test="${rsMonitor.page.six eq pageNo}"> class="on" </s:if>
 						onclick="searchByPage('${rsMonitor.page.six}'); return false;">${rsMonitor.page.six}</a>
 			</li>	
 	 </s:if>  
@@ -1034,7 +1023,7 @@ ${idPageNo}</textarea>
 	 </li> 
 	<li>
 		<div class="bs_div_table_page_info">
-		共<span>${rsMonitor.page.totalRecords}</span>条记录，当前显示第<span>${page_no}</span>页
+		共<span>${rsMonitor.page.totalRecords}</span>条记录，当前显示第<span>${pageNo}</span>页
 		</div>
 	</li>
 </c:if></textarea>
@@ -1058,15 +1047,21 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="14">
-<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="__bean">	  	 
-	<east:para name="className" value="colWeatherAlarm" type="String" />
+<east:service beanName="pmsService.pmsDaoImpl.daoBsNewsInfo" methodName="createBeanExByClassName" id="colRecruitmentApplication">
+	<east:para name="className" value="colRecruitmentApplication" type="String" />
 </east:service>
-<east:service beanName="eastUtilService" methodName="setValue"  id="__tableName">
-	<east:para name="_tableName" value="${__bean.externTable}" type="Object" />
+<east:service beanName="eastUtilService" methodName="setValue"  id="tnRecruitmentApplication">
+	<east:para name="_tableName" value="${colRecruitmentApplication.externTable}" type="Object" />
 	<east:para name="_default" value="t_news" type="Object" />
 </east:service>		
 <east:service beanName="pmsService" methodName="nativeSqlExc" id="_result">
-	<east:para name="nativeSql" value="UPDATE ${__tableName} SET ${__bean.extKeepName.cdispose} = '1' WHERE id = ${requestEx.s1}" type="String" />
+	<east:para name="nativeSql" value="UPDATE ${tnRecruitmentApplication} 
+		SET ${colRecruitmentApplication.extKeepName.cstatus} = '9' 
+		WHERE ${colRecruitmentApplication.keepName.newsClass} = 'colRecruitmentApplication'
+			AND column_id=1603
+			AND ${colRecruitmentApplication.extKeepName.cstatus} = '0' 
+			AND ${colRecruitmentApplication.extKeepName.crecruitmentNo} = '${_recruitment.ext.crecruitmentNo}' 
+		" type="String" />
 	<east:para name="token" value="123qweasd" type="String" />
 </east:service></textarea>
 				</pre>
@@ -1395,7 +1390,7 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="3">	  	 
-<east:service beanName="eastUtilService" methodName="getNowDate"  id="idNowDate">
+<east:service beanName="eastUtilService" methodName="getNowDate"  id="_nowDate">
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1573,12 +1568,12 @@ ${idPageNo}</textarea>
 					<textarea readonly="readonly" rows="14">	  	 
 <select class="bs_float_left" id="cpreposition" name="cpreposition" style="display: none;"> 
     <!--#
-    <c:forEach items="${dicPreposition}" var="idPreposition" varStatus="dicStatus">  
-        <s:if test="${dicStatus.index == 0}">
-            <option value="${idPreposition.dicVal}" selected="selected">${idPreposition.dicName}</option>
+    <c:forEach items="${dicPreposition}" var="_oneDic" varStatus="_statusDic">  
+        <s:if test="${_statusDic.index == 0}">
+            <option value="${_oneDic.dicVal}" selected="selected">${_oneDic.dicName}</option>
         </s:if>
         <s:else>
-            <option value="${idPreposition.dicVal}">${idPreposition.dicName}</option>
+            <option value="${_oneDic.dicVal}">${_oneDic.dicName}</option>
         </s:else>
     </c:forEach> 
     #-->
@@ -1725,11 +1720,11 @@ ${idPageNo}</textarea>
                     <figure class="highlight">
                         <pre>
 					<textarea readonly="readonly" rows="9">	  	 
-<east:service beanName="eastUtilService" methodName="setValue"  id="page_no">
+<east:service beanName="eastUtilService" methodName="setValue"  id="pageNo">
 	<east:para name="_pageNo" value="${requestEx.pageNo}" type="Object" />
 	<east:para name="_defaultValue" value="1" type="Object" />
 </east:service> 
-<east:service beanName="eastUtilService" methodName="setValue"  id="page_size">
+<east:service beanName="eastUtilService" methodName="setValue"  id="pageSize">
 	<east:para name="_pageNo" value="${requestEx.pageSize}" type="Object" />
 	<east:para name="_defaultValue" value="10" type="Object" />
 </east:service></textarea>
@@ -1746,7 +1741,7 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="4">	  	 
 <east:service beanName="eastUtilService" methodName="setValue"  id="fromIndex">
-	<east:para name="_prevPageNo" value="${page_size * (page_no - 1)}" type="Object" />
+	<east:para name="_prevPageNo" value="${pageSize * (pageNo - 1)}" type="Object" />
 </east:service></textarea>
 				</pre>
                     </figure>
