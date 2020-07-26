@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-07-26T21:42:44.290Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="G_jJMuRIcnrAPPut6jTp" version="13.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-26T21:44:17.669Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="fG5rYEJsYwWXQTFwt33-" version="13.1.5" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="1422" dy="745" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="#ffffff" math="0" shadow="0">
       <root>
@@ -33,6 +33,9 @@
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-48" value="colHomeGoods&lt;br&gt;商品&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;商户通过erp后台维护的商品或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
           <mxGeometry x="129" y="560" width="245.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dKQfGR2il8owS_bZalGm-56" value="colHomeOrder&lt;br&gt;订单&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;商品或者上门服务订单&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+          <mxGeometry x="131.75" y="900" width="245.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-44" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=0.996;exitY=0.425;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dKQfGR2il8owS_bZalGm-41" target="dKQfGR2il8owS_bZalGm-42">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
