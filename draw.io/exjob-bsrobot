@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-07-26T22:00:12.593Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="3_U91KwdiqZHFYHMfumQ" version="13.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-26T22:08:19.949Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="SqGqijrt-4LuPqR7O7h-" version="13.1.5" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="1422" dy="745" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="#ffffff" math="0" shadow="0">
       <root>
@@ -81,6 +81,12 @@
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-60" value="二、同步exjob的顾问和bstobot中的商户。现在是通过导入的方式，将exjob顾问导入到bsrobot的商户表中。问题：&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;1、导入的方式只适合初始一些商户基本数据，如果后期同步订单，订单产生的收益金额在哪边计算？如果2边保持同步会导致在充值、提现等所有设计金额的地方都需要处理&lt;br&gt;2、顾问接单是有认证、套餐合约、能否接单等限制的，但是商户没有。这个可以通过为商户关联的顾问设置默认值方式解决。&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="350" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dKQfGR2il8owS_bZalGm-61" value="三、商品在exjob中，分为了套餐、配件商品两个表，并且都是上门服务性值的，没有在线商品。在bsrobot中只有一个商品表，商品按类型分为在线商品和上门服务。问题：&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;1、表数量有差异；字段差异也比较大&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="620" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dKQfGR2il8owS_bZalGm-62" value="四、exjob中，套餐和上门服务的购买是通过派遣单实现的，没有订单表。问题：&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;1、字段差异也比较大&lt;br&gt;2、派遣单的手续费和各级收益提成，在bsrobot中是暂时没有涉及到的&lt;br&gt;3、派遣单的状态定义和订单状态定义有差异，状态变化的路径差异也比较大&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="930" width="260" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
