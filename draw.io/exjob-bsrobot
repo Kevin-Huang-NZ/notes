@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-07-26T21:32:01.419Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="8JkrApU_aqTDzBjwbad8" version="13.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-26T21:35:19.405Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="FR_tUhuPfV_PsxPf3Ec0" version="13.1.5" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="#ffffff" math="0" shadow="0">
       <root>
@@ -8,10 +8,16 @@
           <mxGeometry x="110" y="30" width="495.5" height="1180" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-41" value="colCompany&lt;br&gt;公司/个人需求顾客&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;购买套餐或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
-          <mxGeometry x="150" y="50" width="180" height="80" as="geometry" />
+          <mxGeometry x="150" y="50" width="240" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="3" value="bsrobot" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
+        <mxCell id="3" value="bsrobot（居家养老）" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="605.5" y="30" width="470" height="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="dKQfGR2il8owS_bZalGm-42" value="colHomeCustomer&lt;br&gt;老人&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;下单商品或者上门服务（不能支付）&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+          <mxGeometry x="134.5" y="50" width="245.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dKQfGR2il8owS_bZalGm-43" value="colHomeChild&lt;br&gt;子女&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;购买商品或者上门服务（能支付）&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+          <mxGeometry x="134.5" y="160" width="240" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
