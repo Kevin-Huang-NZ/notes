@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-07-26T21:42:08.066Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="mXcaBzvHLEiOI32A45KM" version="13.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-26T21:42:44.290Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="G_jJMuRIcnrAPPut6jTp" version="13.1.5" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="1422" dy="745" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="#ffffff" math="0" shadow="0">
       <root>
@@ -8,31 +8,31 @@
           <mxGeometry x="110" y="30" width="495.5" height="1180" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-41" value="colCompany&lt;br&gt;公司/个人需求顾客&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;购买套餐或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
-          <mxGeometry x="150" y="50" width="240" height="80" as="geometry" />
+          <mxGeometry x="122.75" y="44" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-46" value="colProvider&lt;br&gt;顾问&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;提供套餐或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
-          <mxGeometry x="150" y="400" width="240" height="80" as="geometry" />
+          <mxGeometry x="122.75" y="330" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-49" value="colPackage&lt;br&gt;套餐&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;顾问在手机端发布的套餐&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
-          <mxGeometry x="150" y="630" width="240" height="80" as="geometry" />
+          <mxGeometry x="122.75" y="560" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-50" value="colGoods&lt;br&gt;配件商品&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;顾问在手机端发布的配件商品（上门服务）&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
-          <mxGeometry x="150" y="750" width="240" height="80" as="geometry" />
+          <mxGeometry x="122.75" y="680" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="3" value="bsrobot（居家养老）" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="605.5" y="30" width="470" height="1180" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-42" value="colHomeCustomer&lt;br&gt;老人&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;下单商品或者上门服务（不能支付）&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
-          <mxGeometry x="134.5" y="44" width="245.5" height="80" as="geometry" />
+          <mxGeometry x="134.5" y="44" width="235.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-43" value="colHomeChild&lt;br&gt;子女&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;购买商品或者上门服务（能支付）&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
           <mxGeometry x="134.5" y="160" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-47" value="colHomeMerchant&lt;br&gt;商户&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;提供商品或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
-          <mxGeometry x="112.25" y="400" width="245.5" height="80" as="geometry" />
+          <mxGeometry x="129" y="330" width="245.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-48" value="colHomeGoods&lt;br&gt;商品&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;商户通过erp后台维护的商品或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
-          <mxGeometry x="112.25" y="630" width="245.5" height="80" as="geometry" />
+          <mxGeometry x="129" y="560" width="245.5" height="80" as="geometry" />
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-44" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=0.996;exitY=0.425;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dKQfGR2il8owS_bZalGm-41" target="dKQfGR2il8owS_bZalGm-42">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -48,20 +48,20 @@
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-51" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dKQfGR2il8owS_bZalGm-46" target="dKQfGR2il8owS_bZalGm-47">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="560" y="760" as="sourcePoint" />
-            <mxPoint x="610" y="710" as="targetPoint" />
+            <mxPoint x="576.75" y="690" as="sourcePoint" />
+            <mxPoint x="626.75" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-54" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="dKQfGR2il8owS_bZalGm-49" target="dKQfGR2il8owS_bZalGm-48">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="560" y="760" as="sourcePoint" />
-            <mxPoint x="610" y="710" as="targetPoint" />
+            <mxPoint x="576.75" y="690" as="sourcePoint" />
+            <mxPoint x="626.75" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-55" value="" style="endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dKQfGR2il8owS_bZalGm-50" target="dKQfGR2il8owS_bZalGm-48">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="560" y="760" as="sourcePoint" />
-            <mxPoint x="610" y="710" as="targetPoint" />
+            <mxPoint x="576.75" y="690" as="sourcePoint" />
+            <mxPoint x="626.75" y="640" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
