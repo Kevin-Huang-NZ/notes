@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-07-26T21:35:55.599Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="tUxj3Jv8nK_1jPw8ullw" version="13.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-07-26T21:36:29.045Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36" etag="N0jytw-ncxlcebgwr9m4" version="13.1.5" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="#ffffff" math="0" shadow="0">
       <root>
@@ -9,6 +9,9 @@
         </mxCell>
         <mxCell id="dKQfGR2il8owS_bZalGm-41" value="colCompany&lt;br&gt;公司/个人需求顾客&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;购买套餐或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
           <mxGeometry x="150" y="50" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dKQfGR2il8owS_bZalGm-46" value="colProvider&lt;br&gt;顾问&lt;br&gt;&lt;font color=&quot;#ff0000&quot;&gt;提供套餐或者上门服务&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
+          <mxGeometry x="150" y="400" width="240" height="80" as="geometry" />
         </mxCell>
         <mxCell id="3" value="bsrobot（居家养老）" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
           <mxGeometry x="605.5" y="30" width="470" height="1180" as="geometry" />
