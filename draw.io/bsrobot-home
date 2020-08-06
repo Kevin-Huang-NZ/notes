@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-08-06T22:39:40.840Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36" etag="G_dQVObsfJraaX8D_f5K" version="13.6.0" type="github">
+<mxfile host="app.diagrams.net" modified="2020-08-06T22:41:26.171Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36" etag="H7ytAp6rOVXlxaVqBAlx" version="13.6.0" type="github">
   <diagram id="lfbToIgUcjrqXGvX01e6" name="Page-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -7,7 +7,7 @@
         <mxCell id="-FZRCU_g0o1zErG4wPoE-3" value="机器人" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
           <mxGeometry x="70" y="120" width="160" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="-FZRCU_g0o1zErG4wPoE-4" value="+家庭编号&#xa;+家庭名称" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="-FZRCU_g0o1zErG4wPoE-3">
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-4" value="+机器人编号" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="-FZRCU_g0o1zErG4wPoE-3">
           <mxGeometry y="30" width="160" height="40" as="geometry" />
         </mxCell>
         <mxCell id="-FZRCU_g0o1zErG4wPoE-1" value="家庭" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
@@ -21,6 +21,48 @@
             <mxPoint x="360" y="460" as="sourcePoint" />
             <mxPoint x="460" y="360" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-10" value="" style="fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" source="-FZRCU_g0o1zErG4wPoE-8" target="-FZRCU_g0o1zErG4wPoE-7" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="830" y="460" as="sourcePoint" />
+            <mxPoint x="930" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-6" value="机器人" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-7" value="+机器人编号" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="-FZRCU_g0o1zErG4wPoE-6">
+          <mxGeometry y="30" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-8" value="家庭" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="540" y="240" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-9" value="+家庭编号&#xa;+家庭名称" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="-FZRCU_g0o1zErG4wPoE-8">
+          <mxGeometry y="30" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-11" value="老人" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="380" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-12" value="+顾客编号&#xa;+姓名" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="-FZRCU_g0o1zErG4wPoE-11">
+          <mxGeometry y="30" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-13" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="-FZRCU_g0o1zErG4wPoE-2" target="-FZRCU_g0o1zErG4wPoE-11">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="360" y="460" as="sourcePoint" />
+            <mxPoint x="460" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-16" value="" style="fontSize=12;html=1;endArrow=ERoneToMany;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" target="-FZRCU_g0o1zErG4wPoE-14" parent="1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="620" y="300" as="sourcePoint" />
+            <mxPoint x="930" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-14" value="老人" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="540" y="370" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="-FZRCU_g0o1zErG4wPoE-15" value="+顾客编号&#xa;+姓名" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="-FZRCU_g0o1zErG4wPoE-14">
+          <mxGeometry y="30" width="160" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
