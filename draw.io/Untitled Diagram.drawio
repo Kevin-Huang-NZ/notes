@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-26T00:32:12.321Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="-BvH83lQF_nbMcS_R87g" version="14.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-26T00:34:58.821Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" etag="bSABQjbLvJnKleqZeGJE" version="14.0.3" type="github">
   <diagram id="wxsQoiZZfkCuwuspmRnZ" name="Page-1">
     <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -73,6 +73,33 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="8w0EfVHlun1V6sll65li-32" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=ERoneToMany;endFill=0;strokeColor=#000000;" edge="1" parent="1" source="8w0EfVHlun1V6sll65li-19" target="8w0EfVHlun1V6sll65li-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-33" value="项目部" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="920" y="150" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-34" value="+项目部编号&#xa;+项目经理&#xa;+项目副经理" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="8w0EfVHlun1V6sll65li-33">
+          <mxGeometry y="30" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-35" value="工作组" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="920" y="340" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-36" value="+项目部编号&#xa;+小组编号&#xa;+组长&#xa;+组员" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="8w0EfVHlun1V6sll65li-35">
+          <mxGeometry y="30" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-37" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=ERoneToMany;endFill=0;strokeColor=#000000;" edge="1" parent="1" source="8w0EfVHlun1V6sll65li-34" target="8w0EfVHlun1V6sll65li-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERoneToMany;startFill=0;endArrow=ERoneToMany;endFill=0;strokeColor=#000000;" edge="1" parent="1" source="8w0EfVHlun1V6sll65li-16" target="8w0EfVHlun1V6sll65li-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-39" value="员工" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+          <mxGeometry x="640" y="360" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-40" value="+员工编号" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="8w0EfVHlun1V6sll65li-39">
+          <mxGeometry y="30" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="8w0EfVHlun1V6sll65li-41" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=ERoneToMany;endFill=0;strokeColor=#000000;" edge="1" parent="1" source="8w0EfVHlun1V6sll65li-36" target="8w0EfVHlun1V6sll65li-40">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
