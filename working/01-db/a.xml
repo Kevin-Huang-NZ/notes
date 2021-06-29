@@ -1,0 +1,486 @@
+  
+   
+
+
+
+
+ 
+
+    
+    
+
+
+
+
+
+
+
+
+	
+	
+
+	
+	
+
+	
+	
+		
+	
+
+	
+	
+
+	
+	
+
+	
+	
+
+	
+	
+
+
+	
+    
+    
+     
+     
+   
+
+
+
+
+ 
+
+    
+
+
+	
+	
+	
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+
+         
+          
+   
+    
+          
+          
+    
+
+
+	
+    
+    
+     
+     
+   
+
+
+
+
+ 
+
+    
+
+
+	
+	
+	
+	
+		
+		
+			
+			
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+
+         
+          
+   
+    
+          
+          
+    
+
+         
+          
+          
+          
+<?xml version="1.0" encoding="UTF-8"?>
+	<items xmlns="http://foo.com">
+		<state>success</state>
+		<msg></msg>
+		<data_size>1</data_size>
+		<item>
+			<id><![CDATA[1]]></id>
+			<csurveyNo><![CDATA[SS000000001]]></csurveyNo>
+			<csurveyName><![CDATA[杭州IFC-公共区域洗手间即时反馈]]></csurveyName>
+			<clanguage><![CDATA[ZH;EN]]></clanguage>
+			<currentLanguage><![CDATA[ZH]]></currentLanguage>
+		</item>
+		<questions>
+			<question>
+					<cquestionNo><![CDATA[SQ000000001]]></cquestionNo>
+					<cindex><![CDATA[1]]></cindex>
+					<cisSubmit><![CDATA[0]]></cisSubmit>
+					<cquestion><![CDATA[设备故障（可多选）]]></cquestion>
+					<ctype><![CDATA[7]]></ctype>
+					<cdictNo><![CDATA[]]></cdictNo>
+					<options>
+							<option>
+									<coptionVal><![CDATA[1]]></coptionVal>
+									<coption><![CDATA[马桶]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101535080939324.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[2]]></coptionVal>
+									<coption><![CDATA[门]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101632042881995.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[3]]></coptionVal>
+									<coption><![CDATA[滴水]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101650077099330.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[4]]></coptionVal>
+									<coption><![CDATA[灯]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101712022137849.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[9]]></coptionVal>
+									<coption><![CDATA[其他]]></coption>
+									<cisInput><![CDATA[1]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101732086731057.png]]></cimage>
+								</option>
+							<options>
+					</question>
+			<question>
+					<cquestionNo><![CDATA[SQ000000004]]></cquestionNo>
+					<cindex><![CDATA[2]]></cindex>
+					<cisSubmit><![CDATA[0]]></cisSubmit>
+					<cquestion><![CDATA[卫生问题（可多选）]]></cquestion>
+					<ctype><![CDATA[7]]></ctype>
+					<cdictNo><![CDATA[]]></cdictNo>
+					<options>
+							<option>
+									<coptionVal><![CDATA[1]]></coptionVal>
+									<coption><![CDATA[没有洗手液]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101822077220246.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[2]]></coptionVal>
+									<coption><![CDATA[坐便/尿兜脏]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101839000976824.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[3]]></coptionVal>
+									<coption><![CDATA[无厕纸]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101855060067471.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[4]]></coptionVal>
+									<coption><![CDATA[地面湿滑]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101911086052095.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[5]]></coptionVal>
+									<coption><![CDATA[洗手台不洁净]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407101928030771749.png]]></cimage>
+								</option>
+							<options>
+					</question>
+			<question>
+					<cquestionNo><![CDATA[SQ000000006]]></cquestionNo>
+					<cindex><![CDATA[3]]></cindex>
+					<cisSubmit><![CDATA[0]]></cisSubmit>
+					<cquestion><![CDATA[保洁人员礼仪礼貌（可选，多选）]]></cquestion>
+					<ctype><![CDATA[4]]></ctype>
+					<cdictNo><![CDATA[SD000000001]]></cdictNo>
+					<options>
+							<option>
+									<coptionVal><![CDATA[a]]></coptionVal>
+									<coption><![CDATA[保洁人员待人有礼]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[b]]></coptionVal>
+									<coption><![CDATA[能清晰指引物品使用]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<options>
+					<dicts>
+							<dict>
+									<citemVal><![CDATA[1]]></citemVal>
+									<citemName><![CDATA[较差]]></citemName>
+									<cimage><![CDATA[]]></cimage>
+								</dict>
+							<dict>
+									<citemVal><![CDATA[2]]></citemVal>
+									<citemName><![CDATA[一般]]></citemName>
+									<cimage><![CDATA[]]></cimage>
+								</dict>
+							<dict>
+									<citemVal><![CDATA[3]]></citemVal>
+									<citemName><![CDATA[优秀]]></citemName>
+									<cimage><![CDATA[]]></cimage>
+								</dict>
+							<dicts>
+					</question>
+			<question>
+					<cquestionNo><![CDATA[SQ000000003]]></cquestionNo>
+					<cindex><![CDATA[4]]></cindex>
+					<cisSubmit><![CDATA[0]]></cisSubmit>
+					<cquestion><![CDATA[对我们的工作有什么建议]]></cquestion>
+					<ctype><![CDATA[1]]></ctype>
+					<cdictNo><![CDATA[]]></cdictNo>
+					</question>
+			<question>
+					<cquestionNo><![CDATA[SQ000000007]]></cquestionNo>
+					<cindex><![CDATA[5]]></cindex>
+					<cisSubmit><![CDATA[0]]></cisSubmit>
+					<cquestion><![CDATA[您所在的区域]]></cquestion>
+					<ctype><![CDATA[2]]></ctype>
+					<cdictNo><![CDATA[]]></cdictNo>
+					<options>
+							<option>
+									<coptionVal><![CDATA[1]]></coptionVal>
+									<coption><![CDATA[下城区]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[2]]></coptionVal>
+									<coption><![CDATA[拱墅区]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[3]]></coptionVal>
+									<coption><![CDATA[上城区]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<options>
+					</question>
+			<question>
+					<cquestionNo><![CDATA[SQ000000008]]></cquestionNo>
+					<cindex><![CDATA[6]]></cindex>
+					<cisSubmit><![CDATA[0]]></cisSubmit>
+					<cquestion><![CDATA[您从哪里知道的我们]]></cquestion>
+					<ctype><![CDATA[3]]></ctype>
+					<cdictNo><![CDATA[]]></cdictNo>
+					<options>
+							<option>
+									<coptionVal><![CDATA[1]]></coptionVal>
+									<coption><![CDATA[媒体报道]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[2]]></coptionVal>
+									<coption><![CDATA[微博、微信]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[3]]></coptionVal>
+									<coption><![CDATA[广告]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[4]]></coptionVal>
+									<coption><![CDATA[应用市场]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[5]]></coptionVal>
+									<coption><![CDATA[朋友或同事推荐]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[9]]></coptionVal>
+									<coption><![CDATA[其他]]></coption>
+									<cisInput><![CDATA[1]]></cisInput>
+									<cimage><![CDATA[]]></cimage>
+								</option>
+							<options>
+					</question>
+			<question>
+					<cquestionNo><![CDATA[SQ000000005]]></cquestionNo>
+					<cindex><![CDATA[7]]></cindex>
+					<cisSubmit><![CDATA[1]]></cisSubmit>
+					<cquestion><![CDATA[您认为杭州IFC写字楼洗手间的环境如何？（直接提交）]]></cquestion>
+					<ctype><![CDATA[6]]></ctype>
+					<cdictNo><![CDATA[]]></cdictNo>
+					<options>
+							<option>
+									<coptionVal><![CDATA[1]]></coptionVal>
+									<coption><![CDATA[不好]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407102026099516343.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[2]]></coptionVal>
+									<coption><![CDATA[一般]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407102044081460230.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[3]]></coptionVal>
+									<coption><![CDATA[较好]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407102109074831463.png]]></cimage>
+								</option>
+							<option>
+									<coptionVal><![CDATA[4]]></coptionVal>
+									<coption><![CDATA[非常棒]]></coption>
+									<cisInput><![CDATA[0]]></cisInput>
+									<cimage><![CDATA[/UploadFileDir/content_file/20210407102125094516733.png]]></cimage>
+								</option>
+							<options>
+					</question>
+			<questions>
+	</items>

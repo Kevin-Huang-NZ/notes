@@ -510,7 +510,7 @@ ${idPageNo}</textarea>
                         <pre>
 					<textarea readonly="readonly" rows="5">
 <east:service beanName="eastUtilService" methodName="listGet" id="idCode">
-	<east:para name="_list" value="${lsCode}" type="Object" />
+	<east:para name="_list" value="${lsCode}" type="List" />
 	<east:para name="_index" value="0" type="Integer" />
 </east:service></textarea>
 				</pre>
@@ -1250,6 +1250,22 @@ ${idPageNo}</textarea>
 
 
 
+                    <h2 id="string-file-filename">fileFileName</h2>
+                    <p>从文件路径（相对路径已测试，绝对路径未测试）中取得文件名称。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<east:service beanName="eastUtilService" methodName="fileFileName" id="_fileName">
+	<east:para name="_string" value="${_filePath}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
                 </div>
 
                 <div class="bs-docs-section">
@@ -1435,7 +1451,7 @@ ${idPageNo}</textarea>
 					<textarea readonly="readonly" rows="5">
 <east:service beanName="eastUtilService" methodName="getHourOffset" id="idNewDatetime">
 	<east:para name="_ymdhms" value="${datetime}" type="String" />
-	<east:para name="_offsetHour" value="2" type="String" />
+	<east:para name="_offsetHour" value="2" type="Integer" />
 </east:service></textarea>
 				</pre>
                     </figure>
@@ -1488,7 +1504,7 @@ ${idPageNo}</textarea>
 
 
                     <h2 id="date-time-diff-days">相差天数</h2>
-                    <p>计算开始日期和结束日期之间的差值。</p>
+                    <p>计算开始日期和结束日期之间的差值。其他类似方法：diffSecondsDate</p>
                     <p>参数：</p>
                     <blockquote>
                         <p>_dateStart：开始日期，格式：yyyy-mm-dd。</p>
@@ -1677,6 +1693,26 @@ ${idPageNo}</textarea>
 
                 <div class="bs-docs-section">
                     <h1 class="page-header" id="else">其他</h1>
+
+
+
+                    <h2 id="else-unzip">解压zip或rar</h2>
+                    <p>解压zip或rar，获得解压后的文件列表。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="eastUtilService" methodName="unrar" id="_lsImageFiles">
+	<east:para name="_rarPathFileNameRel" value="${requestEx.filePath}" type="String" />
+	<east:para name="_unrarFoldRel" value="UploadFileDir/unrar/${_dir}/" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+                    
+                    
+                    
                     <h2 id="else-session">用户登陆信息</h2>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
@@ -1741,7 +1777,7 @@ ${idPageNo}</textarea>
 
 
                     <h2 id="else-memcached-get">memcached get</h2>
-                    <p>从memcached中存值。</p>
+                    <p>从memcached中取值。</p>
                     <div class="zero-clipboard">
                         <span class="btn-clipboard">Copy</span>
                     </div>
@@ -1752,6 +1788,73 @@ ${idPageNo}</textarea>
 	<east:para name="sessionName" value="${__token}" type="String" />
 </east:service></textarea>
 				</pre>
+                    </figure>
+
+
+
+                    <h2 id="else-redis-put">redis put</h2>
+                    <p>往redis中存值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="8">
+<east:service beanName="pmsService" methodName="redisPut" id="_idResult2">
+	<east:para name="_lockName" value="cmeetingId_${requestEx.cmeetingId}" type="String" />
+	<east:para name="_obj" value="1" type="Object" />  
+	<east:para name="_expireSeconds" value="20" type="Integer" />  
+</east:service></textarea>
+						</pre>
+                    </figure>
+
+
+
+                    <h2 id="else-redis-get">redis get</h2>
+                    <p>从redis中取值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="pmsService" methodName="redisGet" id="_idResult2">
+	<east:para name="_lockName" value="cmeetingId_${requestEx.cmeetingId}" type="String" />
+</east:service></textarea>
+				</pre>
+                    </figure>
+
+
+
+                    <h2 id="else-redis-push">redis push</h2>
+                    <p>往redis中的list里存值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="6">
+<east:service beanName="pmsService" methodName="redisPush" id="idResult">
+	<east:para name="key" value="${PARTY_MEETING_USER_ID_LIST}" type="String" />
+	<east:para name="obj" value="${__meetingUser.id}" type="Object" />
+</east:service></textarea>
+						</pre>
+                    </figure>
+
+
+
+                    <h2 id="else-redis-pop">redis pop</h2>
+                    <p>从redis中的list里取值。</p>
+                    <div class="zero-clipboard">
+                        <span class="btn-clipboard">Copy</span>
+                    </div>
+                    <figure class="highlight">
+                        <pre>
+					<textarea readonly="readonly" rows="5">
+<east:service beanName="pmsService" methodName="redisPop" id="idResult">
+	<east:para name="key" value="${PARTY_MEETING_USER_ID_LIST}" type="String" />
+</east:service></textarea>
+						</pre>
                     </figure>
 
 
@@ -1997,6 +2100,9 @@ ${idPageNo}</textarea>
                                 <li>
                                     <a href="#string-html-remove">htmlRemove</a>
                                 </li>
+                                <li>
+                                    <a href="#string-file-filename">fileFileName</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -2075,6 +2181,9 @@ ${idPageNo}</textarea>
                             <a href="#else">其他</a>
                             <ul class="nav">
                                 <li>
+                                    <a href="#else-unzip">解压zip或rar</a>
+                                </li>
+                                <li>
                                     <a href="#else-session">用户登陆信息</a>
                                 </li>
                                 <li>
@@ -2085,6 +2194,18 @@ ${idPageNo}</textarea>
                                 </li>
                                 <li>
                                     <a href="#else-memcached-get">memcached get</a>
+                                </li>
+                                <li>
+                                    <a href="#else-redis-put">redis put</a>
+                                </li>
+                                <li>
+                                    <a href="#else-redis-get">redis get</a>
+                                </li>
+                                <li>
+                                    <a href="#else-redis-push">redis push</a>
+                                </li>
+                                <li>
+                                    <a href="#else-redis-pop">redis pop</a>
                                 </li>
                                 <li>
                                     <a href="#else-page-variate">分页常用变量</a>
