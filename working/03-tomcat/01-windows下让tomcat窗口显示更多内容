@@ -1,9 +1,0 @@
-1、修改startup.bat文件
-在文件头添加
-mode con cols=120 lines=2000
-
-把文件倒数第二句的start改为run：
-call "%EXECUTABLE%" run %CMD_LINE_ARGS%
-
-2、mode是dos扩展命令
-路径 windows/system32/mode.com
