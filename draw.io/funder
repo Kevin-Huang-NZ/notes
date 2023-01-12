@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-12T05:41:43.510Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="j6I_qyulPNhJp_Sc5D6u" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-12T05:42:50.963Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="Y9dJlxuA4CXJHY7tCGkj" version="20.5.3" type="github">
   <diagram id="GrRjR0ErH0TWGY6wTUkU" name="Page-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -45,6 +45,9 @@
         </mxCell>
         <mxCell id="da44ofXNcbcJQdwk2pZQ-7" value="企业领取补贴记录" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="340" y="440" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-17" value="政策法规&lt;br&gt;（之前说过，就当作新闻处理&lt;br&gt;和项目、申报通知、立项公示没有直接关联）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="600" y="90" width="170" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
