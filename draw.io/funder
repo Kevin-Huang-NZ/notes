@@ -1,23 +1,50 @@
-<mxfile host="app.diagrams.net" modified="2023-01-12T05:36:00.839Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="MuLkI-j2XmGYRYotjxp4" version="20.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-12T05:41:23.936Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="g-hgHrXrVgCAra_0RyEM" version="20.5.3" type="github">
   <diagram id="GrRjR0ErH0TWGY6wTUkU" name="Page-1">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="da44ofXNcbcJQdwk2pZQ-1" value="企业" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="300" y="390" width="100" height="40" as="geometry" />
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;exitX=0.429;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="da44ofXNcbcJQdwk2pZQ-1" target="da44ofXNcbcJQdwk2pZQ-5">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="da44ofXNcbcJQdwk2pZQ-3" value="项目" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="320" y="40" width="100" height="40" as="geometry" />
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-12" value="2、企业看到申报通知去申报" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="da44ofXNcbcJQdwk2pZQ-11">
+          <mxGeometry x="0.0889" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-1" value="企业" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="da44ofXNcbcJQdwk2pZQ-3" target="da44ofXNcbcJQdwk2pZQ-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-9" value="1、每年发布申报通知" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="da44ofXNcbcJQdwk2pZQ-8">
+          <mxGeometry x="-0.3647" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;" edge="1" parent="1" source="da44ofXNcbcJQdwk2pZQ-3" target="da44ofXNcbcJQdwk2pZQ-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-15" value="3、接到企业申报，审核筛选后，补贴发放前，发布立项公示" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" vertex="1" connectable="0" parent="da44ofXNcbcJQdwk2pZQ-14">
+          <mxGeometry x="0.1909" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-3" value="项目&lt;br&gt;（最大的，跨几年）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="140" height="40" as="geometry" />
         </mxCell>
         <mxCell id="da44ofXNcbcJQdwk2pZQ-5" value="申报通知" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="230" y="160" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="da44ofXNcbcJQdwk2pZQ-6" value="立项公示" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="160" width="100" height="40" as="geometry" />
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;" edge="1" parent="1" source="da44ofXNcbcJQdwk2pZQ-6" target="da44ofXNcbcJQdwk2pZQ-7">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="da44ofXNcbcJQdwk2pZQ-7" value="补贴" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="400" y="280" width="100" height="40" as="geometry" />
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-6" value="立项公示" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="da44ofXNcbcJQdwk2pZQ-7" value="企业领取补贴记录" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="440" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
