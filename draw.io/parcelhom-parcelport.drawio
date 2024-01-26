@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-26T02:32:16.932Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="ngR6nFl-L25oztLY1GUW" version="23.0.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-26T02:36:14.395Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="OW6GfZ_8qD2CXtXdfOqS" version="23.0.2" type="github">
   <diagram name="Page-1" id="xjQKykndbCt2BGKE1EX0">
     <mxGraphModel dx="1434" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -64,8 +64,8 @@
         <mxCell id="XmqYlcrU6ro_VFqoflqp-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="XmqYlcrU6ro_VFqoflqp-12" target="XmqYlcrU6ro_VFqoflqp-13">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="XmqYlcrU6ro_VFqoflqp-12" value="Call Parcelport API&lt;br&gt;Create Consignment" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="640" y="535" width="120" height="50" as="geometry" />
+        <mxCell id="XmqYlcrU6ro_VFqoflqp-12" value="Call Parcelport API&lt;br&gt;Create Consignment&lt;br&gt;with 3rd order id" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="615" y="535" width="170" height="50" as="geometry" />
         </mxCell>
         <mxCell id="XmqYlcrU6ro_VFqoflqp-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="XmqYlcrU6ro_VFqoflqp-13" target="XmqYlcrU6ro_VFqoflqp-14">
           <mxGeometry relative="1" as="geometry" />
@@ -75,6 +75,9 @@
         </mxCell>
         <mxCell id="XmqYlcrU6ro_VFqoflqp-14" value="Fulfill 3rd" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="370" y="640" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XmqYlcrU6ro_VFqoflqp-23" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;1. Create Parcelhom API table in Parcelport&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;2. Add ParcelHom flag in Client&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;3. ParcelHom need thirdpary order id&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;4. Parcelport API can access thirdparty order id&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="880" y="130" width="450" height="340" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
