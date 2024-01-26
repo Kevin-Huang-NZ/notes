@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-01-26T02:28:53.502Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="1jT3laTObv4AhVw3jSN4" version="23.0.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-26T02:30:13.174Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="64w7PUNeqzmU05Obio1Y" version="23.0.2" type="github">
   <diagram name="Page-1" id="xjQKykndbCt2BGKE1EX0">
     <mxGraphModel dx="1434" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -33,6 +33,18 @@
         </mxCell>
         <mxCell id="XmqYlcrU6ro_VFqoflqp-8" value="push &lt;br&gt;ParcelHom?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="330" y="220" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="XmqYlcrU6ro_VFqoflqp-9" value="push to ParcelHom" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="350" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XmqYlcrU6ro_VFqoflqp-10" value="Create Outwards&lt;br&gt;Order" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="350" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XmqYlcrU6ro_VFqoflqp-11" value="picking" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="440" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="XmqYlcrU6ro_VFqoflqp-12" value="Create Consignment" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="535" width="120" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
